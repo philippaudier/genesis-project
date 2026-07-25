@@ -91,3 +91,5 @@ exist. The next chapter gives that world its first phenomenon — behaviour that
 without the laws recorded here.
 
 The kernel is done. The world is next.
+
+From here, Genesis stops inventing its laws and begins discovering their consequences.
