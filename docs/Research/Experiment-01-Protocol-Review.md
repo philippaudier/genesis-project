@@ -1,8 +1,11 @@
 # Experiment 01 — Protocol Review (pre-registration peer review)
 
-Status: **Research — methodological review.** Reviews the *experiment*, not the mechanisms. Proposes
-no mechanism, redesigns nothing, executes nothing. `Experiment-01-Scalar-Diffusion.md` is left
-untouched pending this review's disposition.
+Status: **Closed with the experiment (2026-07-26).** Experiment-01 was closed as superseded by
+ADR-0001 and the validated kernel; neither of this review's dispositions (freeze narrow /
+amend-then-freeze) was ever selected, and none is needed. The review's findings remain the standard
+any future field-experiment protocol must meet.
+
+*Original review, preserved as written:*
 
 > Scope: does Experiment 01, exactly as written, constitute a **scientifically fair comparison** of
 > C-N (node), C-E (edge/flux), and C-G (global)? The seven questions posed for review are answered in

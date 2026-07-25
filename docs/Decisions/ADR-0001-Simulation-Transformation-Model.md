@@ -5,8 +5,7 @@
 **Accepted** — 2026-07-25. The first deliberate architectural commitment of Genesis.
 
 Resolves the decision that `docs/RFC/RFC-0002-Simulation-Transformation-Pipeline.md` was designed to
-enable. (RFC-0002's own Decision Record still reads *Pending*; updating it to reference this ADR is a
-follow-up, deliberately not done here so as not to modify the RFC.)
+enable. (RFC-0002's Decision Record has since been updated and reads *Resolved by ADR-0001*.)
 
 ## Context
 

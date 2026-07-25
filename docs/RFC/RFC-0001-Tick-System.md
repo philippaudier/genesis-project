@@ -1,6 +1,13 @@
 # RFC-0001 — Tick System
 
-Status: Draft
+Status: **Accepted** — 2026-07-26.
+
+> **Cold-pass revision (2026-07-26).** This RFC's settled core — the tick as a logical, integer,
+> host-independent step, and Level-1 logical determinism — was implemented and proven by
+> Genesis-002..010 (see `docs/Design/04-KERNEL.md`). This revision folds in the journal amendments of
+> 2026-07-24 (determinism levels; tick/duration separation), records how ADR-0001 resolved the
+> preliminary direction, and moves the RFC to Accepted so its status tells the truth about running,
+> tested code. Sections below are annotated where the original text has been superseded.
 
 ## Purpose
 
@@ -31,10 +38,16 @@ force the question of time to the front:
    opposite: the world advances on its own terms, and presentation, if present at all,
    only reads the result.
 
-2. **The same initial state and the same inputs must reproduce the same result** — bit
-   for bit, run for run, machine for machine. Reproducibility is not achievable unless
-   the *order and timing* of every state change is itself deterministic. Time is the
-   spine that ordering hangs from.
+2. **The same initial state and the same inputs must reproduce the same result.**
+   Precisely: Genesis **requires Level 1 — logical determinism** (identical decisions and
+   transformations on every run); **desires Level 2** — platform determinism (identical
+   results on a given platform and runtime version); and **defers Level 3** —
+   cross-platform bit-identical results — to a future numeric-guarantees RFC, since it
+   depends on numeric types and concurrency strategy not yet chosen. (An earlier draft
+   demanded "bit for bit, machine for machine"; that over-promised — it is Level 3, and
+   it is not this RFC's to guarantee.) Reproducibility at any level is unachievable
+   unless the *order and timing* of every state change is itself deterministic. Time is
+   the spine that ordering hangs from.
 
 3. **Transformations must occur in an explicit, traceable order.** If two changes happen
    "at the same time," the world must still have a single, defined, inspectable answer
@@ -141,11 +154,14 @@ individually.
 
 The following terms are used precisely and are **not** interchangeable.
 
-- **Tick.** A discrete unit of simulation time; the smallest interval within which the
-  world is treated as unchanging. Advancing the simulation by one tick moves it from one
-  defined state to the next.
-- **Simulation Time.** The internal, authoritative clock of the world, measured in
-  ticks. It has no fixed relationship to real time.
+- **Tick.** A **logical execution step** — an ordinal, not a duration. It carries no
+  intrinsic real-time meaning; advancing the simulation by one tick moves it from one
+  defined state to the next, and nothing more. (D1, journal 2026-07-24.) Whether world
+  *durations* are expressed directly in ticks or in a distinct integer **Simulation Time
+  Unit** that the tick advances is deliberately left open — defining them as necessarily
+  identical would couple tick granularity to the meaning of every process in the world.
+- **Simulation Time.** The internal, authoritative clock of the world: an ordinal integer
+  counter of ticks. It has no fixed relationship to real time.
 - **Real Time.** Wall-clock time in the host environment. Relevant only to *how fast*
   ticks are executed, never to *what* a tick produces.
 - **Frame.** One iteration of the host's presentation/update loop. A frame is a
@@ -304,7 +320,20 @@ state), and — with care about the scheduler's simplicity — Comprehensibility
 
 ## Open Questions
 
-These must be answered before this RFC can be Accepted.
+> **Resolution status (2026-07-26).** Several of these were closed by ADR-0001 and the kernel
+> implementation; the remainder stay open without blocking acceptance, because none is load-bearing
+> for the implemented core. **Closed:** Q1 (a tick is a logical unit with no default real-time
+> mapping; real time is a presentation-side playback rate), Q3 (an integer tick counter — implemented
+> as a 64-bit ordinal), Q5 (no phases — ADR-0001 chose a flat set; phases remain a possible future
+> extension), Q6 (per-address commutative resolvers with Reject as default — DN-001, Genesis-006),
+> Q10 (moot for transitions under snapshot semantics — ordering reduces to commutative conflict
+> resolution plus canonical enumeration; a tie-break for a future event layer would be specified with
+> that layer). **Still open:** Q2 (selective update — subsumed by the future event-scheduling
+> optimisation), Q4 (duration units — linked to the Simulation Time Unit question, D1), Q7 (input
+> insertion — no external inputs exist yet), Q8 (long-running processes), Q9 (causality metadata —
+> deferred to a future Causality & History RFC).
+
+The original questions, as posed:
 
 - **Q1 — Initial tick frequency.** What is the initial relationship between one tick and
   one unit of intended world time? Is a tick a fixed real-duration target, or purely a
@@ -334,6 +363,16 @@ These must be answered before this RFC can be Accepted.
   this answer.)
 
 ## Preliminary Direction
+
+> **Superseded by ADR-0001 (2026-07-25).** The decision went to the conservative fallback this
+> section itself named: **Option 2 — uniform fixed tick** — because ADR-0001 chose uniform per-tick
+> temporal scope, with scheduled behaviour expressed as *state* (due-ticks a per-tick transition
+> reads). Option 4's event layer was thereby **reframed from a semantic model into a future,
+> semantics-preserving performance optimisation**: it may be added the day per-tick evaluation cost
+> demands it, without changing any world outcome. The standing vigilance (recorded at the ADR's
+> acceptance): event-scheduling must remain an optimisation — if evaluation cost ever forces it to
+> become a *model* change, ADR-0001 is revisited, not quietly bent. The original analysis is kept
+> below as the reasoning of record.
 
 The evidence in this document points toward **Option 4 — the hybrid of a fixed tick with a
 scheduled-event layer** as the most promising direction. It preserves the deterministic,
@@ -429,8 +468,14 @@ This RFC does **not** define, and no reader should infer, the following:
 
 ## Decision Record
 
-Decision: Pending
-Date: —
-Rationale: Awaiting analysis and validation. Option 4 (hybrid fixed tick plus scheduled
-events) is the preliminary direction; acceptance requires closing the open questions —
-especially the same-tick ordering rule (Q6, Q10) — and passing the Validation Plan.
+Decision: **Accepted**
+Date: 2026-07-26
+Rationale: The tick model this RFC defined — a logical, integer, host-independent step under Level-1
+logical determinism — is implemented (`Tick`, `TickRunner`, Genesis-002..010) and proven by the
+kernel's executable test suite, including deterministic 1000-tick replays, frame-independence by
+construction (no presentation dependency exists), and single-step/pause as trivial consequences of
+caller-driven `Run(count)`. Temporal scope was resolved by ADR-0001 as uniform per-tick (Option 2),
+with Option 4's event layer reframed as a future semantics-preserving optimisation. Remaining open
+questions (Q2, Q4, Q7, Q8, Q9) are recorded above and belong to future RFCs; none undermines the
+accepted core. Validation-plan obligations not yet exercised (recorded-input replay, save/load
+continuity) become obligations of the milestones that introduce inputs and serialisation.

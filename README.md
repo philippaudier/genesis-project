@@ -8,90 +8,49 @@ Genesis is built around one fundamental belief:
 
 > **The world is the only source of truth.**
 
-Everything flows from this. State exists in the world. Change happens to the world. Stories emerge from the world. Not from scripts. Not from designers. Not from agents making decisions in isolation.
+And one discovery made while building it:
 
-The world is not a backdrop. The world is the simulation.
+> **The world is not a collection of things. It is a succession of transformations.**
+
+Genesis is a long-term deterministic world simulation framework. It is not a game — games are
+consumers of Genesis. The first planned game is [Lootbound](docs/Design/lootbound.md).
 
 ## What Genesis Is
 
-Genesis is a deterministic simulation framework. It models world state, processes, and transformations. It tracks causality. It enforces constraints. It lets complexity emerge from simple rules applied consistently.
+A framework in which a world advances by law, not by script. Every tick, every transition reads an
+immutable snapshot of the world and contributes to the next one; conflicts resolve by explicit,
+deterministic rules; nothing changes without a cause, and nothing observes more than it has declared.
 
-Genesis is not a game. It is the foundation that games will be built upon. [Lootbound](docs/Design/lootbound.md) is the first.
-
-## What Genesis Is Not
-
-Genesis is not a game engine. It does not render. It does not handle input. It does not play sound. Those responsibilities belong to Unity, which serves as the runtime.
-
-Genesis is not an AI system. It does not simulate agents. Agents may eventually exist within Genesis, but they are consequences of world simulation—not the purpose of it.
-
-## Mission
-
-To build infrastructure for worlds that are coherent, persistent, and alive—without scripted behavior or predetermined narrative.
-
-## Philosophy
-
-Most simulations model entities that act upon a world. Genesis inverts this. The world acts. Entities are patterns within it.
-
-A fire does not decide to spread. The world's rules dictate that fire spreads to adjacent flammable material. A creature does not decide to be hungry. The world's rules transform energy over time. The creature's hunger is a world state, not a creature decision.
-
-This inversion has consequences:
-
-- **No hidden state.** If it matters, it exists in the world.
-- **No special cases.** Rules apply uniformly.
-- **No narrative privilege.** The player is subject to the same physics as everything else.
+Genesis is not a game engine. It does not render, play sound, or read input — Unity does, strictly as
+a presentation layer. The simulation is the product; everything else is a window onto it. Genesis
+always runs headless.
 
 ## Core Principles
 
-1. **World over agents.** The world is primary. Entities are emergent.
-2. **State over behavior.** Model what *is*, not what things *do*.
-3. **Determinism over randomness.** Same inputs produce same outputs.
+1. **World over objects.** The world is primary; entities are patterns within its state.
+2. **Transformation over state.** What matters is not what the world *is*, but how one moment
+   becomes the next. State is transformation caught mid-sentence.
+3. **Determinism over randomness.** Identical beginnings produce identical worlds — always.
 4. **Causality over coincidence.** Every change has a traceable cause.
-5. **Constraints over scripts.** Rules shape possibility; they don't dictate action.
+5. **Emergence over scripting.** Rules shape possibility; they never dictate outcomes.
+6. **Explicitness over convenience.** If it affects the world, it is declared, inspectable state.
+
+The full principles live in the [Constitution](docs/Constitution/00-CONSTITUTION.md) — the document
+everything else in this repository answers to.
 
 ## Current Status
 
-Genesis is in Phase 0: establishing foundations.
+**The computational kernel is complete and frozen** (tag `genesis-core-kernel`): snapshot →
+scoped reads → transitions → contributions → conflict resolution → commit → next snapshot. Seven
+milestones, each proving exactly one property, every proof executable and still running. See the
+[Kernel Completion Record](docs/Design/04-KERNEL.md).
 
-## Project Phases
-
-| Phase | Focus |
-|-------|-------|
-| 0 | **The project begins.** Structure, principles, constitution. |
-| 1 | **The world exists.** State representation, spatial foundation. |
-| 2 | **The world changes.** Time, ticks, deterministic transformation. |
-| 3 | **The world grows.** Processes, propagation, emergent complexity. |
-| 4 | **The world remembers.** Persistence, history, causality chains. |
-| 5 | **The world adapts.** Feedback loops, equilibrium, evolution. |
-| 6 | **The player arrives.** Observation, interaction, consequence. |
-
-## Repository Structure
-
-```
-genesis-project/
-├── Assets/
-│   └── Genesis/
-│       ├── Core/            # Foundational systems
-│       ├── Simulation/      # The world's rules — the product itself
-│       ├── Presentation/    # Observation layer (Unity lives here)
-│       ├── Tools/           # Visualisation, debug, inspection, replay
-│       ├── Editor/          # Authoring-time tooling
-│       └── Tests/           # Verification
-├── docs/
-│   ├── Constitution/        # Immutable principles
-│   ├── Design/             # Vision, glossary, roadmap, game designs
-│   ├── RFC/                # Technical proposals
-│   ├── Decisions/          # Recorded architectural decisions
-│   ├── Journal/            # Development log
-│   └── Research/           # Notes and investigations
-└── README.md
-```
-
-Documentation is organised like code: each folder is a documentary module, not a
-dump of loose `.md` files. Every module in `Assets/Genesis/` maps to a concern the
-[Constitution](docs/Constitution/00-CONSTITUTION.md) names — most importantly, the
-separation of **Simulation** (the world) from **Presentation** (any window onto it).
+There is deliberately no world yet — no creatures, terrain, or gameplay. Genesis built its laws
+first; the world comes next.
 
 ## Documentation
+
+Documentation is organised like code: each folder is a documentary module.
 
 | Document | Purpose |
 |----------|---------|
@@ -99,22 +58,38 @@ separation of **Simulation** (the world) from **Presentation** (any window onto 
 | [Vision](docs/Design/01-VISION.md) | Where Genesis is going |
 | [Glossary](docs/Design/02-GLOSSARY.md) | What words mean here |
 | [Roadmap](docs/Design/03-ROADMAP.md) | How we get there |
+| [Kernel Record](docs/Design/04-KERNEL.md) | What has been proven |
+| [Decisions](docs/Decisions/) | Accepted architecture (ADRs) |
+| [RFCs](docs/RFC/) | The reasoning behind decisions |
+| [Engineering](docs/Engineering/) | Invariants, conventions, workflow |
+| [Research](docs/Research/) | Explorations and adversarial reviews |
+| [Journal](docs/Journal/) | The story as it happened |
 
-Technical decisions are proposed and discussed through RFCs in `docs/RFC/`. The first is [RFC-0001 — Tick System](docs/RFC/RFC-0001-Tick-System.md).
+Development follows an RFC-first workflow and the Proof Rule: every milestone exists to prove exactly
+one property of the engine ([ADR-0002](docs/Decisions/ADR-0002-Development-Methodology.md)).
+
+## Architecture
+
+The Simulation/Presentation boundary is enforced by the compiler, not by discipline:
+`Genesis.Simulation` and `Genesis.Core` are Unity-free assemblies (`noEngineReferences`) — any use of
+a Unity API in simulation code fails to build. Details in
+[docs/Engineering/unity.md](docs/Engineering/unity.md).
 
 ## Technology
 
-- **Runtime:** Unity 2022 LTS
+- **Runtime:** Unity 6 (URP)
 - **Language:** C#
 
-Technology choices prioritize stability over novelty.
+Technology choices prioritise stability over novelty — and the Constitution outlives the technology:
+if Genesis is ever rewritten on another stack, the principles survive the rewrite unchanged.
 
 ## Contributing
 
 Genesis is in closed development. Principles for future contribution:
 
-- Understand the constitution before proposing changes
+- Understand the Constitution before proposing changes
 - Small, correct changes over large, ambitious ones
+- No production code without an accepted reason for existing
 - Questions are welcome; assumptions are not
 
 ## License
@@ -131,4 +106,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-*Day zero of a ten-year project.*
+*The laws came first. The world is next.*

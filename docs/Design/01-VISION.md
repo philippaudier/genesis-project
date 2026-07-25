@@ -74,7 +74,9 @@ Before Genesis can simulate worlds, it must establish foundations:
 - A vocabulary that enables precise communication
 - A structure that supports long-term development
 
-This is Phase 0. This is where we are.
+Those foundations exist, and the computational kernel built upon them is complete
+(see [04-KERNEL.md](04-KERNEL.md)). The current position is always in the
+[Roadmap](03-ROADMAP.md), never here.
 
 ---
 

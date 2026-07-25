@@ -1,7 +1,14 @@
 # Transition Mechanics — Exploration
 
-Status: **Research — exploration only.** Opens a new arc. No decision. No implementation. The
-ontology below is treated as a **fixed working hypothesis**, not reopened for simplification.
+Status: **Overtaken (2026-07-26).** This arc's central question — how a tick transforms state — was
+answered by a different route than it planned: RFC-0002 → ADR-0001 (the Snapshot Transition Model)
+and the kernel build (Genesis-004..010), rather than by paper experiments (Experiment-01 was closed
+as superseded). Its **W1 problem — deterministic continuous conserved fields — remains open and
+live**, and returns with the first field milestone as the test of ADR-0001's one-mechanism bet.
+Preserved as the map of that territory.
+
+*Original exploration, as written:* the ontology below is treated as a **fixed working hypothesis**,
+not reopened for simplification.
 
 > **Phase change.** The first research arc asked *what is Genesis?* and converged on a provisional
 > triad (`Transformation-Model*` and `*-Critique.md`, summarised in

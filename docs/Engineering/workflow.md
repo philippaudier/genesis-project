@@ -36,7 +36,7 @@
 - **Document** — only if a *durable* fact changed, and only in the one document that owns it. Never
   state a fact twice. Most milestones need no documentation change at all.
 - **Journal** — if the milestone taught something, record what happened and why. Chronology, not state.
-- **Context** — update `.claude/context.md` so "where we are" stays true.
+- **Context** — update `.claude/current.md` so "where we are" stays true.
 
 ## Definition of Done
 

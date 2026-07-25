@@ -4,171 +4,72 @@ How we get from here to there.
 
 ---
 
+## A note on the order of things (reconciliation, 2026-07-26)
+
+The original roadmap planned to build the world's *representation* first (Phase 1) and its *laws of
+change* second (Phase 2). Reality inverted this — and the inversion was better.
+
+We thought we would build the world before the laws. We discovered that the laws could be built,
+proven, and frozen with almost no world at all — three counters sufficed as witnesses — and that
+every question about representation is easier to answer once the laws that govern it already exist.
+So Phase 2 happened first, is complete, and is recorded in the
+[Kernel Completion Record](04-KERNEL.md). This document now tells the truth about that order rather
+than preserving the planned one. The phases' *content* was sound; only their sequence moved.
+
+---
+
 ## Phases
 
-Development proceeds in phases. Each phase establishes foundations for the next. No phase is rushed.
+### Phase 0 — The Project Begins ✅ Complete
 
-### Phase 0 — The Project Begins
+Foundations: Constitution, Vision, Glossary, Roadmap, repository structure, engineering documents
+(invariants, conventions, unity, workflow), the AI development environment, and the assembly boundary
+that makes Simulation/Presentation a compile-time fact (Genesis-001).
 
-**Status: Current**
+### Phase 2 — The World Changes ✅ Complete (built first, deliberately)
 
-Establish the foundations that everything else will build upon.
+Time and transformation — the computational kernel, built through seven proof-milestones
+(Genesis-004..010) under the Proof Rule (ADR-0002):
 
-Deliverables:
-- Constitution (immutable principles)
-- Vision (long-term direction)
-- Glossary (precise vocabulary)
-- Roadmap (this document)
-- Repository structure
-- Development practices
+- **Materialised decisions:** RFC-0001 Tick System (Accepted) · RFC-0002 Transformation Pipeline
+  (resolved by **ADR-0001 — the Snapshot Transition Model**) · DN-001 Conflict Resolution Policies.
+- **Proven properties:** snapshot transition, composition, conflict resolution, scoped reads,
+  addressable identity, explicit relations, relational views.
+- Exit criteria met: time advances through ticks; transformations occur deterministically; identical
+  inputs produce identical outputs — verified by a cumulative executable test suite.
 
-Exit criteria:
-- Documentation is complete and reviewed
-- Team understands and agrees on principles
-- Structure supports long-term development
+### Phase 1 — The World Exists 🔜 Next
 
----
+Now that the laws exist, give them a world worth governing. The witness counters become genuine
+world state.
 
-### Phase 1 — The World Exists
+Questions to answer: how is state represented beyond homogeneous counters (kinds, quantities, the
+numeric-representation RFC)? How is space organised — as structure built on explicit relations? What
+does the first *phenomenon* look like (behaviour impossible without relations — the planned
+Genesis-011)? How do addresses acquire lifecycle?
 
-**Status: Planned**
-
-Create the representation of world state.
-
-Questions to answer:
-- How is state represented?
-- How is space organized?
-- How do we query state efficiently?
-- How do we modify state safely?
-
-Expected RFCs:
-- RFC: World State Representation
-- RFC: Spatial Organization
-- RFC: State Queries
-
-Exit criteria:
-- World state can be created, read, and modified
-- Spatial queries work correctly
-- State is observable and debuggable
-
----
-
-### Phase 2 — The World Changes
-
-**Status: Planned**
-
-Implement time and transformation.
-
-Questions to answer:
-- What is a tick?
-- How are transformations ordered?
-- How is determinism guaranteed?
-- How do we debug transformation chains?
-
-Expected RFCs:
-- RFC: Tick System
-- RFC: Transformation Pipeline
-- RFC: Determinism Guarantees
-
-Exit criteria:
-- Time advances through ticks
-- Transformations occur deterministically
-- Same inputs produce same outputs (verified)
-
----
+Expected decisions: World State Representation · Numeric Guarantees · Spatial Structure (as a use of
+relations, not a replacement for them) · the Constraint layer (the triad's third element).
 
 ### Phase 3 — The World Grows
 
-**Status: Planned**
-
-Enable processes and propagation.
-
-Questions to answer:
-- How do processes track progress?
-- How do effects propagate through space?
-- How does complexity emerge from simple rules?
-
-Expected RFCs:
-- RFC: Process Model
-- RFC: Propagation Systems
-- RFC: Rule Composition
-
-Exit criteria:
-- Processes run over multiple ticks
-- Effects spread through the world
-- Emergent behavior is observable
-
----
+Processes and propagation: long-running change, effects spreading through structure, the first
+sustained emergent behaviour. (The parked field/conservation questions — W1 of the research arc —
+return here, and with them the first real test of ADR-0001's one-mechanism bet.)
 
 ### Phase 4 — The World Remembers
 
-**Status: Planned**
-
-Implement persistence and history.
-
-Questions to answer:
-- How is world state saved?
-- How is causality tracked?
-- How far back can we trace?
-- How do we balance memory and history?
-
-Expected RFCs:
-- RFC: Persistence Format
-- RFC: Causality Tracking
-- RFC: History Depth
-
-Exit criteria:
-- World state saves and loads correctly
-- Causality chains are traceable
-- History informs present state
-
----
+Persistence and history: serialisation, save/load continuity (an obligation inherited from
+RFC-0001's validation plan), causality tracking (the future Causality & History RFC), history depth.
 
 ### Phase 5 — The World Adapts
 
-**Status: Planned**
-
-Enable feedback loops and equilibrium.
-
-Questions to answer:
-- How do systems reach equilibrium?
-- How do feedback loops stabilize?
-- How does the world evolve over long time scales?
-
-Expected RFCs:
-- RFC: Equilibrium Systems
-- RFC: Long-term Evolution
-- RFC: Stability Guarantees
-
-Exit criteria:
-- Systems find equilibrium naturally
-- Long-running simulations remain stable
-- Evolution is observable and meaningful
-
----
+Feedback loops, equilibrium, long-horizon stability and evolution.
 
 ### Phase 6 — The Player Arrives
 
-**Status: Planned**
-
-Integrate observation and interaction.
-
-Questions to answer:
-- How does the player observe the world?
-- How does the player affect the world?
-- How do consequences flow from player actions?
-- How does Lootbound integrate with Genesis?
-
-Expected RFCs:
-- RFC: Observation Model
-- RFC: Interaction Model
-- RFC: Player Integration
-
-Exit criteria:
-- Player can observe world state
-- Player actions transform world state
-- Consequences are visible and meaningful
-- Lootbound development can begin
+Observation and interaction: external inputs bound to ticks (RFC-0001 Q7), the presentation bridge,
+consequences flowing from actions — and the gate to Lootbound.
 
 ---
 
@@ -176,9 +77,11 @@ Exit criteria:
 
 1. **No phase is skipped.** Foundations matter.
 2. **No phase is rushed.** Correctness over speed.
-3. **RFCs before code.** Design before implementation.
-4. **Questions before answers.** Understand the problem first.
-5. **Exit criteria are real.** A phase ends when criteria are met, not when we're tired of it.
+3. **Decisions before code.** RFCs and ADRs before implementation.
+4. **One proved property per milestone** (ADR-0002). The suite is cumulative; regressions are
+   forbidden.
+5. **Exit criteria are real.** A phase ends when its criteria are met — and when reality teaches a
+   better order, the roadmap is reconciled honestly, not silently.
 
 ---
 

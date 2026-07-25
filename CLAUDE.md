@@ -100,9 +100,11 @@ docs/
 Constitution/
 Design/
 RFC/
+Decisions/
+DesignNotes/
+Engineering/
 Research/
 Journal/
-Decisions/
 
 Assets/
 
@@ -147,10 +149,18 @@ docs/Design/02-GLOSSARY.md
 docs/Design/03-ROADMAP.md
 
 6.
-docs/RFC/RFC-0001-Tick-System.md  (active RFC — see `.claude/current.md`)
+docs/Decisions/ADR-0001-Simulation-Transformation-Model.md  (the accepted architecture — the Snapshot Transition Model)
 
 7.
+docs/Design/04-KERNEL.md  (the Kernel Completion Record — what has been proven)
+
+8.
+docs/Decisions/ADR-0002-Development-Methodology.md  (how milestones work — the Proof Rule)
+
+9.
 docs/Engineering/ — invariants, conventions, unity, workflow (how Genesis is built)
+
+RFCs (docs/RFC/) and Design Notes (docs/DesignNotes/) hold the reasoning behind the decisions.
 
 Only then begin discussing implementation.
 

@@ -38,7 +38,8 @@ Genesis.Editor        Editor platform  — authoring-time tooling (UnityEditor)
 - **Genesis.Tools** — visualisation, debug, inspection, replay. Observes the Simulation; may use Unity.
   Presentation-side.
 - **Genesis.Editor** — editor-only tooling; an Editor-platform assembly (`UnityEditor`).
-- **Genesis.Tests** — exercises the Simulation headless; references Simulation and Core, not Unity.
+- **Genesis.Tests** — exercises the Simulation; references Simulation and Core plus the Unity Test
+  Framework (the harness). The *subjects* under test stay Unity-free; the harness necessarily is not.
 
 If a reference ever needs to point *upward* (Simulation → Presentation), the design is wrong — that is
 invariant 2 refusing to compile, working as intended.
@@ -52,11 +53,22 @@ invariant 2 refusing to compile, working as intended.
 | `Assets/Genesis/Presentation/` | `Genesis.Presentation` | Yes |
 | `Assets/Genesis/Tools/` | `Genesis.Tools` | Yes |
 | `Assets/Genesis/Editor/` | `Genesis.Editor` | Yes (Editor only) |
-| `Assets/Genesis/Tests/` | `Genesis.Tests` | No (headless) |
+| `Assets/Genesis/Tests/` | `Genesis.Tests` | Harness only (see wiring below) |
 | `Assets/Genesis/Systems/`, `World/` | *unassigned* | — pending the RFC that dissolves them |
 
 `Systems/` and `World/` are pre-Constitution placeholders and get **no** assembly until an RFC decides
 their fate; leaving them unassigned keeps them out of the compiled graph.
+
+## Test & editor harness wiring
+
+The wiring left unspecified in the original draft (found during Genesis-001, folded back here):
+
+- **Genesis.Tests** is an **Editor-platform, EditMode** test assembly: `includePlatforms: ["Editor"]`,
+  references `Genesis.Simulation`, `Genesis.Core`, `UnityEngine.TestRunner`, `UnityEditor.TestRunner`;
+  `overrideReferences: true` with `nunit.framework.dll` precompiled; `defineConstraints:
+  ["UNITY_INCLUDE_TESTS"]`; `autoReferenced: false`. Requires the `com.unity.test-framework` package.
+- **Genesis.Editor** is an Editor-platform assembly (`includePlatforms: ["Editor"]`) for
+  authoring-time tooling; full Unity allowed.
 
 ## What may use Unity, and what may not
 

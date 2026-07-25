@@ -1,6 +1,9 @@
 # Experimental Methodology — Distilled
 
-Status: **Research — distillation.** The minimal irreducible set. No recommendations, no guide.
+Status: **Adopted — via ADR-0002 (2026-07-26).** The adoption this document refused to perform on
+itself (per its own Principle III) was made as a deliberate decision:
+`docs/Decisions/ADR-0002-Development-Methodology.md` adopts the three principles as the epistemic
+base of Genesis's development methodology. Preserved below as distilled.
 
 > A subtraction pass, applied to method the way the ontology arc was applied to concepts. Every
 > methodological principle raised across this discussion is listed, then each is removed if another

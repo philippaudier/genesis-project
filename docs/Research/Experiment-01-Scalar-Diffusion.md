@@ -1,6 +1,19 @@
 # Experiment 01 — Scalar Diffusion on a Regular Grid
 
-Status: **Research — experiment design.** No implementation. No results. No chosen mechanism.
+Status: **Closed — superseded (2026-07-26). Never executed.**
+
+> **Reason.** The question this experiment was designed to answer — which transfer mechanism Genesis
+> should adopt — was resolved by ADR-0001 (the Snapshot Transition Model) and the validated kernel
+> (Genesis-004..010). Running it now would compare candidates against a decision already made and
+> proven. The best experimenter also knows when an experiment is no longer necessary; closing it is
+> more honest than freezing it.
+>
+> What remains valuable is preserved: the conserved-fields questions this protocol probed (grain,
+> conservation-as-structure-vs-constraint, stability) return with the first field milestone — where
+> they will test ADR-0001's one-mechanism bet directly, under a fresh protocol written against the
+> kernel that now exists.
+
+*Original design, preserved as written:*
 
 > This document designs the first mechanics experiment of the transition-mechanics arc
 > (`Transition-Mechanics-Exploration.md`). Its purpose is to convert an architectural discussion
