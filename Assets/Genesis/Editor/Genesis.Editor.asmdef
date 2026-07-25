@@ -1,0 +1,19 @@
+{
+    "name": "Genesis.Editor",
+    "rootNamespace": "Genesis.Editor",
+    "references": [
+        "Genesis.Simulation",
+        "Genesis.Core"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

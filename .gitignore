@@ -1,0 +1,61 @@
+# ============================================================
+# Unity — generated & machine-local (never committed)
+# ============================================================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# ============================================================
+# IDE / generated project files (Unity regenerates these)
+# ============================================================
+.vs/
+.vsconfig
+.idea/
+ExportedObj/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.tmp
+
+# ============================================================
+# Build outputs / packaged artifacts
+# ============================================================
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# ============================================================
+# OS / misc
+# ============================================================
+.DS_Store
+Thumbs.db
+sysinfo.txt
+*.stackdump
+crashlytics-build.properties
+
+# ============================================================
+# Claude Code — commit shared config (settings.json, current.md,
+# commands/); ignore only personal/local overrides
+# ============================================================
+.claude/settings.local.json
+
+# Note: Unity .meta files are intentionally NOT ignored — they carry
+# asset GUIDs and must be committed alongside their assets.

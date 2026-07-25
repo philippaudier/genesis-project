@@ -1,0 +1,17 @@
+{
+    "name": "Genesis.Presentation",
+    "rootNamespace": "Genesis.Presentation",
+    "references": [
+        "Genesis.Simulation",
+        "Genesis.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
