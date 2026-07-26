@@ -1,6 +1,8 @@
 # RFC-L001 — External Agency
 
-Status: **Draft** (awaiting review)
+Status: **Accepted** (2026-07-26 — reviewed by the founder; revisions from that review integrated:
+invariant-before-mechanism ordering, the membrane formulation, law provenance-blindness, the
+event/command guard, "external event" vocabulary)
 Demand-side document: `Lootbound-Lab/Campaigns/LB-001-The-Ordinary-Sword.md`
 First of the `L` series: RFCs demanded by a world, not by architecture.
 
@@ -14,104 +16,115 @@ enter it in a way that leaves the act *observable, attributable, and replayable*
 phenomenon this RFC serves: not "input handling", but **the external act as a reproducible
 observation**.
 
-## The problem
+## The problem: causal legitimacy
 
 Genesis-003 decided that state is externally owned: the runner transforms states, it never owns
 them. That decision left a door open — the host can hand any state it likes to the next tick. So
 external agency is already *possible* today, trivially, by mutating state between ticks.
 
-It is possible and it is **unobservable**. A host mutation is a hidden hand: the resulting
-trajectory contains a change no law produced, no record explains, and no replay can reproduce. It
-violates traceable causality without violating a single line of the kernel. The problem is
-therefore not to *enable* agency — it is to **discipline** it: to define the one channel through
-which an outside act becomes part of the world's record, and to ban every other.
+It is possible and it is **illegitimate**. A host mutation leaves the engine correct and destroys
+the laboratory: the trajectory acquires a cause that belongs to no law —
 
-## Constraints (inherited, not negotiable here)
+```
+State → ??? → State
+```
 
-1. **ADR-0001** — one mechanism per tick: snapshot → contributions → resolution → commit. No
-   second write path.
-2. **Determinism** — with agency, determinism must become *conditional determinism*:
-   state(t+1) = F(state(t), inputs(t)). Same state, same inputs ⇒ same next state, always.
-3. **The world is the only source of truth** — an act that influenced the world must be readable
-   *from* the world's record, not from the host's memory.
-4. **No special cases** — whatever inputs are, they must not be a privileged write that bypasses
-   resolvers.
-5. **Research-arc precedent** — "Intent" was subtracted as a primitive during the ontology arc.
-   This RFC must not smuggle it back: an input is not a wish with semantics; it is data the laws
-   interpret.
+— and the `???` is documented nowhere. For Genesis, that is exactly an observation without a
+protocol. The problem this RFC solves is not agency; it is **causal legitimacy**: agency existed
+already — it was merely illegitimate.
 
-## The decision space
+## The invariant (before any mechanism)
 
-**Model A — Host mutation (status quo).** The owner edits state between ticks via `WithValue`.
-*Rejected*: unobservable, unattributable, unreplayable — the hidden hand. This RFC's first
-consequence is that Model A becomes **illegal for any world under observation**: a Part-B
-invariant, test-guarded where possible.
+> **Invariant 7 — No hidden hand.** *A world under observation is never modified directly by its
+> host.* (Now standing in `docs/Engineering/invariants.md`; descends from Determinism and
+> Explicitness. This is a constitutional consequence, not an API decision.)
 
-**Model B — Input as boundary contributions.** An input is a set of `Contribution`s injected into
-tick t's pool from outside, merged by the same per-Kind resolvers as law contributions.
-*Sub-problem*: an arbitrary contribution ("+10⁶ to the sword's durability") is an act *on* the
-world's internals, not an act *in* the world. It grants the agent the power of a law without the
-accountability of one.
+**Consequence:** the laboratory ceases to be a purely closed system. It becomes **permeable, with
+a perfectly defined membrane**. The only things that may cross the membrane are **external
+events**: declared, recorded, replayable, and interpreted only by laws.
 
-**Model C — Input as declared state (the production precedent).** The kernel already contains an
-input channel and has since Genesis-012: the **rate cell**. A production law reads a rate cell and
-acts; the rate cell is where the world's configuration meets the law. Generalised: worlds declare
-**input Kinds** — ordinary cells, readable by laws like any state. An external act is a write to
-input cells only, applied at a tick boundary, recorded in an append-only **input trace**
-(tick, cell, value). Laws read input cells and produce all actual effects; the act itself never
-touches a non-input cell.
+The mechanism below is the chosen *realisation* of that membrane — it exists because the invariant
+demands one, not because the architecture wanted a feature.
 
-## Proposed decision
+## The membrane, realised (the accepted mechanism)
 
-**Model C, carried by Model B's machinery.** Concretely:
+1. **Worlds declare their external Kinds.** External cells are ordinary cells — same reads, same
+   scopes, nothing privileged about them.
+2. **An external event** = values for external cells at a tick boundary. It is applied as
+   contributions to external cells, resolved by the same per-Kind resolvers as everything else —
+   no second write path, ADR-0001 untouched. Simultaneous events on one cell meet a resolver like
+   any other conflict.
+3. **Boundary only.** Events become visible in the next snapshot, never mid-tick. Snapshot
+   immutability is preserved exactly.
+4. **The external event trace.** Every event is appended to the trace *before* it is applied.
+   The trace is part of the world's record:
 
-1. Worlds declare their input Kinds. Input cells are ordinary cells — same reads, same scopes.
-2. An external act = values for input cells at a tick boundary. It is applied as contributions to
-   input cells, resolved by the same resolvers as everything else (Constraint 4: no second
-   mechanism; simultaneous acts on the same cell meet a resolver like any conflict).
-3. Acts are visible in the *next* snapshot, never mid-tick (Constraint 1: snapshot immutability is
-   untouched).
-4. Every act is appended to the **input trace** before it is applied. The trace is part of the
-   world's record: **run = initial state + relations + laws + input trace.** Replay of a played
-   session is exact, forever (Constraint 2). This trace is also the first stone of the append-only
-   chronology that RFC-L003 will need — one record, two consumers.
-5. Laws alone convert inputs into effects. The player's swing is a value in a cell; what a swing
-   *does* is the combat law's business (Constraint 5: no Intent primitive — meaning lives in laws,
-   which is where Genesis has always kept it).
+   > **run = initial state + relations + laws + external event trace**
 
-One sentence, constitutional grade:
+   Replay of a played session is exact, forever. The trace is append-only — the first stone of the
+   chronology RFC-L003 will need: one record, two consumers.
+5. **Laws alone convert events into effects.** The meaning of an event lives in the laws that read
+   its cells — where Genesis has always kept meaning. "Intent" stays subtracted.
 
-> **The agent does not act on the world. The agent's act becomes world — then the laws act.**
+Constitutional grade, both directions now:
+
+> The world is what the laws produce — **and what the laws receive.**
+> The agent does not act on the world. The agent's act becomes world — then the laws act.
+
+## Provenance-blindness (from review; binding)
+
+**Laws cannot know whether an event came from a player, an AI, a script, a benchmark, or a
+replay.** This is not a guideline — it is enforced by construction: provenance lives only in the
+trace, which laws cannot read; the world's state contains no provenance. Therefore no law can
+contain the moral equivalent of `if (playerInput)`. A player, a bot, and a replay that write the
+same values to the same cells are **the same experiment**.
+
+## The event/command guard (from review; binding)
+
+The trace records **facts of the boundary, never interpretations**:
+
+```
+legal in the trace:    InteractPressed = 1        (with world state: facing = repair station)
+illegal in the trace:  RepairSword
+produced by a law:     sword repaired             (an effect, in state — never in the trace)
+```
+
+Nineteen milestones were spent moving interpretation into laws; the membrane must not smuggle it
+back out. **Mechanical criterion:** *the trace must survive a rewrite of the laws.* If replacing
+an interpreting law would change what a recorded event means, the event was a command, and it is
+illegal. Corollary — a capability, not a cost: **counterfactual replay**. The laboratory may
+replay a session's trace under modified laws and ask *what would this session have been?* That
+question is only well-posed because the trace is interpretation-free.
 
 ## Consequences
 
-- **Observability**: any observer can answer "why did this cell change?" by reading laws + trace.
-  The hidden hand is dead; causality stays traceable through a human being.
-- **The laboratory reads, the game plays**: Lootbound's telemetry (keep/repair/name events for
-  LB-001) reads the trace and the state; the gameplay layer never knows the laboratory exists.
-- **Reproducibility of experience**: a play session becomes a *world object* — replayable,
-  attachable to an observation, comparable across players. LB-001's trajectories are exactly:
-  input traces plus their deterministic consequences.
-- **Kernel impact is small by design**: input cells are cells; input contributions are
-  contributions; the only new object is the trace and the boundary at which it is applied.
+- **Observability**: "why did this cell change?" is always answerable from laws + trace. The
+  hidden hand is dead; causality stays traceable through a human being.
+- **The laboratory reads, the game plays**: LB-001's telemetry reads trace and state; the gameplay
+  layer never learns the laboratory exists.
+- **Reproducibility of experience**: a play session is a world object — replayable, attachable to
+  an observation, comparable across players and across law-versions.
+- **Future externals for free**: weather, NPC migration, server events, seasons — all are external
+  events of exactly this nature. The membrane does not care who knocks.
+- **Kernel impact stays small**: external cells are cells; event applications are contributions;
+  the only new objects are the trace and the boundary at which it is applied.
 
 ## What this RFC does not decide
 
-Deferred, each waiting for its own demand: input *validation* (illegal acts — is a rejected act
-recorded? probably yes, as a refused entry); input *timing* across real time vs tick time (the
-presentation layer's clock); multiplayer arbitration (several agents, one boundary); the full
-chronology object (RFC-L003); object identity under repair and renaming (RFC-L002).
+Deferred, each waiting for its own demand: event *validation* (is a refused event recorded?
+probably yes, as a refused entry — undecided); real-time-to-tick mapping (the presentation clock);
+multi-agent arbitration; the full chronology object (RFC-L003); object identity under repair and
+renaming (RFC-L002).
 
 ## Kill criteria
 
-This RFC dies if: a world is exhibited whose required agency cannot be expressed as input-cell
-writes without loss (i.e., an act that *must* bypass laws to mean what it means); or if the trace
-mechanism is shown to break conditional determinism; or if a simpler mechanism is found that keeps
-all four properties (observable, attributable, replayable, resolver-uniform) with less.
+This RFC dies if: a world is exhibited whose required agency cannot be expressed as external-cell
+events without loss (an act that *must* bypass laws to mean what it means); or the trace mechanism
+is shown to break conditional determinism; or a simpler mechanism keeps all four membrane
+properties (observable, attributable, replayable, resolver-uniform) with less.
 
-## Review question for the house
+## The price, accepted
 
-Model C makes every input pass through cells that laws must read. The cost: gameplay-rich acts
-(move, swing, drop, name) each need a law that interprets them — the first Lootbound laws will be
-written sooner than expected. The alternative costs more: acts with law-power and no law-duties.
-Is the house prepared to pay the honest price?
+Every act needs an interpreting law — the first Lootbound laws will be written sooner than
+expected. Reviewed and accepted knowingly: the alternative was acts with law-power and no
+law-duties.
