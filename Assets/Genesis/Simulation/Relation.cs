@@ -3,20 +3,20 @@ using System;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// The smallest possible relation (Genesis-009): an explicit, directed connection from one
-    /// address to another. It carries no spatial, semantic, weighted, or lifecycle meaning — it only
-    /// states that a connection exists, and in which direction. Identity is structural over
-    /// (source, target); direction matters, so A→B and B→A are distinct relations.
+    /// An explicit, directed connection from one place to another (RFC-0003 D3: relations connect
+    /// places, not cells — topology is about location, not nature). It carries no spatial, semantic,
+    /// weighted, or lifecycle meaning. Identity is structural over (source, target); direction
+    /// matters, so A→B and B→A are distinct relations.
     /// </summary>
     public readonly struct Relation : IEquatable<Relation>
     {
-        /// <summary>The address the relation points from.</summary>
-        public CounterAddress Source { get; }
+        /// <summary>The place the relation points from.</summary>
+        public Place Source { get; }
 
-        /// <summary>The address the relation points to.</summary>
-        public CounterAddress Target { get; }
+        /// <summary>The place the relation points to.</summary>
+        public Place Target { get; }
 
-        public Relation(CounterAddress source, CounterAddress target)
+        public Relation(Place source, Place target)
         {
             Source = source;
             Target = target;

@@ -4,15 +4,15 @@ using Genesis.Simulation;
 namespace Genesis.Tests
 {
     /// <summary>
-    /// Genesis-009 — the proof. Addressed state locations can be connected through explicit, directed
-    /// relations: structural identity, direction distinctness, set semantics independent of insertion
-    /// order, rejection of unknown addresses — and none of it touches the simulation state or weakens
-    /// the computational kernel.
+    /// The explicit-relations proof (Genesis-009, kept as a regression guard): places can be
+    /// connected through explicit, directed relations — structural identity, direction distinctness,
+    /// set semantics independent of insertion order, rejection of unknown places (existence derived
+    /// from cells, RFC-0003 D5) — and none of it touches the simulation state.
     /// </summary>
     public sealed class RelationTests
     {
         [Test]
-        public void Relation_Connects_Two_Known_Addresses()
+        public void Relation_Connects_Two_Known_Places()
         {
             SimulationState state = TestAddresses.InitialState();
 
@@ -30,7 +30,7 @@ namespace Genesis.Tests
             var relations = new RelationSet(state, new Relation(TestAddresses.A, TestAddresses.B));
 
             Assert.IsTrue(relations.Contains(new Relation(TestAddresses.A, TestAddresses.B)));
-            Assert.IsFalse(relations.Contains(new Relation(TestAddresses.B, TestAddresses.A))); // A→B ≠ B→A
+            Assert.IsFalse(relations.Contains(new Relation(TestAddresses.B, TestAddresses.A)));
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace Genesis.Tests
             var relations = new RelationSet(
                 state,
                 new Relation(TestAddresses.A, TestAddresses.B),
-                new Relation(TestAddresses.A, TestAddresses.B)); // duplicate collapses
+                new Relation(TestAddresses.A, TestAddresses.B));
 
             Assert.AreEqual(1, relations.Count);
         }
@@ -57,37 +57,17 @@ namespace Genesis.Tests
             var reversed = new RelationSet(state, bc, ab);
 
             Assert.AreEqual(forward, reversed);
-        }
-
-        [Test]
-        public void Two_Equivalent_Relation_Sets_Have_Equal_Hash_Codes()
-        {
-            SimulationState state = TestAddresses.InitialState();
-            var ab = new Relation(TestAddresses.A, TestAddresses.B);
-            var bc = new Relation(TestAddresses.B, TestAddresses.C);
-
-            var forward = new RelationSet(state, ab, bc);
-            var reversed = new RelationSet(state, bc, ab);
-
             Assert.AreEqual(forward.GetHashCode(), reversed.GetHashCode());
         }
 
         [Test]
-        public void Relation_To_Unknown_Source_Is_Rejected()
+        public void Relation_To_Unknown_Place_Is_Rejected()
         {
             SimulationState state = TestAddresses.InitialState();
-            var unknown = new CounterAddress(999);
+            var unknown = new Place(999);
 
             Assert.Throws<System.ArgumentException>(
                 () => new RelationSet(state, new Relation(unknown, TestAddresses.B)));
-        }
-
-        [Test]
-        public void Relation_To_Unknown_Target_Is_Rejected()
-        {
-            SimulationState state = TestAddresses.InitialState();
-            var unknown = new CounterAddress(999);
-
             Assert.Throws<System.ArgumentException>(
                 () => new RelationSet(state, new Relation(TestAddresses.A, unknown)));
         }
@@ -102,19 +82,18 @@ namespace Genesis.Tests
                 new Relation(TestAddresses.A, TestAddresses.B),
                 new Relation(TestAddresses.B, TestAddresses.C));
 
-            Assert.AreEqual(TestAddresses.StateWith(1, 2, 3), state); // untouched
+            Assert.AreEqual(TestAddresses.StateWith(1, 2, 3), state);
         }
 
         [Test]
         public void Existing_Computational_Kernel_Remains_Deterministic()
         {
-            // Relations exist beside the kernel; two identical runs remain strictly identical.
             SimulationState initial = TestAddresses.InitialState();
             var relations = new RelationSet(initial, new Relation(TestAddresses.A, TestAddresses.B));
             var transitions = new ITransition[]
             {
-                new AddToCounterTransition(TestAddresses.A, 1),
-                new MirrorCounterTransition(TestAddresses.A, TestAddresses.C)
+                new AddToCounterTransition(TestAddresses.CellA, 1),
+                new MirrorCounterTransition(TestAddresses.CellA, TestAddresses.CellC)
             };
             var runner = new TickRunner(new TransitionRunner());
 

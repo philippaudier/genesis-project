@@ -3,31 +3,33 @@ using System.Collections.Generic;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// The set of origin addresses whose <em>outgoing</em> relations a transition declares it may
-    /// observe (Genesis-010). Declaring an origin grants, strictly one hop: visibility of the
-    /// origin's outgoing relations, and read access to their target addresses' snapshot values.
-    /// Discovered targets do not become origins — the grant is non-transitive.
-    ///
-    /// Parallel to <see cref="ReadScope"/>, deliberately not merged with it: one declares data, the
-    /// other declares structure. Neither is a query language.
+    /// A transition's declared relational observation (RFC-0003 D3/D4): the origin <em>places</em>
+    /// whose outgoing relations it may observe, and the <em>kinds</em> it may read at the places
+    /// those relations discover. The relation discovers places only; kind visibility is granted
+    /// entirely by the observing transition. The grant is strictly one hop and non-transitive.
     /// </summary>
     public sealed class RelationScope
     {
-        private readonly HashSet<CounterAddress> _origins;
+        private readonly HashSet<Place> _origins;
+        private readonly HashSet<Kind> _targetKinds;
 
-        /// <summary>A scope that observes no relations.</summary>
-        public static readonly RelationScope Empty = new RelationScope();
+        /// <summary>A scope that observes no relations and grants no discovered reads.</summary>
+        public static readonly RelationScope Empty = new RelationScope(new Place[0], new Kind[0]);
 
-        public RelationScope(params CounterAddress[] origins)
+        public RelationScope(IReadOnlyCollection<Place> origins, IReadOnlyCollection<Kind> targetKinds)
         {
-            _origins = new HashSet<CounterAddress>(origins);
+            _origins = new HashSet<Place>(origins);
+            _targetKinds = new HashSet<Kind>(targetKinds);
         }
 
-        /// <summary>The origin addresses whose outgoing relations may be observed.</summary>
-        public IReadOnlyCollection<CounterAddress> Origins => _origins;
+        /// <summary>The origin places whose outgoing relations may be observed.</summary>
+        public IReadOnlyCollection<Place> Origins => _origins;
+
+        /// <summary>The kinds readable at discovered target places.</summary>
+        public IReadOnlyCollection<Kind> TargetKinds => _targetKinds;
 
         /// <summary>Whether this scope permits observing the outgoing relations of <paramref name="origin"/>.</summary>
-        public bool Includes(CounterAddress origin)
+        public bool IncludesOrigin(Place origin)
         {
             return _origins.Contains(origin);
         }

@@ -7,13 +7,14 @@ namespace Genesis.Tests
     /// <summary>
     /// The core Snapshot Transition Model proof (Genesis-004, kept as a regression guard): a
     /// deterministic transition transforms state over any number of ticks, producing the next state
-    /// each tick, never exposing a within-tick mutation.
+    /// each tick, never exposing a within-tick mutation. Runs in the single-kind special case, which
+    /// must behave exactly as it did before RFC-0003.
     /// </summary>
     public sealed class SnapshotTransitionModelTests
     {
         private static readonly ITransition[] IncrementA =
         {
-            new AddToCounterTransition(TestAddresses.A, 1)
+            new AddToCounterTransition(TestAddresses.CellA, 1)
         };
 
         private static TickRunner NewRunner()
@@ -40,7 +41,7 @@ namespace Genesis.Tests
             SimulationState result = NewRunner().Run(TestAddresses.InitialState(), IncrementA, n);
 
             Assert.AreEqual(n, result.CurrentTick.Value);
-            Assert.AreEqual(n, result.CounterOf(TestAddresses.A));
+            Assert.AreEqual(n, result.ValueAt(TestAddresses.CellA));
         }
 
         [Test]
@@ -67,7 +68,7 @@ namespace Genesis.Tests
             SimulationState result = NewRunner().Run(TestAddresses.InitialState(), new ITransition[0], 10);
 
             Assert.AreEqual(10L, result.CurrentTick.Value);
-            Assert.AreEqual(0L, result.CounterOf(TestAddresses.A));
+            Assert.AreEqual(0L, result.ValueAt(TestAddresses.CellA));
         }
 
         [Test]
@@ -100,7 +101,7 @@ namespace Genesis.Tests
             for (int i = 0; i < n; i++)
             {
                 state = runner.Run(state, IncrementA, 1);
-                counters[i] = state.CounterOf(TestAddresses.A);
+                counters[i] = state.ValueAt(TestAddresses.CellA);
             }
 
             return counters;

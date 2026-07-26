@@ -3,19 +3,20 @@ using System;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// Thrown when a transition reads an address outside its declared <see cref="ReadScope"/>. Read
-    /// scopes are a real restriction, not a convention: the value is not present in the view the
-    /// transition received, so reading it fails rather than silently returning data.
+    /// Thrown when a transition reads a cell outside its declared contract — neither directly
+    /// declared in its <see cref="ReadScope"/> nor granted through a declared origin's relations.
+    /// The value is not present in the view the transition received, so reading it fails rather than
+    /// silently returning data.
     /// </summary>
     public sealed class ReadOutOfScopeException : Exception
     {
-        /// <summary>The address that was read outside the declared scope.</summary>
-        public CounterAddress Address { get; }
+        /// <summary>The cell that was read outside the declared contract.</summary>
+        public Cell Cell { get; }
 
-        public ReadOutOfScopeException(CounterAddress address)
-            : base($"Transition read {address}, which is outside its declared read scope.")
+        public ReadOutOfScopeException(Cell cell)
+            : base($"Transition read {cell}, which is outside its declared contract.")
         {
-            Address = address;
+            Cell = cell;
         }
     }
 }

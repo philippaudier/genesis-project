@@ -3,16 +3,16 @@ using System.Collections.Generic;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// Contributes a fixed amount to the counter at a chosen address. It reads nothing and observes
-    /// no relations — both scopes are empty — so it is a clean witness that a transition may write
-    /// without declaring any observation. An increment is simply an amount of one.
+    /// Contributes a fixed amount to a chosen cell. It reads nothing and observes no relations —
+    /// both scopes are empty — so it is a clean witness that a transition may write without declaring
+    /// any observation. An increment is simply an amount of one.
     /// </summary>
     public sealed class AddToCounterTransition : ITransition
     {
-        private readonly CounterAddress _target;
+        private readonly Cell _target;
         private readonly long _amount;
 
-        public AddToCounterTransition(CounterAddress target, long amount)
+        public AddToCounterTransition(Cell target, long amount)
         {
             _target = target;
             _amount = amount;

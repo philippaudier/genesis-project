@@ -6,21 +6,22 @@ namespace Genesis.Tests
 {
     /// <summary>
     /// The conflict proof (Genesis-006, kept as a regression guard): conflicting contributions to the
-    /// same address resolve exactly once, deterministically, and independently of enumeration order,
-    /// via an explicit commutative resolver — and a conflict with no resolver is rejected.
+    /// same cell resolve exactly once, deterministically, and independently of enumeration order, via
+    /// an explicit commutative resolver — now attached to the cell's <em>kind</em> (RFC-0003 D2) —
+    /// and a conflict on a kind with no resolver is rejected.
     /// </summary>
     public sealed class ConflictResolutionTests
     {
-        private static TickRunner RunnerWith(IReadOnlyDictionary<CounterAddress, IConflictResolver> resolvers)
+        private static TickRunner RunnerWith(IReadOnlyDictionary<Kind, IConflictResolver> resolvers)
         {
             return new TickRunner(new TransitionRunner(resolvers));
         }
 
-        private static Dictionary<CounterAddress, IConflictResolver> SumOnA()
+        private static Dictionary<Kind, IConflictResolver> SumOnK()
         {
-            return new Dictionary<CounterAddress, IConflictResolver>
+            return new Dictionary<Kind, IConflictResolver>
             {
-                { TestAddresses.A, new AdditionResolver() }
+                { TestAddresses.K, new AdditionResolver() }
             };
         }
 
@@ -28,38 +29,38 @@ namespace Genesis.Tests
         {
             return new ITransition[]
             {
-                new AddToCounterTransition(TestAddresses.A, first),
-                new AddToCounterTransition(TestAddresses.A, second)
+                new AddToCounterTransition(TestAddresses.CellA, first),
+                new AddToCounterTransition(TestAddresses.CellA, second)
             };
         }
 
         [Test]
         public void Conflicting_Writes_Are_Deterministic()
         {
-            SimulationState first = RunnerWith(SumOnA()).Run(TestAddresses.InitialState(), AddToA(2, 3), 1);
-            SimulationState second = RunnerWith(SumOnA()).Run(TestAddresses.InitialState(), AddToA(2, 3), 1);
+            SimulationState first = RunnerWith(SumOnK()).Run(TestAddresses.InitialState(), AddToA(2, 3), 1);
+            SimulationState second = RunnerWith(SumOnK()).Run(TestAddresses.InitialState(), AddToA(2, 3), 1);
 
-            Assert.AreEqual(5L, first.CounterOf(TestAddresses.A)); // +2 and +3 resolve to +5
+            Assert.AreEqual(5L, first.ValueAt(TestAddresses.CellA)); // +2 and +3 resolve to +5
             Assert.AreEqual(first, second);
         }
 
         [Test]
         public void Enumeration_Order_Does_Not_Change_Conflict_Result()
         {
-            SimulationState forward = RunnerWith(SumOnA()).Run(TestAddresses.InitialState(), AddToA(2, 3), 1);
-            SimulationState reverse = RunnerWith(SumOnA()).Run(TestAddresses.InitialState(), AddToA(3, 2), 1);
+            SimulationState forward = RunnerWith(SumOnK()).Run(TestAddresses.InitialState(), AddToA(2, 3), 1);
+            SimulationState reverse = RunnerWith(SumOnK()).Run(TestAddresses.InitialState(), AddToA(3, 2), 1);
 
-            Assert.AreEqual(5L, forward.CounterOf(TestAddresses.A));
-            Assert.AreEqual(forward, reverse); // reversing the order still resolves to +5
+            Assert.AreEqual(5L, forward.ValueAt(TestAddresses.CellA));
+            Assert.AreEqual(forward, reverse);
         }
 
         [Test]
         public void Conflict_Policy_Is_Applied_Exactly_Once()
         {
             var counting = new AddressableStateTests.CountingResolver(new AdditionResolver());
-            var resolvers = new Dictionary<CounterAddress, IConflictResolver>
+            var resolvers = new Dictionary<Kind, IConflictResolver>
             {
-                { TestAddresses.A, counting }
+                { TestAddresses.K, counting }
             };
 
             RunnerWith(resolvers).Run(TestAddresses.InitialState(), AddToA(2, 3), 1);
@@ -72,10 +73,10 @@ namespace Genesis.Tests
         {
             var transitions = new ITransition[]
             {
-                new AddToCounterTransition(TestAddresses.B, 1),
-                new AddToCounterTransition(TestAddresses.B, 1)
+                new AddToCounterTransition(TestAddresses.CellB, 1),
+                new AddToCounterTransition(TestAddresses.CellB, 1)
             };
-            TickRunner runner = RunnerWith(new Dictionary<CounterAddress, IConflictResolver>()); // no resolver for B
+            TickRunner runner = RunnerWith(new Dictionary<Kind, IConflictResolver>()); // no resolver for K
 
             Assert.Throws<UnresolvedConflictException>(
                 () => runner.Run(TestAddresses.InitialState(), transitions, 1));
@@ -84,12 +85,12 @@ namespace Genesis.Tests
         [Test]
         public void A_Single_Contribution_Is_Not_A_Conflict_And_Needs_No_Resolver()
         {
-            var transitions = new ITransition[] { new AddToCounterTransition(TestAddresses.B, 7) };
-            TickRunner runner = RunnerWith(new Dictionary<CounterAddress, IConflictResolver>()); // no resolver for B
+            var transitions = new ITransition[] { new AddToCounterTransition(TestAddresses.CellB, 7) };
+            TickRunner runner = RunnerWith(new Dictionary<Kind, IConflictResolver>());
 
             SimulationState result = runner.Run(TestAddresses.InitialState(), transitions, 1);
 
-            Assert.AreEqual(7L, result.CounterOf(TestAddresses.B));
+            Assert.AreEqual(7L, result.ValueAt(TestAddresses.CellB));
         }
     }
 }

@@ -4,88 +4,99 @@ using System.Collections.Generic;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// The explicit, authoritative, immutable state of a simulation run (invariant 6; ADR-0001). It
-    /// holds its position in logical time and a fixed set of homogeneous counter locations, each with
-    /// a stable <see cref="CounterAddress"/> (Genesis-008).
-    ///
-    /// Equality depends on the set of address/value pairs and the tick — never on insertion or
-    /// enumeration order: two states built from the same pairs in different orders are strictly
-    /// equal, and the hash is a commutative aggregation over pairs for the same reason. The internal
-    /// dictionary is a lookup structure only; its ordering is never part of world semantics.
+    /// The explicit, authoritative, immutable state of a simulation run (invariant 6; ADR-0001):
+    /// its position in logical time and a fixed set of cells — (place, kind) pairs, each holding an
+    /// integer value (RFC-0003). Equality depends on the set of (place, kind, value) triples and the
+    /// tick — never on insertion or enumeration order. Place existence is derived: a place exists iff
+    /// at least one cell is declared at it (D5). The internal dictionary is a lookup structure only;
+    /// its layout is an implementation detail (D6) and its ordering is never part of world semantics.
     /// </summary>
     public sealed class SimulationState : IEquatable<SimulationState>
     {
-        private readonly Dictionary<CounterAddress, long> _counters;
+        private readonly Dictionary<Cell, long> _cells;
 
         /// <summary>The tick this state currently sits at.</summary>
         public Tick CurrentTick { get; }
 
-        /// <summary>The addresses this state defines. Fixed at construction — no lifecycle yet.</summary>
-        public IReadOnlyCollection<CounterAddress> Addresses => _counters.Keys;
+        /// <summary>The cells this state defines. Fixed at construction — no lifecycle yet.</summary>
+        public IReadOnlyCollection<Cell> Cells => _cells.Keys;
 
-        public SimulationState(Tick currentTick, IReadOnlyDictionary<CounterAddress, long> counters)
+        public SimulationState(Tick currentTick, IReadOnlyDictionary<Cell, long> cells)
         {
-            if (counters == null)
+            if (cells == null)
             {
-                throw new ArgumentNullException(nameof(counters));
+                throw new ArgumentNullException(nameof(cells));
             }
 
             CurrentTick = currentTick;
-            _counters = new Dictionary<CounterAddress, long>(counters.Count);
-            foreach (KeyValuePair<CounterAddress, long> pair in counters)
+            _cells = new Dictionary<Cell, long>(cells.Count);
+            foreach (KeyValuePair<Cell, long> pair in cells)
             {
-                _counters[pair.Key] = pair.Value;
+                _cells[pair.Key] = pair.Value;
             }
         }
 
-        private SimulationState(Tick currentTick, Dictionary<CounterAddress, long> owned)
+        private SimulationState(Tick currentTick, Dictionary<Cell, long> owned)
         {
             CurrentTick = currentTick;
-            _counters = owned;
+            _cells = owned;
         }
 
-        /// <summary>The value at <paramref name="address"/>. The address must exist in this state.</summary>
-        public long CounterOf(CounterAddress address)
+        /// <summary>The value at <paramref name="cell"/>. The cell must exist in this state.</summary>
+        public long ValueAt(Cell cell)
         {
-            if (_counters.TryGetValue(address, out long value))
+            if (_cells.TryGetValue(cell, out long value))
             {
                 return value;
             }
 
-            throw new ArgumentException($"No counter exists at {address}.", nameof(address));
+            throw new ArgumentException($"No cell exists at {cell}.", nameof(cell));
         }
 
-        /// <summary>Whether this state defines a counter at <paramref name="address"/>.</summary>
-        public bool Defines(CounterAddress address)
+        /// <summary>Whether this state defines <paramref name="cell"/>.</summary>
+        public bool Defines(Cell cell)
         {
-            return _counters.ContainsKey(address);
+            return _cells.ContainsKey(cell);
+        }
+
+        /// <summary>Whether any cell is declared at <paramref name="place"/> (derived existence, D5).</summary>
+        public bool DefinesPlace(Place place)
+        {
+            foreach (Cell cell in _cells.Keys)
+            {
+                if (cell.Place == place)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
-        /// Produces a copy with the counter at <paramref name="address"/> set to
-        /// <paramref name="value"/>. The address must already exist — Genesis-008 has no address
-        /// lifecycle; writing cannot create locations.
+        /// Produces a copy with the value at <paramref name="cell"/> set to <paramref name="value"/>.
+        /// The cell must already exist — there is no lifecycle; writing cannot create locations.
         /// </summary>
-        public SimulationState WithCounter(CounterAddress address, long value)
+        public SimulationState WithValue(Cell cell, long value)
         {
-            if (!_counters.ContainsKey(address))
+            if (!_cells.ContainsKey(cell))
             {
-                throw new ArgumentException($"No counter exists at {address}.", nameof(address));
+                throw new ArgumentException($"No cell exists at {cell}.", nameof(cell));
             }
 
-            var copy = new Dictionary<CounterAddress, long>(_counters);
-            copy[address] = value;
+            var copy = new Dictionary<Cell, long>(_cells);
+            copy[cell] = value;
             return new SimulationState(CurrentTick, copy);
         }
 
         /// <summary>
-        /// Produces a copy advanced by exactly one tick, counters unchanged. Deliberately
+        /// Produces a copy advanced by exactly one tick, cells unchanged. Deliberately
         /// <c>internal</c>: only the simulation's own runner advances logical time, and it does so by
         /// producing the next state — never by mutating this one.
         /// </summary>
         internal SimulationState WithTickAdvanced()
         {
-            return new SimulationState(CurrentTick.Next(), _counters);
+            return new SimulationState(CurrentTick.Next(), _cells);
         }
 
         public bool Equals(SimulationState other)
@@ -95,15 +106,14 @@ namespace Genesis.Simulation
                 return false;
             }
 
-            if (CurrentTick != other.CurrentTick || _counters.Count != other._counters.Count)
+            if (CurrentTick != other.CurrentTick || _cells.Count != other._cells.Count)
             {
                 return false;
             }
 
-            // Pairwise comparison over the set of address/value pairs — order plays no part.
-            foreach (KeyValuePair<CounterAddress, long> pair in _counters)
+            foreach (KeyValuePair<Cell, long> pair in _cells)
             {
-                if (!other._counters.TryGetValue(pair.Key, out long otherValue) || otherValue != pair.Value)
+                if (!other._cells.TryGetValue(pair.Key, out long otherValue) || otherValue != pair.Value)
                 {
                     return false;
                 }
@@ -119,10 +129,10 @@ namespace Genesis.Simulation
 
         public override int GetHashCode()
         {
-            // Commutative aggregation (sum) over pair hashes, so the hash — like equality — cannot
+            // Commutative aggregation (sum) over triple hashes, so the hash — like equality — cannot
             // depend on enumeration order.
             long aggregate = 0;
-            foreach (KeyValuePair<CounterAddress, long> pair in _counters)
+            foreach (KeyValuePair<Cell, long> pair in _cells)
             {
                 aggregate += (pair.Key.GetHashCode() * 397L) ^ pair.Value.GetHashCode();
             }
@@ -132,7 +142,7 @@ namespace Genesis.Simulation
 
         public override string ToString()
         {
-            return $"SimulationState(tick={CurrentTick.Value}, counters={_counters.Count})";
+            return $"SimulationState(tick={CurrentTick.Value}, cells={_cells.Count})";
         }
     }
 }

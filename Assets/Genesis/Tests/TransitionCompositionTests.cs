@@ -10,9 +10,9 @@ namespace Genesis.Tests
     /// </summary>
     public sealed class TransitionCompositionTests
     {
-        private static readonly ITransition AddA = new AddToCounterTransition(TestAddresses.A, 1);
-        private static readonly ITransition AddB = new AddToCounterTransition(TestAddresses.B, 1);
-        private static readonly ITransition AddC = new AddToCounterTransition(TestAddresses.C, 1);
+        private static readonly ITransition AddA = new AddToCounterTransition(TestAddresses.CellA, 1);
+        private static readonly ITransition AddB = new AddToCounterTransition(TestAddresses.CellB, 1);
+        private static readonly ITransition AddC = new AddToCounterTransition(TestAddresses.CellC, 1);
 
         private static TickRunner NewRunner()
         {
@@ -24,9 +24,9 @@ namespace Genesis.Tests
         {
             SimulationState result = NewRunner().Run(TestAddresses.InitialState(), new[] { AddA, AddB, AddC }, 1);
 
-            Assert.AreEqual(1L, result.CounterOf(TestAddresses.A));
-            Assert.AreEqual(1L, result.CounterOf(TestAddresses.B));
-            Assert.AreEqual(1L, result.CounterOf(TestAddresses.C));
+            Assert.AreEqual(1L, result.ValueAt(TestAddresses.CellA));
+            Assert.AreEqual(1L, result.ValueAt(TestAddresses.CellB));
+            Assert.AreEqual(1L, result.ValueAt(TestAddresses.CellC));
         }
 
         [Test]
@@ -36,24 +36,24 @@ namespace Genesis.Tests
             SimulationState cab = NewRunner().Run(TestAddresses.InitialState(), new[] { AddC, AddA, AddB }, 100);
 
             Assert.AreEqual(abc, cab);
-            Assert.AreEqual(100L, abc.CounterOf(TestAddresses.A));
-            Assert.AreEqual(100L, abc.CounterOf(TestAddresses.B));
-            Assert.AreEqual(100L, abc.CounterOf(TestAddresses.C));
+            Assert.AreEqual(100L, abc.ValueAt(TestAddresses.CellA));
+            Assert.AreEqual(100L, abc.ValueAt(TestAddresses.CellB));
+            Assert.AreEqual(100L, abc.ValueAt(TestAddresses.CellC));
         }
 
         [Test]
         public void Every_Transition_Reads_The_Same_Snapshot()
         {
             SimulationState initial = TestAddresses.StateWith(5, 0, 0);
-            ITransition mirror = new MirrorCounterTransition(TestAddresses.A, TestAddresses.C);
+            ITransition mirror = new MirrorCounterTransition(TestAddresses.CellA, TestAddresses.CellC);
 
             SimulationState forward = NewRunner().Run(initial, new[] { AddA, mirror }, 1);
             SimulationState reverse = NewRunner().Run(initial, new[] { mirror, AddA }, 1);
 
             // C receives A read from the snapshot (5), never the value AddA produced (6),
             // and the result is identical whichever order the two ran in.
-            Assert.AreEqual(5L, forward.CounterOf(TestAddresses.C));
-            Assert.AreEqual(6L, forward.CounterOf(TestAddresses.A));
+            Assert.AreEqual(5L, forward.ValueAt(TestAddresses.CellC));
+            Assert.AreEqual(6L, forward.ValueAt(TestAddresses.CellA));
             Assert.AreEqual(forward, reverse);
         }
 

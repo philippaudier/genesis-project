@@ -4,30 +4,29 @@ using System.Collections.Generic;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// Applies a set of transitions to a state for a single tick, under snapshot semantics (ADR-0001),
-    /// and resolves conflicts per address. For each transition the runner materialises the declared
-    /// contract — a <see cref="RelationalStateView"/> built from the immutable start-of-tick snapshot,
-    /// the external immutable <see cref="RelationSet"/>, and the transition's two scopes. The runner
-    /// answers no domain question and performs no traversal beyond that one-hop projection.
-    ///
-    /// Contributions are grouped by target address and committed in ascending address order:
-    /// one contribution applies directly; several invoke that address's resolver exactly once; a
-    /// conflict with no resolver is rejected. The runner holds only immutable resolver configuration —
-    /// no mutable simulation state (invariant 9).
+    /// Applies a set of transitions to a state for a single tick, under snapshot semantics
+    /// (ADR-0001), and resolves conflicts per cell (RFC-0003 D1) with resolvers attached to kinds
+    /// (D2). For each transition the runner materialises the declared contract — a
+    /// <see cref="RelationalStateView"/> built from the immutable snapshot, the external
+    /// <see cref="RelationSet"/>, and the transition's two scopes — then groups contributions by
+    /// target cell and commits each in canonical cell order: one contribution applies directly;
+    /// several invoke the cell's kind's resolver exactly once; a conflict on a kind with no resolver
+    /// is rejected. The runner holds only immutable resolver configuration — no mutable simulation
+    /// state (invariant 9).
     /// </summary>
     public sealed class TransitionRunner
     {
-        private static readonly IReadOnlyDictionary<CounterAddress, IConflictResolver> NoResolvers =
-            new Dictionary<CounterAddress, IConflictResolver>();
+        private static readonly IReadOnlyDictionary<Kind, IConflictResolver> NoResolvers =
+            new Dictionary<Kind, IConflictResolver>();
 
-        private readonly IReadOnlyDictionary<CounterAddress, IConflictResolver> _resolvers;
+        private readonly IReadOnlyDictionary<Kind, IConflictResolver> _resolvers;
 
         /// <summary>Creates a runner with no resolvers — any conflict is rejected.</summary>
         public TransitionRunner() : this(NoResolvers)
         {
         }
 
-        public TransitionRunner(IReadOnlyDictionary<CounterAddress, IConflictResolver> resolvers)
+        public TransitionRunner(IReadOnlyDictionary<Kind, IConflictResolver> resolvers)
         {
             if (resolvers == null)
             {
@@ -50,8 +49,8 @@ namespace Genesis.Simulation
 
         /// <summary>
         /// Produces the next state by collecting every transition's contributions — each read through
-        /// its declared relational view of the snapshot — grouping them by target address, and
-        /// committing each address's result.
+        /// its declared relational view of the snapshot — grouping them by target cell, and
+        /// committing each cell's result.
         /// </summary>
         public SimulationState Apply(
             SimulationState snapshot,
@@ -74,9 +73,8 @@ namespace Genesis.Simulation
             }
 
             // 1. Collect every contribution. Each transition receives only the view materialising its
-            //    declared contract: direct reads, declared origins' outgoing relations (canonical
-            //    order), and one-hop discovered targets.
-            var amountsByAddress = new Dictionary<CounterAddress, List<long>>();
+            //    declared contract.
+            var amountsByCell = new Dictionary<Cell, List<long>>();
             for (int i = 0; i < transitions.Count; i++)
             {
                 ITransition transition = transitions[i];
@@ -91,44 +89,44 @@ namespace Genesis.Simulation
                 for (int j = 0; j < contributions.Count; j++)
                 {
                     Contribution contribution = contributions[j];
-                    if (!amountsByAddress.TryGetValue(contribution.Target, out List<long> amounts))
+                    if (!amountsByCell.TryGetValue(contribution.Target, out List<long> amounts))
                     {
                         amounts = new List<long>();
-                        amountsByAddress[contribution.Target] = amounts;
+                        amountsByCell[contribution.Target] = amounts;
                     }
 
                     amounts.Add(contribution.Amount);
                 }
             }
 
-            // 2. Commit each contributed address, in ascending address order so the runner's
-            //    behaviour never depends on dictionary enumeration. The committed values themselves
-            //    are order-independent regardless: each derives from the snapshot's value plus its
-            //    own resolved delta, and addresses are disjoint.
-            var contributedAddresses = new List<CounterAddress>(amountsByAddress.Keys);
-            contributedAddresses.Sort();
+            // 2. Commit each contributed cell, in canonical cell order (place, then kind), so the
+            //    runner's behaviour never depends on dictionary enumeration. The committed values are
+            //    order-independent regardless: each derives from the snapshot's value plus its own
+            //    resolved delta, and cells are disjoint.
+            var contributedCells = new List<Cell>(amountsByCell.Keys);
+            contributedCells.Sort();
 
             SimulationState next = snapshot;
-            for (int i = 0; i < contributedAddresses.Count; i++)
+            for (int i = 0; i < contributedCells.Count; i++)
             {
-                CounterAddress address = contributedAddresses[i];
-                List<long> amounts = amountsByAddress[address];
+                Cell cell = contributedCells[i];
+                List<long> amounts = amountsByCell[cell];
 
                 long committedDelta;
                 if (amounts.Count == 1)
                 {
                     committedDelta = amounts[0];
                 }
-                else if (_resolvers.TryGetValue(address, out IConflictResolver resolver))
+                else if (_resolvers.TryGetValue(cell.Kind, out IConflictResolver resolver))
                 {
-                    committedDelta = resolver.Resolve(amounts); // invoked exactly once per conflicting address
+                    committedDelta = resolver.Resolve(amounts); // invoked exactly once per conflicting cell
                 }
                 else
                 {
-                    throw new UnresolvedConflictException(address);
+                    throw new UnresolvedConflictException(cell);
                 }
 
-                next = next.WithCounter(address, snapshot.CounterOf(address) + committedDelta);
+                next = next.WithValue(cell, snapshot.ValueAt(cell) + committedDelta);
             }
 
             return next;

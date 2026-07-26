@@ -6,8 +6,8 @@ namespace Genesis.Tests
 {
     /// <summary>
     /// The scoped-reads proof (Genesis-007, kept as a regression guard): a transition's reads are
-    /// explicit and structurally scoped — it receives only the addresses it declared, cannot observe
-    /// anything else, and the bound does not disturb contribution or conflict semantics.
+    /// explicit and structurally scoped — it receives only the cells it declared, and the bound does
+    /// not disturb contribution or conflict semantics.
     /// </summary>
     public sealed class ScopedReadTests
     {
@@ -22,31 +22,31 @@ namespace Genesis.Tests
             SimulationState initial = TestAddresses.StateWith(5, 0, 0);
             var transitions = new ITransition[]
             {
-                new MirrorCounterTransition(TestAddresses.A, TestAddresses.C)
+                new MirrorCounterTransition(TestAddresses.CellA, TestAddresses.CellC)
             };
 
             SimulationState result = NewRunner().Run(initial, transitions, 1);
 
-            Assert.AreEqual(5L, result.CounterOf(TestAddresses.C));
+            Assert.AreEqual(5L, result.ValueAt(TestAddresses.CellC));
         }
 
         [Test]
         public void Read_Scope_Does_Not_Change_Contribution_Semantics()
         {
-            var resolvers = new Dictionary<CounterAddress, IConflictResolver>
+            var resolvers = new Dictionary<Kind, IConflictResolver>
             {
-                { TestAddresses.A, new AdditionResolver() }
+                { TestAddresses.K, new AdditionResolver() }
             };
             var transitions = new ITransition[]
             {
-                new AddToCounterTransition(TestAddresses.A, 2),
-                new AddToCounterTransition(TestAddresses.A, 3)
+                new AddToCounterTransition(TestAddresses.CellA, 2),
+                new AddToCounterTransition(TestAddresses.CellA, 3)
             };
 
             SimulationState result = new TickRunner(new TransitionRunner(resolvers))
                 .Run(TestAddresses.InitialState(), transitions, 1);
 
-            Assert.AreEqual(5L, result.CounterOf(TestAddresses.A));
+            Assert.AreEqual(5L, result.ValueAt(TestAddresses.CellA));
         }
 
         [Test]
@@ -55,14 +55,14 @@ namespace Genesis.Tests
             SimulationState initial = TestAddresses.StateWith(5, 20, 0);
             var transitions = new ITransition[]
             {
-                new MirrorCounterTransition(TestAddresses.A, TestAddresses.B), // scope {A}: B += snapshot.A
-                new MirrorCounterTransition(TestAddresses.B, TestAddresses.C)  // scope {B}: C += snapshot.B
+                new MirrorCounterTransition(TestAddresses.CellA, TestAddresses.CellB), // B += snapshot.A
+                new MirrorCounterTransition(TestAddresses.CellB, TestAddresses.CellC)  // C += snapshot.B
             };
 
             SimulationState result = NewRunner().Run(initial, transitions, 1);
 
-            Assert.AreEqual(25L, result.CounterOf(TestAddresses.B)); // 20 + snapshot.A(5)
-            Assert.AreEqual(20L, result.CounterOf(TestAddresses.C)); // snapshot.B(20), NOT the updated 25
+            Assert.AreEqual(25L, result.ValueAt(TestAddresses.CellB)); // 20 + snapshot.A(5)
+            Assert.AreEqual(20L, result.ValueAt(TestAddresses.CellC)); // snapshot.B(20), NOT the updated 25
         }
     }
 }

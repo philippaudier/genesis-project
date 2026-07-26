@@ -4,23 +4,18 @@ using System.Collections.Generic;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// The materialisation of a transition's declared contract (Genesis-010), built once per
-    /// transition per tick from the immutable start-of-tick snapshot and the external
-    /// <see cref="RelationSet"/>. It contains:
-    /// <list type="bullet">
-    ///   <item>the values of the directly declared addresses (<see cref="ReadScope"/>);</item>
-    ///   <item>per declared origin (<see cref="RelationScope"/>), that origin's outgoing relations in
-    ///   canonical order — and the snapshot values of their targets, which become readable;</item>
-    /// </list>
-    /// and nothing else. Out-of-contract state is absent, not hidden: reading it or observing an
-    /// undeclared origin's relations fails. The grant is strictly one hop — discovered targets are
-    /// readable but are not origins, so their own relations remain invisible unless separately
-    /// declared.
+    /// The materialisation of a transition's declared contract, built once per transition per tick
+    /// from the immutable start-of-tick snapshot and the external <see cref="RelationSet"/>. It
+    /// contains the directly declared cells, and — per declared origin place — that origin's outgoing
+    /// relations in canonical order plus the granted kinds' values at each discovered target place.
+    /// Out-of-contract state is absent, not hidden. The grant is strictly one hop: discovered places
+    /// are readable (in the granted kinds) but are not origins, so their own relations remain
+    /// invisible unless separately declared.
     /// </summary>
     public sealed class RelationalStateView : IRelationalStateView
     {
-        private readonly Dictionary<CounterAddress, long> _values;
-        private readonly Dictionary<CounterAddress, IReadOnlyList<Relation>> _outgoingByOrigin;
+        private readonly Dictionary<Cell, long> _values;
+        private readonly Dictionary<Place, IReadOnlyList<Relation>> _outgoingByOrigin;
 
         public RelationalStateView(
             SimulationState snapshot,
@@ -48,42 +43,49 @@ namespace Genesis.Simulation
                 throw new ArgumentNullException(nameof(relationScope));
             }
 
-            _values = new Dictionary<CounterAddress, long>();
-            _outgoingByOrigin = new Dictionary<CounterAddress, IReadOnlyList<Relation>>();
+            _values = new Dictionary<Cell, long>();
+            _outgoingByOrigin = new Dictionary<Place, IReadOnlyList<Relation>>();
 
-            // Directly declared reads.
-            foreach (CounterAddress address in readScope.Addresses)
+            // Directly declared cells.
+            foreach (Cell cell in readScope.Cells)
             {
-                _values[address] = snapshot.CounterOf(address);
+                _values[cell] = snapshot.ValueAt(cell);
             }
 
-            // Declared origins: their outgoing relations become visible (canonical order), and each
-            // discovered target's snapshot value becomes readable. One hop only — targets are not
-            // added as origins.
-            foreach (CounterAddress origin in relationScope.Origins)
+            // Declared origins: their outgoing relations become visible (canonical order), and at
+            // each discovered target place, the granted kinds' cells become readable — where the
+            // state defines them. One hop only: targets are not added as origins.
+            foreach (Place origin in relationScope.Origins)
             {
                 IReadOnlyList<Relation> outgoing = relations.OutgoingFrom(origin);
                 _outgoingByOrigin[origin] = outgoing;
 
                 for (int i = 0; i < outgoing.Count; i++)
                 {
-                    CounterAddress target = outgoing[i].Target;
-                    _values[target] = snapshot.CounterOf(target);
+                    Place target = outgoing[i].Target;
+                    foreach (Kind kind in relationScope.TargetKinds)
+                    {
+                        var cell = new Cell(target, kind);
+                        if (snapshot.Defines(cell))
+                        {
+                            _values[cell] = snapshot.ValueAt(cell);
+                        }
+                    }
                 }
             }
         }
 
-        public long Read(CounterAddress address)
+        public long Read(Cell cell)
         {
-            if (_values.TryGetValue(address, out long value))
+            if (_values.TryGetValue(cell, out long value))
             {
                 return value;
             }
 
-            throw new ReadOutOfScopeException(address);
+            throw new ReadOutOfScopeException(cell);
         }
 
-        public IReadOnlyList<Relation> OutgoingRelations(CounterAddress origin)
+        public IReadOnlyList<Relation> OutgoingRelations(Place origin)
         {
             if (_outgoingByOrigin.TryGetValue(origin, out IReadOnlyList<Relation> outgoing))
             {

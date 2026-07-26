@@ -3,30 +3,29 @@ using System.Collections.Generic;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// The set of addresses a transition declares it may read. The runner gives the transition a view
-    /// containing only these locations; anything else is simply not present to read. Deliberately a
-    /// closed, explicit set of <see cref="CounterAddress"/> — not a query language, property paths, or
-    /// string keys.
+    /// The set of cells a transition declares it may read directly (RFC-0003 D4: scopes declare at
+    /// cell precision). The runner gives the transition a view containing only these cells; anything
+    /// else is simply not present to read. A closed, explicit set — not a query language.
     /// </summary>
     public sealed class ReadScope
     {
-        private readonly HashSet<CounterAddress> _addresses;
+        private readonly HashSet<Cell> _cells;
 
         /// <summary>A scope that permits reading nothing.</summary>
         public static readonly ReadScope Empty = new ReadScope();
 
-        public ReadScope(params CounterAddress[] addresses)
+        public ReadScope(params Cell[] cells)
         {
-            _addresses = new HashSet<CounterAddress>(addresses);
+            _cells = new HashSet<Cell>(cells);
         }
 
-        /// <summary>The addresses this scope permits reading.</summary>
-        public IReadOnlyCollection<CounterAddress> Addresses => _addresses;
+        /// <summary>The cells this scope permits reading.</summary>
+        public IReadOnlyCollection<Cell> Cells => _cells;
 
-        /// <summary>Whether this scope permits reading <paramref name="address"/>.</summary>
-        public bool Includes(CounterAddress address)
+        /// <summary>Whether this scope permits reading <paramref name="cell"/>.</summary>
+        public bool Includes(Cell cell)
         {
-            return _addresses.Contains(address);
+            return _cells.Contains(cell);
         }
     }
 }

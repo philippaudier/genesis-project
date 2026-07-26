@@ -4,19 +4,13 @@ using System.Collections.Generic;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// An immutable set of explicit relations between addresses that a given
-    /// <see cref="SimulationState"/> defines (Genesis-009). Every relation is validated against that
-    /// state's addresses at construction; a relation referencing an unknown address is rejected.
-    ///
-    /// It is a <em>set</em>: duplicates collapse, and equality and hashing depend only on which
-    /// relations are present — never on insertion or enumeration order (the hash is a commutative
-    /// aggregation over relation hashes). Constructing a relation set reads the state's addresses and
-    /// modifies nothing.
-    ///
-    /// Deliberate placement (recorded as an open question): relations live <em>beside</em> the
-    /// simulation state, not inside it. Whether topology ultimately belongs inside
-    /// <see cref="SimulationState"/> — mutable by transitions like any other state — is not decided
-    /// here.
+    /// An immutable set of explicit relations between places that a given
+    /// <see cref="SimulationState"/> defines. Every relation is validated against the state's places
+    /// at construction (place existence is derived from cells — RFC-0003 D5); a relation referencing
+    /// an unknown place is rejected. It is a <em>set</em>: duplicates collapse, and equality and
+    /// hashing depend only on which relations are present — never on insertion or enumeration order.
+    /// Relations live beside the simulation state; whether topology ultimately belongs inside it
+    /// remains deliberately open.
     /// </summary>
     public sealed class RelationSet : IEquatable<RelationSet>
     {
@@ -37,13 +31,13 @@ namespace Genesis.Simulation
             _relations = new HashSet<Relation>();
             foreach (Relation relation in relations)
             {
-                if (!state.Defines(relation.Source))
+                if (!state.DefinesPlace(relation.Source))
                 {
                     throw new ArgumentException(
                         $"Relation source {relation.Source} does not exist in the state.", nameof(relations));
                 }
 
-                if (!state.Defines(relation.Target))
+                if (!state.DefinesPlace(relation.Target))
                 {
                     throw new ArgumentException(
                         $"Relation target {relation.Target} does not exist in the state.", nameof(relations));
@@ -63,12 +57,11 @@ namespace Genesis.Simulation
         }
 
         /// <summary>
-        /// The relations whose source is <paramref name="origin"/>, in canonical order — source
-        /// ascending then target ascending, which for a single origin reduces to target ascending.
-        /// The backing set's iteration order is never exposed: the projection is sorted, so the
-        /// result is identical however the set was built (Genesis-010 canonical enumeration).
+        /// The relations whose source is <paramref name="origin"/>, in canonical order (target place
+        /// ascending). The backing set's iteration order is never exposed: the projection is sorted,
+        /// so the result is identical however the set was built.
         /// </summary>
-        public IReadOnlyList<Relation> OutgoingFrom(CounterAddress origin)
+        public IReadOnlyList<Relation> OutgoingFrom(Place origin)
         {
             var outgoing = new List<Relation>();
             foreach (Relation relation in _relations)
@@ -100,8 +93,7 @@ namespace Genesis.Simulation
 
         public override int GetHashCode()
         {
-            // Commutative aggregation (sum) over relation hashes, so the hash — like equality —
-            // cannot depend on enumeration order.
+            // Commutative aggregation (sum) over relation hashes — order-blind, like equality.
             long aggregate = 0;
             foreach (Relation relation in _relations)
             {
