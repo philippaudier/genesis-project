@@ -155,7 +155,9 @@ namespace Genesis.Tests
         {
             public ReadScope ReadScope => new ReadScope(TestAddresses.A);
 
-            public IReadOnlyList<Contribution> Apply(IStateView view)
+            public RelationScope RelationScope => RelationScope.Empty;
+
+            public IReadOnlyList<Contribution> Apply(IRelationalStateView view)
             {
                 return new[] { new Contribution(TestAddresses.C, view.Read(TestAddresses.B)) };
             }

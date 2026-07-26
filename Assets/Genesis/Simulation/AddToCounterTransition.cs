@@ -3,9 +3,9 @@ using System.Collections.Generic;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// Contributes a fixed amount to the counter at a chosen address. It reads nothing — its
-    /// <see cref="ReadScope"/> is empty — so it is a clean witness that a transition may write without
-    /// declaring any read. An increment is simply an amount of one.
+    /// Contributes a fixed amount to the counter at a chosen address. It reads nothing and observes
+    /// no relations — both scopes are empty — so it is a clean witness that a transition may write
+    /// without declaring any observation. An increment is simply an amount of one.
     /// </summary>
     public sealed class AddToCounterTransition : ITransition
     {
@@ -20,7 +20,9 @@ namespace Genesis.Simulation
 
         public ReadScope ReadScope => ReadScope.Empty;
 
-        public IReadOnlyList<Contribution> Apply(IStateView view)
+        public RelationScope RelationScope => RelationScope.Empty;
+
+        public IReadOnlyList<Contribution> Apply(IRelationalStateView view)
         {
             return new[] { new Contribution(_target, _amount) };
         }

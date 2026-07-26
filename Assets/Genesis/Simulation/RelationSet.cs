@@ -62,6 +62,27 @@ namespace Genesis.Simulation
             return _relations.Contains(relation);
         }
 
+        /// <summary>
+        /// The relations whose source is <paramref name="origin"/>, in canonical order — source
+        /// ascending then target ascending, which for a single origin reduces to target ascending.
+        /// The backing set's iteration order is never exposed: the projection is sorted, so the
+        /// result is identical however the set was built (Genesis-010 canonical enumeration).
+        /// </summary>
+        public IReadOnlyList<Relation> OutgoingFrom(CounterAddress origin)
+        {
+            var outgoing = new List<Relation>();
+            foreach (Relation relation in _relations)
+            {
+                if (relation.Source == origin)
+                {
+                    outgoing.Add(relation);
+                }
+            }
+
+            outgoing.Sort((left, right) => left.Target.CompareTo(right.Target));
+            return outgoing;
+        }
+
         public bool Equals(RelationSet other)
         {
             if (other is null)

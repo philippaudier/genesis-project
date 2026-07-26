@@ -4,10 +4,11 @@ using System.Collections.Generic;
 namespace Genesis.Simulation
 {
     /// <summary>
-    /// Declares a read scope of one source address, reads it from its scoped view, and contributes
-    /// that value to a target address. A witness that a transition reads only what it declares — and,
-    /// because the view is built from the start-of-tick snapshot, that it sees the snapshot's source
-    /// value even when another transition writes the source in the same tick.
+    /// Declares a direct read scope of one source address, reads it from its view, and contributes
+    /// that value to a target address. It observes no relations. A witness that a transition reads
+    /// only what it declares — and, because the view is built from the start-of-tick snapshot, that
+    /// it sees the snapshot's source value even when another transition writes the source in the same
+    /// tick.
     /// </summary>
     public sealed class MirrorCounterTransition : ITransition
     {
@@ -24,7 +25,9 @@ namespace Genesis.Simulation
 
         public ReadScope ReadScope => _scope;
 
-        public IReadOnlyList<Contribution> Apply(IStateView view)
+        public RelationScope RelationScope => RelationScope.Empty;
+
+        public IReadOnlyList<Contribution> Apply(IRelationalStateView view)
         {
             if (view == null)
             {
