@@ -66,11 +66,12 @@ namespace Genesis.Presentation
                 ExportSession();
             }
 
-            if (keyboard.digit1Key.wasPressedThisFrame) Go(LootboundWorld.Shelter);
-            if (keyboard.digit2Key.wasPressedThisFrame) Go(LootboundWorld.Tree);
-            if (keyboard.digit3Key.wasPressedThisFrame) Go(LootboundWorld.Station);
-            if (keyboard.digit4Key.wasPressedThisFrame) Go(LootboundWorld.Clearing);
-            if (keyboard.digit5Key.wasPressedThisFrame) Go(LootboundWorld.Field);
+            // Top row and numpad both count (AZERTY types digits on the pad).
+            if (DigitPressed(keyboard, Key.Digit1, Key.Numpad1)) Go(LootboundWorld.Shelter);
+            if (DigitPressed(keyboard, Key.Digit2, Key.Numpad2)) Go(LootboundWorld.Tree);
+            if (DigitPressed(keyboard, Key.Digit3, Key.Numpad3)) Go(LootboundWorld.Station);
+            if (DigitPressed(keyboard, Key.Digit4, Key.Numpad4)) Go(LootboundWorld.Clearing);
+            if (DigitPressed(keyboard, Key.Digit5, Key.Numpad5)) Go(LootboundWorld.Field);
 
             if (keyboard.eKey.wasPressedThisFrame)
             {
@@ -102,14 +103,34 @@ namespace Genesis.Presentation
             }
         }
 
+        private static bool DigitPressed(Keyboard keyboard, Key topRow, Key numpad)
+        {
+            return keyboard[topRow].wasPressedThisFrame || keyboard[numpad].wasPressedThisFrame;
+        }
+
         private void Go(Place target)
         {
             Cross(new Cell(target, LootboundWorld.Go));
+            _lastIntent = $"> go to {NameOf(target)} (t={_state.CurrentTick.Value})";
         }
 
         private void Cross(Cell cell)
         {
             _trace.Append(new ExternalEvent(_state.CurrentTick, cell, 1));
+            _lastIntent = $"> {KindName(cell.Kind)} at {NameOf(cell.Place)} (t={_state.CurrentTick.Value})";
+        }
+
+        private string _lastIntent = "";
+
+        private string ReachableFromHere()
+        {
+            Place here = PlayerPlace();
+            if (here == LootboundWorld.Field)
+            {
+                return "Shelter (1) · Tree (2) · Station (3) · Clearing (4)";
+            }
+
+            return "Field (5) — every path goes through the field";
         }
 
         private Place PlayerPlace()
@@ -215,8 +236,13 @@ namespace Genesis.Presentation
             GUILayout.Label(SwordLine(LootboundWorld.NewSword, "Better sword"));
             GUILayout.Label($"Wood: {_state.ValueAt(new Cell(LootboundWorld.Pack, LootboundWorld.Wood))}");
             GUILayout.Space(6);
-            GUILayout.Label("Walk: 1 Shelter · 2 Tree · 3 Station · 4 Clearing · 5 Field (paths go through the field)");
+            GUILayout.Label($"From here you can walk to: {ReachableFromHere()}");
+            GUILayout.Label("Walk: 1 Shelter · 2 Tree · 3 Station · 4 Clearing · 5 Field (top row or numpad)");
             GUILayout.Label("E interact here · F strike the tree · Space pause · R reset · S export session");
+            if (_lastIntent.Length > 0)
+            {
+                GUILayout.Label(_lastIntent);
+            }
             GUILayout.Space(10);
             GUILayout.Label(_biography);
             GUILayout.EndArea();
