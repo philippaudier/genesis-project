@@ -1,9 +1,8 @@
 # Campaign-002 — The Activation Expedition
 
-Status: **Pre-registered and SEALED. NOT EXECUTED.** The seal is the commit containing this text.
-Per Genesis-017 (L1), the seal proves **record antecedence only** — any third party can verify these
-predictions predate the data; that no unrecorded run preceded them remains testimony. Execution is a
-separate, separately-authorised act.
+Status: **EXECUTED and CLOSED. All four claims CONFIRMED in-domain; suspicion clause triggered.**
+Sealed at commit `f6624aa`; executed strictly after the seal, under separate authorisation. Results
+in **Observation-010**; every section between here and the Results section is immutable, as sealed.
 
 Centre of gravity: **RD-8** — *when does the activation pattern stabilise?*
 
@@ -106,3 +105,33 @@ aggregate winner row exists by design. The campaign's product is the four verdic
 logs — and whatever the Blind Spot Audit's instrument catches. Naming is not triggered by any
 outcome (DN-005 stands). RD-8 is *paid in part* if A1+A2 confirm with the orbit-settling times
 measured; *deepened* otherwise.
+
+---
+
+# RESULTS (written after the seal; nothing above this line was modified)
+
+Execution: 2026-07-26, headless harness, worlds exactly as pre-registered. Full data and analysis
+in **Observation-010**; verdicts here.
+
+| Claim | Verdict | Key evidence |
+|---|---|---|
+| A1 | **CONFIRMED** | Orbit lock-in measured: W1 t=8, W2 t=2, W3b t=2 — all ≪ 50 |
+| A2 | **CONFIRMED** | W2: measured 1.56244 vs operator λ −1.562443 (0.0002 %); blind bound ≥ 1.5 held |
+| A3 | **CONFIRMED** | W4: excursion profile scale-invariant under ×4096 (t=1, t=2 identical to the digit); no break without orbit change |
+| A4 | **CONFIRMED** | (2,1,0) inert 100 ticks; (3,1,0) escaped and froze at gradient ≤ 1; W1 froze in a gradient-1 staircase |
+
+**Suspicion clause: TRIGGERED.** Every claim confirmed smoothly and this campaign had no adversary
+theory; per the sealed limitation, the absent adversary is the first suspect. The verdicts certify
+CT-003's claims as written — not the claims nobody imagined. Any successor campaign on this
+candidate requires a second imagination (L5's sharpened form).
+
+**Unordered finding (the reviewer's personal prediction — filed after the seal, before execution —
+scores):** the A(t) logs revealed the **two-timescale structure**: activation orbits lock in almost
+immediately, and every slow process in the corpus (spectral convergence, the odd-star bleed, the
+divergences) is amplitude evolution *inside* a locked orbit. W1 added the travelling extinction
+front; W2 refuted its own name — the world built for activation warfare synchronised globally in
+two ticks, and RD-3 deepened (no period ≠ 2, even there).
+
+**Ledger:** RD-8 paid in part (times measured; the *why* of near-instant lock-in becomes RD-9).
+Calibration record grows: 80/85/70/90, four confirmations — the advocate ran no risk it declared
+and lost none it feared; n is now 2, still too small to cite.
