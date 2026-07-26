@@ -13,6 +13,12 @@ Rebuilt after the kernel's completion (2026-07-26) so the glossary speaks the la
 actually speaks. The Constitution's vocabulary (Articles I–XIV) is not repeated here; this glossary
 covers the engineering language beneath it.
 
+**Admission rule** (DN-003, plus this glossary's editorial rule): a pattern earns a name when the
+world can demonstrate a theorem about it — objectively derivable from declared state, with a statable
+signature that vanishes under ablation. And: *a demonstrated theorem is necessary for a new term, but
+a new term is justified only if it compresses the language used to describe the world.* The world
+demonstrates; this glossary decides whether the demonstration deserves a word.
+
 ---
 
 ## Active
