@@ -58,27 +58,39 @@ An identifiable write proposed by a transition: an amount targeting a specific a
 — not opaque states — are what transitions produce, which is what makes writes explicit and conflicts
 detectable.
 
-### Address
-The stable, explicit identity of one state location (`CounterAddress` in the current witness).
-Distinct addresses are distinct pieces of state; identity is separate from kind. Equality of state
-depends on address/value pairs, never on storage order.
+### Place
+The stable, explicit identity of one location (RFC-0003). A place says nothing about position or
+meaning; it makes a location distinguishable and stable. Relations connect places. A place exists iff
+at least one cell is declared at it — existence is derived, never registered.
+
+### Kind
+The identity of a *nature* of value (RFC-0003). A kind carries a causal role, not a value type — two
+integer values with different kinds are not interchangeable. Conflict semantics attach to kinds: a
+kind's resolver is uniform wherever it occurs.
+
+### Cell
+One value-holding location: the pair (Place, Kind) — the addressable unit. The cell is the unit of
+writing and conflict; equality of state depends on (place, kind, value) triples, never on storage
+order. Storage layout is an implementation detail: the curried and uncurried representations are the
+same world.
 
 ### Relation
-An explicit, directed connection between two addresses — source → target — carrying no meaning of its
-own: no kind, weight, distance, or space. Relations live in a `RelationSet`, validated against
-existing addresses, insertion-order independent.
+An explicit, directed connection between two places — source → target — carrying no meaning of its
+own: no kind, weight, distance, or space. The relation discovers places only; which kinds a
+transition reads across it is the transition's declaration. Relations live in a `RelationSet`,
+validated against existing places, insertion-order independent.
 
 ### Scope (ReadScope / RelationScope)
-A transition's declared contract of observation. `ReadScope` names the addresses it may read
-directly; `RelationScope` names the origins whose outgoing relations it may observe — which grants,
-strictly one hop and non-transitively, visibility of those relations and readability of their
-targets. Undeclared state is absent from the transition's view, not hidden.
+A transition's declared contract of observation. `ReadScope` names the cells it may read directly;
+`RelationScope` names the origin places whose outgoing relations it may observe, plus the kinds it
+may read at the places they discover — strictly one hop, non-transitive. Undeclared state is absent
+from the transition's view, not hidden.
 
 ### Conflict / Resolver
-A conflict is two or more contributions targeting the same address in one tick. It resolves through
-that address's explicit **commutative** resolver, invoked exactly once — or is rejected if none is
-defined (DN-001). Order-independence is the law: enumeration order never determines a committed
-result.
+A conflict is two or more contributions targeting the same cell in one tick. It resolves through the
+cell's *kind's* explicit **commutative** resolver, invoked exactly once — or is rejected if none is
+defined (DN-001). Same place, different kinds: no conflict. Order-independence is the law:
+enumeration order never determines a committed result.
 
 ### Determinism
 Identical initial state and inputs produce identical results. Genesis requires **Level 1 — logical
@@ -97,6 +109,33 @@ contribution, produced by a transition, from a declared view, at a specific tick
 ### Persistence
 State endures; changes are permanent unless another transformation reverses them. Persistence is what
 makes consequence possible.
+
+---
+
+## Active — world categories
+
+*Words the world has earned. Each entry here passed the admission rule: an objective predicate, a
+demonstrated theorem, a signature that vanishes under ablation — and the editorial test of
+compression. The engine knows none of these words.*
+
+### Source
+*The world's first word. Admitted 2026-07-26, upon Genesis-012.*
+
+A persistent local pattern of state whose declared production rate is positive, and whose presence
+causes unpaired positive contribution to a transported quantity.
+
+- **Predicate:** `IsSource(place) := production rate at place > 0` — deterministic, derived from
+  declared state alone.
+- **Theorem:** `ΔTotal = ΣProduction` — the total grows by exactly the declared production;
+  accounting where conservation used to be.
+- **Signature & ablation:** set the rate to zero under identical laws and the growth vanishes —
+  conservation returns. Remove the relations and production continues but stays local.
+- **Standing:** a Source affects without being affected — its rate is never written by what it
+  drives. The asymmetry is structural, not asserted.
+
+The word compresses a predicate, a theorem, an ablation result, and a causal role into one term; no
+kernel primitive, object, or identity corresponds to it. A Source is somewhere a predicate is true —
+nothing more, and demonstrably nothing less.
 
 ---
 
