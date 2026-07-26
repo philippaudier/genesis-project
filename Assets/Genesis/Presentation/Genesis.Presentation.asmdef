@@ -3,7 +3,8 @@
     "rootNamespace": "Genesis.Presentation",
     "references": [
         "Genesis.Simulation",
-        "Genesis.Core"
+        "Genesis.Core",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

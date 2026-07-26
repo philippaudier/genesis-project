@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using Genesis.Simulation;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Genesis.Presentation
 {
     /// <summary>
     /// The laboratory's single entry point. Drop this component onto an empty GameObject in an empty
     /// scene, press Play, and the world becomes observable: circles for places, thin lines for
-    /// relations, quantity as fill, rate as halo — with Play / Pause / Step / Reset, pan and zoom,
-    /// and a facts-only panel when a place is clicked.
+    /// relations, quantity as fill, rate as halo — with keyboard transport (Space = Play/Pause,
+    /// S = Step, R = Reset), right-drag pan, scroll zoom, and a facts-only panel when a place is
+    /// clicked. Input goes through the Input System package; IMGUI is used for display only.
     ///
     /// The observer reads immutable snapshots and never modifies the world (Genesis-013). Remove
     /// this entire assembly and no kernel theorem changes. The interface names no world category:
@@ -22,7 +24,6 @@ namespace Genesis.Presentation
 
         private bool _hasSelection;
         private Place _selected;
-        private Vector3 _lastMouse;
 
         private void Awake()
         {
@@ -41,10 +42,37 @@ namespace Genesis.Presentation
 
         private void HandleInput()
         {
-            // Selection: left click on a circle (ignoring clicks in the control corner).
-            if (Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height - 120f)
+            Keyboard keyboard = Keyboard.current;
+            if (keyboard != null)
             {
-                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+                if (keyboard.spaceKey.wasPressedThisFrame)
+                {
+                    _host.Playing = !_host.Playing;
+                }
+
+                if (keyboard.sKey.wasPressedThisFrame)
+                {
+                    _host.Step();
+                }
+
+                if (keyboard.rKey.wasPressedThisFrame)
+                {
+                    _host.Reset();
+                    _hasSelection = false;
+                }
+            }
+
+            Mouse mouse = Mouse.current;
+            if (mouse == null)
+            {
+                return;
+            }
+
+            // Selection: left click on a circle.
+            if (mouse.leftButton.wasPressedThisFrame)
+            {
+                Vector2 position = mouse.position.ReadValue();
+                Ray ray = _camera.ScreenPointToRay(position);
                 if (_view.TryPick(ray, out Place picked))
                 {
                     _selected = picked;
@@ -57,50 +85,28 @@ namespace Genesis.Presentation
             }
 
             // Pan: right-mouse drag.
-            if (Input.GetMouseButtonDown(1))
+            if (mouse.rightButton.isPressed)
             {
-                _lastMouse = Input.mousePosition;
-            }
-
-            if (Input.GetMouseButton(1))
-            {
-                Vector3 delta = Input.mousePosition - _lastMouse;
-                _lastMouse = Input.mousePosition;
+                Vector2 delta = mouse.delta.ReadValue();
                 float unitsPerPixel = 2f * _camera.orthographicSize / Screen.height;
                 _camera.transform.position -= new Vector3(delta.x, delta.y, 0f) * unitsPerPixel;
             }
 
-            // Zoom: scroll wheel.
-            float scroll = Input.mouseScrollDelta.y;
-            if (scroll != 0f)
+            // Zoom: scroll wheel (sign-based; scroll units differ per platform).
+            float scroll = mouse.scroll.ReadValue().y;
+            if (Mathf.Abs(scroll) > 0.01f)
             {
-                _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize * (1f - 0.1f * scroll), 1.5f, 20f);
+                _camera.orthographicSize =
+                    Mathf.Clamp(_camera.orthographicSize * (1f - 0.1f * Mathf.Sign(scroll)), 1.5f, 20f);
             }
         }
 
         private void OnGUI()
         {
-            // Controls — four buttons and the current tick. Nothing else.
-            GUILayout.BeginArea(new Rect(12f, 12f, 320f, 96f), GUI.skin.box);
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button(_host.Playing ? "Pause" : "Play", GUILayout.Height(28f)))
-            {
-                _host.Playing = !_host.Playing;
-            }
-
-            if (GUILayout.Button("Step", GUILayout.Height(28f)))
-            {
-                _host.Step();
-            }
-
-            if (GUILayout.Button("Reset", GUILayout.Height(28f)))
-            {
-                _host.Reset();
-                _hasSelection = false;
-            }
-
-            GUILayout.EndHorizontal();
-            GUILayout.Label($"Tick {_host.Current.CurrentTick.Value}");
+            // Display only — no IMGUI input is relied upon.
+            GUILayout.BeginArea(new Rect(12f, 12f, 340f, 72f), GUI.skin.box);
+            GUILayout.Label($"Tick {_host.Current.CurrentTick.Value}   {(_host.Playing ? "▶ playing" : "❚❚ paused")}");
+            GUILayout.Label("Space  Play/Pause    S  Step    R  Reset");
             GUILayout.EndArea();
 
             // Observation panel — facts only, never words.
