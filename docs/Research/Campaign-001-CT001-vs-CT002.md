@@ -88,8 +88,38 @@ Measure: exact tick of freeze, as a function of load ∈ {12, 120, 1200, 1201, 1
 - CT-002 predicts the measured ratio deviates from any pre-filed linear value during the early
   small-value ticks and only approaches it late, if ever.
 
-> **CT-001 filing slot (required before execution):** predicted asymptotic growth ratio for W3 = ☐
-> **CT-002 filing slot (required before execution):** predicted deviation window (ticks) = ☐
+> **CT-001 filing slot:** predicted asymptotic growth ratio for W3 = **λ = −(3+√13)/4 ≈ −1.651**
+> (derived at design time from the linearised operator M = I − L/2: the symmetric centre-mode of the
+> shared-leaf double star has Laplacian eigenvalue μ = (7+√13)/2; λ = 1 − μ/2. The same operator
+> retrodicts every measured ratio: star-n → 1−(n+1)/2; K4 → −1.)
+> **CT-002 filing slot:** predicted deviation window = **measured per-alternation ratio deviates
+> > 5 % from −1.651 for the early ticks (t ≤ 15, small values), approaching it only late, if ever.**
+
+## SEALED DECLARATIONS (filed blind, before any execution)
+
+*Both advocates may cite only already-published observations. No world in this protocol has been
+run or mentally simulated beyond the qualitative level. Confidence measures the advocate, not the
+theory (per the calibration principle: not only "was it right?" but "how much did it know it could
+be wrong?").*
+
+**CT-001 declares:**
+
+| | Prediction | Confidence |
+|---|---|---|
+| DP-1 | Leaf-loaded deg-3 star remains in the marginal class: persistent period-2 (after a possible transient) | **55 %** |
+| DP-2 | Even loads: period-2 persists with exactly scaled amplitude (centre extreme = −load/2). Odd loads: damping stays *fast* (freeze-time roughly flat in load) | **30 %** *(the advocate concedes: S2/S5 already show freeze-time growing with load — 13→t6, 15→t8)* |
+| DP-3 | Asymptotic ratio −(3+√13)/4 ≈ −1.651, within 3 % by late ticks | **75 %** |
+
+**CT-002 declares:**
+
+| | Prediction | Confidence |
+|---|---|---|
+| DP-1 | Activation from a leaf differs from centre-activation: the world damps to frozen instead of oscillating | **60 %** |
+| DP-2 | Odd-load freeze-time grows ~linearly with load (~one unit bled per rebound ⇒ load 1201 freezes in hundreds-to-thousands of ticks, not single digits) | **85 %** |
+| DP-3 | Early ratios (t ≤ 15) deviate > 5 % from any pre-filed linear value; late convergence possible | **55 %** |
+
+**The files are now immutable. The seal is the commit that contains this text; its hash timestamps
+the blind filing. Execution may begin only after this commit exists.**
 
 ## Deliverable 4 — campaign design
 
