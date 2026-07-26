@@ -15,5 +15,21 @@ Paid (by LB-Obs-NNN) · Forgiven (the question dissolved).*
 
 ---
 
+## Founder's prediction (filed 2026-07-26, before any build exists — no protocol, on the record)
+
+> LB-001 will probably not discover why a sword becomes a memory. It will discover something more
+> embarrassing: **the sword is not the memory.** It is the visible support of a memory made
+> elsewhere — a desperate fight, a flight, a return to shelter in the rain. The sword survives
+> because it became the **anchor** of that moment. If so, RD-L1 and RD-L4 are secretly the same
+> debt: we keep this sword because we still tell that expedition.
+
+*Laboratory note: the sealed LB-001 measures can already discriminate this. Correlate the
+timestamps of keep/repair/name events with the events of the play session and the post-session
+story: event-born attachment (the anchor reading) and usage-born attachment (a patina reading —
+accumulated hours, repairs, familiarity) leave different trajectories. Two rival mechanisms are now
+on file before a single player exists. Both are hypotheses; neither is a finding.*
+
+---
+
 *The ledger starts with five questions and zero answers. That ratio is the healthiest a laboratory
 will ever have.*
