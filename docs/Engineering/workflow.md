@@ -5,6 +5,12 @@
 > Words are earned by theorems (DN-003); laws are earned by phenomena. This is the operational
 > difference between building an engine and discovering a world.
 
+> **The Age-of-Worlds rule** (adopted 2026-07-26, upon the founding of Lootbound Lab):
+> every future RFC — Genesis's included — opens with one question, answered in its first paragraph:
+> *Which phenomenon, made inevitable by a world, does this RFC make observable?*
+> An RFC that cannot answer it is architecture for its own sake, and waits. World-demanded RFCs
+> carry the `L` prefix (RFC-L001, …); their demand-side document is named in that first paragraph.
+
 > How Genesis is developed. This is **not** a Git guide — branching, commits, and the mechanics of
 > version control are assumed known and are not explained here. This describes the loop specific to
 > Genesis: how a change travels from a need to done, and where it must answer to the Constitution, the
