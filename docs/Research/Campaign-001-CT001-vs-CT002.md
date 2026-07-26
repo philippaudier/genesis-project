@@ -1,8 +1,8 @@
 # Campaign-001 — CT-001 versus CT-002
 
-Status: **Pre-registered design. NOT EXECUTED.** No world in this protocol has been run, hand-
-simulated, or peeked at. Predictions are filed blind; execution is a separate, separately-authorised
-act. (Genesis-016, deliverables 1–5.)
+Status: **EXECUTED and CLOSED. Verdict: Outcome B (sealed criteria).** Sealed at commit `ab8f2e0`;
+executed strictly after the seal; results in the Results section below and in **Observation-009**.
+Every section between here and the Results section is immutable, exactly as sealed.
 
 ---
 
@@ -146,3 +146,38 @@ at most produce the *evidence* a future naming would cite.
 A separate authorisation; the two filing slots completed; and nothing else. The harness exists; the
 worlds are three configurations away. The design is deliberately finished *before* anyone is allowed
 to peek — that is the entire point of writing it down.
+
+---
+
+# RESULTS (written after the seal; nothing above this line was modified)
+
+Execution: 2026-07-26, headless harness, worlds exactly as pre-registered. Full data and analysis in
+**Observation-009**; summary here.
+
+- **DP-1** — leaf-loaded star **damps and freezes** at (3,3,3,3), t=6, no negativity ever; the
+  centre-loaded control oscillates period-2 with violations. **CT-002 right; CT-001 wrong.**
+- **DP-2** — odd-load freeze time is **exactly t = (load+1)/2** (13→7, 121→61, 1201→601,
+  12001→6001): damping time scales linearly with load. Even loads: period-2 with centre extreme
+  exactly −load/2. **CT-002 right; CT-001 wrong** (its even-scaling sub-claim held).
+- **DP-3** — measured ratio at t=60: **−1.65137** against the blind-filed −(3+√13)/4 ≈ −1.65139 —
+  five decimal places on an unseen topology. Ratio within 5 % of the filed value from t=10, so the
+  sealed CT-002 window ("> 5 % through t ≤ 15") is false. **CT-001 right; CT-002 wrong.**
+
+## Verdict
+
+The sealed table row *"CT-002 right on DP-1 and DP-2; CT-001 wrong on ≥ 2"* matched:
+**Outcome B — CT-002 preferable.** The verdict is bound and recorded.
+
+The discussion (Obs-009) records what the criteria were too coarse to say: the same run delivered
+CT-001's strongest confirmation ever (the five-decimal blind ratio), and the full evidence pattern
+is the sealed merger reading of Outcome C — activation/truncation as the first-order layer, the
+linear spectrum exact over stabilised episodes. The lesson filed against future campaigns: outcome
+rows scored *per-prediction wins*; they should also have scored *per-claim ground* (C1c was
+confirmed spectacularly while C1a/C1b fell). Criteria bind; they must therefore be written finer.
+
+## Calibration record
+
+CT-001's advocate: 55/30/75 → Brier 0.152. CT-002's advocate: 60/85/55 → Brier 0.162. The losing
+theory was the better-calibrated defence; the concession on DP-2 (30 %, forced by public S2/S5 data)
+is the record's first example of an advocate scoring against its own theory — which is exactly what
+the confidence field was added to detect.

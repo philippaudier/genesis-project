@@ -45,3 +45,19 @@ All five are delivered in **Campaign-001**
 Genesis-016 completes when Campaign-001 is fully pre-registered: both candidates' predictions filed,
 worlds and measures fixed, outcome criteria bound. Execution is a separate act, authorised
 separately — the design must be finished before anyone is allowed to peek.
+
+---
+
+## Exit record
+
+**Run and exited.** Sequence, provable from git ancestry: design (`dd3656e`) → confidence
+declarations added at the reviewer's request and **seal** (`ab8f2e0`) → execution → results
+(Observation-009). Verdict under the sealed criteria: **Outcome B — CT-002 preferable** — with the
+recorded tension that the same run produced CT-001's five-decimal blind confirmation on an unseen
+topology, i.e. the evidence pattern of the Outcome-C merger. RD-1 paid in part; RD-8 opened. The
+milestone's real product is neither theory: it is the demonstrated pipeline
+*seal → run → bound verdict → calibration audit*, and the first advocate concession recorded in a
+confidence figure (CT-001's 30 % on DP-2). Two lessons filed: outcome criteria must score per-claim
+ground, not only per-prediction wins; and the reviewer's addition — confidence declared before
+execution — produced information the predictions alone could not (the losing theory had the
+better-calibrated defence).
