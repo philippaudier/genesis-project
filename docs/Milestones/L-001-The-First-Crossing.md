@@ -76,6 +76,12 @@ editor. The milestone exits when it is green there.
 
 > **What became observable that wasn't before?**
 
-*For the first time, an external event can be observed, replayed, and causally attributed. Before
-L-001, anything from outside was a hidden hand; after it, everything from outside is a recorded
-crossing — and a played session is a world object.*
+**Rule, added by the founder upon reviewing this milestone: the answer must always speak of the
+phenomenon — never of the code.** The first answer, restated in that spirit:
+
+*For the first time, an external influence has a history. It is born, it crosses, it acts, it can
+be found again, replayed, compared. It ceases to be an intervention. It becomes a phenomenon.*
+
+(The engineering restatement — "an external event can be observed, replayed, and causally
+attributed; a played session is a world object" — is kept as the implementation's echo of the same
+fact.)
