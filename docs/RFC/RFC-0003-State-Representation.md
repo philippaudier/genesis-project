@@ -1,6 +1,7 @@
 # RFC-0003 — State Representation
 
-Status: Draft
+Status: **Accepted** — 2026-07-26. D1–D6 ratified on review; the finding (the candidates are curried
+projections of one semantic object) stood unrefuted.
 
 ## Purpose
 
@@ -118,7 +119,8 @@ visible from two angles. They are the actual subject of this RFC:
   resolves by the resolver of its kind; a kind without a resolver rejects, as always.
 - **D3 — Relations connect Places, not cells.** Topology is about location, not nature. A relation
   `A → B` asserts a connection between places; which kinds a transition reads across it is the
-  transition's declaration, not the relation's property.
+  transition's declaration, not the relation's property. **The relation discovers places only; kind
+  visibility is granted entirely by the observing transition.**
 - **D4 — Scopes declare at cell precision.** `ReadScope` declares cells. Relational observation
   declares origin *places* plus the kinds the transition may read at discovered targets. Nothing is
   observable at a coarser grain than it is declared.
@@ -171,8 +173,12 @@ preserved under the single-kind special case (a one-kind world must behave exact
 
 ## Decision Record
 
-Decision: Pending
-Date: —
+Decision: **Accepted — D1–D6 ratified**
+Date: 2026-07-26
 Rationale: The comparison was carried out and dissolved: the candidates are curried projections of
-one semantic object, `State : Place × Kind → Value`. What awaits decision is not A-versus-B but the
-semantic commitments D1–D6. Acceptance ratifies those commitments; the storage layout remains free.
+one semantic object, `State : Place × Kind → Value`. The decision was therefore not A-versus-B but
+the semantic commitments D1–D6, ratified on review with no surviving counter-example against the
+decisions themselves. The storage layout remains free (D6).
+
+> **Accepted, this RFC does not introduce heterogeneous state. It merely removes the last
+> architectural obstacle to expressing it.**
