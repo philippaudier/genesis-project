@@ -7,7 +7,7 @@ filled.*
 
 | Slot | The moment to catch | Status |
 |---|---|---|
-| LB-Obs-001 | The first object the player refuses to replace | **Bot form recorded** (LB-Obs-001, 2026-07-27 — "the available replacement was not taken"; the slot's own word "refuses" is now known to overclaim). The lived, human instance: still waiting |
+| LB-Obs-001 | The first object the player refuses to replace | **Bot form recorded** (LB-Obs-001 — "not taken"). **Human form recorded** (LB-Obs-003) — and the slot's word "refuses" was doubly wrong: the replacement was *taken, held twice, and given back*. The phenomenon outgrew its slot |
 | LB-Obs-002 | The first place where the player stands still with no objective | **Waiting** |
 | LB-Obs-003 | The first spontaneous screenshot | **Waiting** |
 | LB-Obs-004 | The first story told after the session | **Waiting** |
