@@ -79,3 +79,26 @@ stories. Then, and only then: the meeting.
 
 Genesis-019 completes when the deposit is recorded verbatim, the meeting is scored on M1–M4, and
 the outcome (A–D) is bound by the pre-registered definitions above.
+
+---
+
+## Exit record
+
+**Run and exited.** Sequence: protocol + evidence dossier sealed (`7afbef8`) → second researcher
+instantiated (fresh context, dossier only, no tools, no repository access) → deposit recorded
+verbatim (`Invitation-001-Deposit.md`) → meeting scored (`Invitation-001-The-Meeting.md`).
+
+**Outcome B bound** — same core theory independently rebuilt, plus: six hypotheses the first
+researcher never imagined (four landing on open debts: arithmetic glass/RD-2, real-spectrum
+theorem/RD-3, overshoot pump/RD-4, residue cycle/RD-5, automorphism silence, the −(V−3)/2 law);
+five blind predictions with confidences and death conditions, sealed for a future trial; four
+conceded blind spots in the corpus's own practice (the parity/divisibility confound, the unclosed
+711, superposition never probed, directed relations never used); and one preserved disagreement —
+whether activation is fundamental or the spectrum's shadow — the post-Obs-010 inversion question,
+now held by two independent researchers on opposite sides.
+
+The transmissibility question is answered **yes at the information-barrier level**, with the
+substrate limitation standing exactly as declared. Campaign-002's suspicion clause is partially
+discharged: the smooth confirmations survived an imagination that did not share the first
+researcher's history — though it does share its architecture. The stronger form of the question —
+a genuinely different mind — remains open, and is now the *only* untested layer.
