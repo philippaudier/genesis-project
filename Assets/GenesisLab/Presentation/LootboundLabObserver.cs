@@ -61,6 +61,11 @@ namespace Genesis.Presentation
                 return;
             }
 
+            if (keyboard.sKey.wasPressedThisFrame)
+            {
+                ExportSession();
+            }
+
             if (keyboard.digit1Key.wasPressedThisFrame) Go(LootboundWorld.Shelter);
             if (keyboard.digit2Key.wasPressedThisFrame) Go(LootboundWorld.Tree);
             if (keyboard.digit3Key.wasPressedThisFrame) Go(LootboundWorld.Station);
@@ -120,6 +125,68 @@ namespace Genesis.Presentation
             return LootboundWorld.Field;
         }
 
+        /// <summary>
+        /// Writes the session's four-object record (Protocol-H001) into Lootbound-Lab/Runs/:
+        /// the trace verbatim, the biography, the end-state audit, and an empty Narrative section
+        /// for the one question's verbatim answer. Laboratory record-keeping, presentation-side —
+        /// the wall-clock date in the header is the presentation's knowledge, never the world's.
+        /// </summary>
+        private void ExportSession()
+        {
+            var text = new System.Text.StringBuilder();
+            text.AppendLine("# Run-unnamed (rename me)");
+            text.AppendLine();
+            text.AppendLine("```");
+            text.AppendLine("Producer: Human");
+            text.AppendLine("World:    L-002");
+            text.AppendLine($"Date:     {System.DateTime.Now:yyyy-MM-dd HH:mm}");
+            text.AppendLine($"Length:   {_state.CurrentTick.Value} ticks");
+            text.AppendLine("```");
+            text.AppendLine();
+            text.AppendLine("## Trace (verbatim — every crossing of the membrane)");
+            text.AppendLine();
+            text.AppendLine("```");
+            for (int i = 0; i < _trace.Events.Count; i++)
+            {
+                ExternalEvent crossing = _trace.Events[i];
+                text.AppendLine($"t={crossing.Boundary.Value,-4} {KindName(crossing.Target.Kind),-7} {NameOf(crossing.Target.Place),-10} {crossing.Amount}");
+            }
+
+            text.AppendLine("```");
+            text.AppendLine();
+            text.AppendLine("## Biography (the Chronicler's reading — vocabulary under study, RD-L6)");
+            text.AppendLine();
+            text.AppendLine("```");
+            text.AppendLine(_biography.TrimEnd());
+            text.AppendLine("```");
+            text.AppendLine();
+            text.AppendLine("## End-state audit");
+            text.AppendLine();
+            text.AppendLine("```");
+            text.AppendLine($"Player: {NameOf(PlayerPlace())} · {SwordLine(LootboundWorld.OldSword, "Old sword")} · {SwordLine(LootboundWorld.NewSword, "Better sword")} · Wood: {_state.ValueAt(new Cell(LootboundWorld.Pack, LootboundWorld.Wood))}");
+            text.AppendLine("```");
+            text.AppendLine();
+            text.AppendLine("## Narrative (verbatim — the one question: \"What stayed with you?\")");
+            text.AppendLine();
+            text.AppendLine("```");
+            text.AppendLine("(paste the answer here, unedited — or record the silence)");
+            text.AppendLine("```");
+
+            string directory = System.IO.Path.Combine(Application.dataPath, "..", "Lootbound-Lab", "Runs");
+            System.IO.Directory.CreateDirectory(directory);
+            string path = System.IO.Path.Combine(directory, $"Run-{System.DateTime.Now:yyyyMMdd-HHmmss}.md");
+            System.IO.File.WriteAllText(path, text.ToString());
+            Debug.Log($"Session exported: {path}");
+        }
+
+        private static string KindName(Kind kind)
+        {
+            if (kind == LootboundWorld.Go) return "Go";
+            if (kind == LootboundWorld.Act) return "Act";
+            if (kind == LootboundWorld.Attack) return "Attack";
+            return kind.ToString();
+        }
+
         private static string NameOf(Place place)
         {
             if (place == LootboundWorld.Shelter) return "Shelter";
@@ -149,7 +216,7 @@ namespace Genesis.Presentation
             GUILayout.Label($"Wood: {_state.ValueAt(new Cell(LootboundWorld.Pack, LootboundWorld.Wood))}");
             GUILayout.Space(6);
             GUILayout.Label("Walk: 1 Shelter · 2 Tree · 3 Station · 4 Clearing · 5 Field (paths go through the field)");
-            GUILayout.Label("E interact here · F strike the tree · Space pause · R reset");
+            GUILayout.Label("E interact here · F strike the tree · Space pause · R reset · S export session");
             GUILayout.Space(10);
             GUILayout.Label(_biography);
             GUILayout.EndArea();
