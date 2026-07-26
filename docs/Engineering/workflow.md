@@ -1,5 +1,10 @@
 # Development Workflow
 
+> **The Discovery-era motto** (adopted 2026-07-26, upon Genesis-012):
+> *Never add a law because it seems useful. Wait until a world makes it inevitable.*
+> Words are earned by theorems (DN-003); laws are earned by phenomena. This is the operational
+> difference between building an engine and discovering a world.
+
 > How Genesis is developed. This is **not** a Git guide — branching, commits, and the mechanics of
 > version control are assumed known and are not explained here. This describes the loop specific to
 > Genesis: how a change travels from a need to done, and where it must answer to the Constitution, the
