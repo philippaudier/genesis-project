@@ -157,7 +157,10 @@ docs/Decisions/ADR-0001-Simulation-Transformation-Model.md  (the accepted archit
 docs/Design/04-KERNEL.md  (the Kernel Completion Record — what has been proven)
 
 8.
-docs/Decisions/ADR-0002-Development-Methodology.md  (how milestones work — the Proof Rule)
+docs/Decisions/ADR-0002-Development-Methodology.md  (how Genesis builds — the Proof Rule)
+
+8b.
+docs/Decisions/ADR-0003-The-Scientific-Method.md  (how Genesis learns — the discovery pipeline)
 
 9.
 docs/Engineering/ — invariants, conventions, unity, workflow (how Genesis is built)
