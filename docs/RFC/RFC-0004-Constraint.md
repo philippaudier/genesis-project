@@ -1,6 +1,6 @@
 # RFC-0004 — Constraint
 
-Status: Draft
+Status: **Accepted** — 2026-07-26.
 
 **Origin: Observation-004 · Observation-005** — this is the first RFC in Genesis's history demanded
 by an observation rather than conceived by a designer. The hierarchy *Observation → Measurement →
@@ -143,10 +143,16 @@ follow-up decisions it deliberately defers.
 
 ## Decision Record
 
-Decision: Pending
-Date: —
-Rationale: Drafted from the field. Acceptance acknowledges legality as an independent concern of the
-world — and nothing else.
+Decision: **Accepted**
+Date: 2026-07-26
+Rationale: Accepted not because Constraint is a good idea, but because the demonstration could not be
+refuted. The reviewer's verdict, on record: *"I found no reduction that simultaneously preserves
+order-independence, commutativity, D1, snapshot isolation, and free composition — and as this RFC
+itself states, one such reduction suffices to kill it. I see none."* Acceptance acknowledges legality
+as an independent concern of the world — and nothing else. Every deferred question (Q1–Q6) remains a
+separate, future decision; no implementation is authorised by this acceptance alone. The Glossary's
+*Constraint* entry remains **Reserved**: a concept is not a realisation, and Genesis continues to pay
+for each word with an implementation, and each implementation with a theorem.
 
 ---
 
