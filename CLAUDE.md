@@ -104,6 +104,7 @@ Decisions/
 DesignNotes/
 Engineering/
 Milestones/
+Observations/
 Research/
 Journal/
 
