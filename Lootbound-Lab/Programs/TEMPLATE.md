@@ -32,6 +32,14 @@ now?")*
 *(Proposed. Never executed without its own authorisation. The answers come from the world,
 never from the code.)*
 
+## Experimental cost
+
+*(What this program's next protocol requires — and what it shares. Ten programs from now, the
+laboratory optimises itself by asking: which protocol answers the most questions with the least
+collection?)*
+
 ## Death condition
 
-*(What would close this program — paid, dissolved, or absorbed.)*
+*(What would close this program — paid, dissolved, or absorbed. And the hierarchy, said once:
+**a program dies only when its family of questions disappears** — debts are paid one by one;
+the family outlives each of them.)*

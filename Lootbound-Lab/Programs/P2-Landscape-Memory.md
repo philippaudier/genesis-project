@@ -39,6 +39,11 @@ subject, the narrative (asked before any export) is scored against the run's per
 entries, dwell, transitions. The program's question to the data: *is the told place the crossed
 place, the dwelt place, or neither?*
 
+## Experimental cost
+
+Shares H-002 with P1. No additional participants required — only an additional scoring pass over
+data already collected.
+
 ## Death condition
 
 Paid if a replicated relation links per-place regularities to narrative mention (including a null:

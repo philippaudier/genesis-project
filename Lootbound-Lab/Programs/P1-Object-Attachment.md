@@ -39,8 +39,16 @@ also its director.
 founder; Protocol-H001 unchanged except the repaired flaw — the one question is asked and answered
 **before** the subject sees any export; anchor/patina scored per subject from timestamps alone.
 
+## Experimental cost
+
+Owns H-002 (N >= 5 human subjects — the register's most expensive protocol). Shares its
+collection with P2 at zero marginal cost: the same sessions serve both programs.
+
 ## Death condition
 
 Paid if a replicated timestamp signature discriminates anchor from patina (or shows both, with
 domains). Dissolved if attachment events stop occurring across many subjects — "no attachment
-forms under these conditions" closes the program as a finding, not a failure.
+forms under these conditions" closes the program as a finding, not a failure. And the hierarchy
+holds: paying RD-L1 does not kill P1 — the family continues (why do objects become heirlooms?
+why are some deliberately abandoned?). The program dies only when its family of questions
+disappears.

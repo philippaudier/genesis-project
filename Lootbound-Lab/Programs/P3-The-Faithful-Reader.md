@@ -42,6 +42,12 @@ nothing — every (c) is a specimen candidate, reviewed by hand. Second arm: a l
 for each Kind the world defines, does any reader layer report its full history? Every "no" is a
 measured compression.
 
+## Experimental cost
+
+**Zero participants.** The Ontology Audit is desk work over the reader's own output and the
+world's declared ontology — the cheapest protocol in the register. (A fact this section exists to
+surface: the laboratory's reflexive questions cost the least and guard the most.)
+
 ## Death condition
 
 Paid when the vocabulary boundary is closed mechanically (no word without a mapping) AND the

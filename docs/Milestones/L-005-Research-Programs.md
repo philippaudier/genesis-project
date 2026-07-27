@@ -29,6 +29,12 @@ by the existing corpus.
   reader emits maps to a world quantity or a declared convention — or is a specimen candidate.
   The laboratory's reflexive program; expected to outlive the others.
 
+Three properties were added at the founder's review: **experimental cost** (what a program's
+next protocol requires, and what it shares — P1 owns H-002, P2 rides it at zero marginal cost,
+P3's Ontology Audit costs zero participants: the reflexive questions are the cheapest and guard
+the most); the **death hierarchy** (a program dies only when its family of questions disappears —
+debts are paid one by one, the family outlives each); and the sentence above.
+
 The register lives at `Lootbound-Lab/Programs/` — the laboratory's fifth and final founding
 register. The complete instrument, as the founder listed it: Constitution · Observations · Debts ·
 Watchlist · Reader · Replay · Programs. What is missing now is only the world — which is exactly
@@ -48,6 +54,10 @@ what Article 6 announces: *the reader is mature; the world may grow.*
 *The laboratory's own ignorance, organised. For the first time it can state not only what it saw,
 but what it lacks — each program ends on a data gap and a proposed way to fill it. The question
 "what data do we need now?" has become a documented, auditable act.*
+
+> **A program is not a roadmap. It is a declaration of ignorance.** *(the founder's sentence,
+> added at review — a program never says "here is what we will build"; it says "here is what we
+> do not yet know")*
 
 > **What illusion did the laboratory lose?**
 
