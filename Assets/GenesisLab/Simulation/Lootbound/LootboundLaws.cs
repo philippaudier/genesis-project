@@ -241,9 +241,14 @@ namespace Genesis.Simulation.Lootbound
     }
 
     /// <summary>
-    /// The repair station: one resource, one gesture. A full repair — wear returns to zero, the
-    /// repair count grows by one, one wood is spent. Inert unless the player stands here, carries
-    /// a worn sword, and owns wood.
+    /// The station's gesture: one resource, one act. When a repair is possible — a worn sword in
+    /// hand, wood in the pack — a full repair: wear returns to zero, the repair count grows by
+    /// one, one wood is spent. **Otherwise (L-008), the previously dead case is lifted, not
+    /// added to:** the act exchanges with the ground, exactly as the clearing's gesture does —
+    /// what is carried is laid down, what lies here is taken up. No new law, no new kind, no new
+    /// cell: everything this branch reads was already in this law's declared scope. Every
+    /// previously possible outcome is unchanged; only the case that used to do nothing now does
+    /// something.
     /// </summary>
     public sealed class RepairLaw : ITransition
     {
@@ -267,17 +272,40 @@ namespace Genesis.Simulation.Lootbound
             }
 
             var contributions = new List<Contribution> { new Contribution(ActCell, -act) };
-            if (view.Read(AtStation) == 1 && view.Read(LootboundCells.WoodCell) > 0)
+            if (view.Read(AtStation) == 1)
             {
                 Place? carried = LootboundCells.CarriedSword(view);
-                if (carried.HasValue)
+                long wear = carried.HasValue ? view.Read(LootboundCells.WearOf(carried.Value)) : 0;
+                bool repairPossible = carried.HasValue && wear > 0 && view.Read(LootboundCells.WoodCell) > 0;
+
+                if (repairPossible)
                 {
-                    long wear = view.Read(LootboundCells.WearOf(carried.Value));
-                    if (wear > 0)
+                    contributions.Add(new Contribution(LootboundCells.WearOf(carried.Value), -wear));
+                    contributions.Add(new Contribution(LootboundCells.RepairsOf(carried.Value), 1));
+                    contributions.Add(new Contribution(LootboundCells.WoodCell, -1));
+                }
+                else
+                {
+                    // L-008 — the lifted case: exchange with the ground, the clearing's gesture.
+                    Place? onGround = null;
+                    foreach (Place sword in LootboundWorld.Swords) // ascending id: canonical order
                     {
-                        contributions.Add(new Contribution(LootboundCells.WearOf(carried.Value), -wear));
-                        contributions.Add(new Contribution(LootboundCells.RepairsOf(carried.Value), 1));
-                        contributions.Add(new Contribution(LootboundCells.WoodCell, -1));
+                        if (view.Read(LootboundCells.Loc(sword)) == LootboundWorld.Station.Value)
+                        {
+                            onGround = sword;
+                            break;
+                        }
+                    }
+
+                    if (onGround.HasValue)
+                    {
+                        contributions.Add(new Contribution(
+                            LootboundCells.Loc(onGround.Value), LootboundWorld.HeldByA - LootboundWorld.Station.Value));
+                        if (carried.HasValue)
+                        {
+                            contributions.Add(new Contribution(
+                                LootboundCells.Loc(carried.Value), LootboundWorld.Station.Value - LootboundWorld.HeldByA));
+                        }
                     }
                 }
             }

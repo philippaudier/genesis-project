@@ -3,8 +3,42 @@
 *Not "Interaction". Interference. L-006: two biographies can coexist. L-007: a biography can
 return. L-008 asks what happens when their continuities truly cross.*
 
-Status: **Prediction sealed; implementation not yet begun.** (Committed before any code — the
-ancestry is the proof.)
+Status: **IMPLEMENTED, headless-verified; Unity validation pending; prediction unscored** (sealed
+at `22f150b`, strictly before any code; awaits the first human L-008 run).
+
+## Implementation record — zero new laws, zero new kinds, zero new cells
+
+The founder's constraint held perfectly: the station's `Act` already read everything needed; its
+**dead case was lifted, not added to**. When repair is impossible (no worn sword in hand, or no
+wood), the act now exchanges with the ground — the clearing's gesture, at the station. Every
+previously possible outcome is byte-identical; only the case that used to do nothing does
+something. **This is the Minimum Phenomenon Principle's second demonstration, and it pays the
+agreed tariff: Article 7 enters the Lootbound Lab Constitution with both dates.**
+
+**Headless interference run:** the traveller caches the sword (t=17); the player — empty-handed,
+nothing to repair — takes it (t=38) and goes home; the traveller returns (t≈86), its station
+toggle finds nothing, its clearing toggle finds nothing, it leaves empty-handed (done). The
+object's biography holds both hands: `clearing ground → held (body B) → station ground → in
+hand`. **The differential instrument worked on first use: solo baseline ends restored (clearing);
+co-run ends in the player's hand — the player's causal footprint, isolated by comparison against
+the deterministic control.**
+
+## The tradition
+
+> **What became observable that wasn't before?**
+
+*A refusal. For the first time the world can answer a returning biography: no. And the refusal is
+visible in the record as gestures that lawfully did nothing — an itinerary completed in motion,
+interrupted in effect.*
+
+> **What illusion did the laboratory lose?**
+
+*The illusion that a memory of the world suffices. The Traveller remembered perfectly and
+recovered nothing: in a shared world, memory is a claim other biographies may overrule.*
+
+> **What surprised the founder?**
+
+*(pending — after the first human run)*
 
 ## The scientific question
 

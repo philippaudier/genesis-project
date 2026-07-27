@@ -45,6 +45,16 @@ When the laboratory discovers a limit in itself, that limit is resolved **before
 phenomena is introduced. Eras therefore alternate: the reader improves while the world stays
 simple; the world grows while the reader stays stable; never both at once.
 
+## Article 7 — The Minimum Phenomenon Principle
+
+*(Added 2026-07-27 — earned by two demonstrations, per the tariff agreed in advance: L-007
+produced a new phenomenon — the return — with one kind and one law; L-008 produced a new
+phenomenon — interference — with zero kinds, zero laws, zero cells: a dead case lifted in an
+existing law. The principle is the world-content sibling of Genesis's Reduction Test.)*
+
+When several implementations can produce the same observable phenomenon, the laboratory always
+prefers the smallest one.
+
 ---
 
 ## The motto
