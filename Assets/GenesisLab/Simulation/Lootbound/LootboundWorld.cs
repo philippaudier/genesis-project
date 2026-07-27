@@ -58,10 +58,13 @@ namespace Genesis.Simulation.Lootbound
         public static readonly Kind ActB = new Kind(22);
         /// <summary>External: 1 at the field = body B leaves the world (departure drops what is held).</summary>
         public static readonly Kind LeaveB = new Kind(23);
+        /// <summary>External: 1 at the field = body B re-enters the world, if absent (L-007:
+        /// the same body, the same identity — the world was never reset in between).</summary>
+        public static readonly Kind ArriveB = new Kind(24);
 
         public static Membrane BuildMembrane()
         {
-            return new Membrane(new[] { Go, Act, Attack, GoB, ActB, LeaveB });
+            return new Membrane(new[] { Go, Act, Attack, GoB, ActB, LeaveB, ArriveB });
         }
 
         /// <summary>
@@ -86,6 +89,7 @@ namespace Genesis.Simulation.Lootbound
             cells[new Cell(Clearing, Act)] = 0;
             cells[new Cell(Tree, Attack)] = 0;
             cells[new Cell(Field, LeaveB)] = 0;
+            cells[new Cell(Field, ArriveB)] = 0;
 
             foreach (Place sword in Swords)
             {
@@ -129,6 +133,7 @@ namespace Genesis.Simulation.Lootbound
             laws.Add(new SwapLaw());
             laws.Add(new StowLaw());
             laws.Add(new DepartLaw());
+            laws.Add(new ArriveLaw());
             return laws;
         }
 
@@ -147,7 +152,8 @@ namespace Genesis.Simulation.Lootbound
                 { Attack, new AdditionResolver() },
                 { GoB, new AdditionResolver() },
                 { ActB, new AdditionResolver() },
-                { LeaveB, new AdditionResolver() }
+                { LeaveB, new AdditionResolver() },
+                { ArriveB, new AdditionResolver() }
             };
             return new TickRunner(new TransitionRunner(resolvers));
         }

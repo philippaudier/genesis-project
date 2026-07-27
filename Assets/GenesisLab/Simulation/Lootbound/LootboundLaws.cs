@@ -388,4 +388,57 @@ namespace Genesis.Simulation.Lootbound
             return contributions;
         }
     }
+
+    /// <summary>
+    /// Arrival (L-007): body B may re-enter the world, at the field only, and only while absent.
+    /// The same marker, the same identity — nothing was reset while it was away; the world simply
+    /// kept being the world. Arrival creates nothing and carries nothing in: the body returns
+    /// empty-handed to whatever it left.
+    /// </summary>
+    public sealed class ArriveLaw : ITransition
+    {
+        private static readonly Cell ArriveCell = new Cell(LootboundWorld.Field, LootboundWorld.ArriveB);
+
+        private readonly ReadScope _readScope;
+
+        public ArriveLaw()
+        {
+            var cells = new List<Cell> { ArriveCell };
+            foreach (Place place in LootboundWorld.Spatial)
+            {
+                cells.Add(new Cell(place, LootboundWorld.BodyB));
+            }
+
+            _readScope = new ReadScope(cells.ToArray());
+        }
+
+        public ReadScope ReadScope => _readScope;
+        public RelationScope RelationScope => RelationScope.Empty;
+
+        public IReadOnlyList<Contribution> Apply(IRelationalStateView view)
+        {
+            long arrive = view.Read(ArriveCell);
+            if (arrive <= 0)
+            {
+                return new Contribution[0];
+            }
+
+            var contributions = new List<Contribution> { new Contribution(ArriveCell, -arrive) };
+            bool anywhere = false;
+            foreach (Place place in LootboundWorld.Spatial)
+            {
+                if (view.Read(new Cell(place, LootboundWorld.BodyB)) == 1)
+                {
+                    anywhere = true;
+                }
+            }
+
+            if (!anywhere)
+            {
+                contributions.Add(new Contribution(new Cell(LootboundWorld.Field, LootboundWorld.BodyB), 1));
+            }
+
+            return contributions;
+        }
+    }
 }

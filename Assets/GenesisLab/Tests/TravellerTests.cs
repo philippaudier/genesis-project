@@ -123,9 +123,25 @@ namespace Genesis.Tests
                 state = runner.Run(state, relations, laws, trace, 1);
             }
 
-            Assert.IsTrue(traveller.Done, "The traveller passed through and left.");
+            Assert.IsFalse(traveller.Done, "L-007: the first passage is over, but the traveller is only away — not gone.");
             Assert.AreEqual(LootboundWorld.Station.Value, state.ValueAt(Loc(LootboundWorld.NewSword)),
                 "The clearing's sword was moved by a biography the player never saw.");
+
+            // L-007 — the return: the same body comes back, walks straight to where it left its
+            // object, takes it up, and puts it back where it found it. The world was never reset.
+            for (long t = 46; t <= 170; t++)
+            {
+                traveller.Step(state, trace);
+                state = runner.Run(state, relations, laws, trace, 1);
+            }
+
+            Assert.IsTrue(traveller.Done, "Two passages, then gone for good.");
+            Assert.AreEqual(LootboundWorld.Clearing.Value, state.ValueAt(Loc(LootboundWorld.NewSword)),
+                "The sword lies in the clearing again: continuity restored what passage displaced.");
+            foreach (Place place in LootboundWorld.Spatial)
+            {
+                Assert.AreEqual(0, state.ValueAt(B(place)), "The body is gone from everywhere, again.");
+            }
 
             // The absence, as the world's record states it: when the player entered the clearing
             // (their script, t=27..30), what did the biography of the OTHER sword hold?
@@ -136,7 +152,7 @@ namespace Genesis.Tests
             // Replay stays exact and free: one trace, several biographies, same world twice.
             SimulationState replayA = LootboundWorld.BuildInitialState();
             SimulationState replayB = LootboundWorld.BuildInitialState();
-            for (long t = 1; t <= 45; t++)
+            for (long t = 1; t <= 170; t++)
             {
                 replayA = runner.Run(replayA, relations, laws, trace, 1);
                 replayB = runner.Run(replayB, relations, laws, trace, 1);

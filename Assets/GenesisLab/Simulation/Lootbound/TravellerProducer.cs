@@ -14,39 +14,57 @@ namespace Genesis.Simulation.Lootbound
     /// </summary>
     public sealed class TravellerProducer
     {
-        private enum GoalKind { WalkTo, Toggle, Leave, Done }
+        private enum GoalKind { WalkTo, Toggle, Leave, Wait, Arrive, Done }
 
         private readonly struct Goal
         {
             public GoalKind Kind { get; }
             public Place Place { get; }
+            public long Duration { get; }
 
-            public Goal(GoalKind kind, Place place)
+            public Goal(GoalKind kind, Place place, long duration = 0)
             {
                 Kind = kind;
                 Place = place;
+                Duration = duration;
             }
         }
 
         private readonly List<Goal> _itinerary;
         private int _current;
         private bool _emittedForCurrent;
+        private long _waited;
 
         /// <summary>
-        /// The default itinerary: from the tree, walk to the clearing via the field; pick up
-        /// whatever sword lies there; carry it to the station via the field; put it down; return
-        /// to the field; leave the world. (A body passing through — nothing more.)
+        /// The itinerary, two passages (L-007): from the tree, walk to the clearing; pick up
+        /// whatever sword lies there; carry it to the station; put it down; leave the world.
+        /// Then — the same body, the same identity — stay away a while, come back, walk straight
+        /// to the station where it left its object (it remembers its own world; it does not
+        /// search), take it up, carry it back to the clearing, put it back where it found it,
+        /// and leave again. A body passing through, twice — and a world never reset in between.
         /// </summary>
         public TravellerProducer()
         {
             _itinerary = new List<Goal>
             {
+                // first passage
                 new Goal(GoalKind.WalkTo, LootboundWorld.Field),
                 new Goal(GoalKind.WalkTo, LootboundWorld.Clearing),
                 new Goal(GoalKind.Toggle, LootboundWorld.Clearing),
                 new Goal(GoalKind.WalkTo, LootboundWorld.Field),
                 new Goal(GoalKind.WalkTo, LootboundWorld.Station),
                 new Goal(GoalKind.Toggle, LootboundWorld.Station),
+                new Goal(GoalKind.WalkTo, LootboundWorld.Field),
+                new Goal(GoalKind.Leave, LootboundWorld.Field),
+                // absence — the world keeps being the world
+                new Goal(GoalKind.Wait, LootboundWorld.Field, 60),
+                // second passage: the return
+                new Goal(GoalKind.Arrive, LootboundWorld.Field),
+                new Goal(GoalKind.WalkTo, LootboundWorld.Station),
+                new Goal(GoalKind.Toggle, LootboundWorld.Station),
+                new Goal(GoalKind.WalkTo, LootboundWorld.Field),
+                new Goal(GoalKind.WalkTo, LootboundWorld.Clearing),
+                new Goal(GoalKind.Toggle, LootboundWorld.Clearing),
                 new Goal(GoalKind.WalkTo, LootboundWorld.Field),
                 new Goal(GoalKind.Leave, LootboundWorld.Field)
             };
@@ -95,6 +113,26 @@ namespace Genesis.Simulation.Lootbound
                     }
 
                     EmitOnce(state, trace, new Cell(goal.Place, LootboundWorld.ActB));
+                    return;
+
+                case GoalKind.Wait:
+                    _waited++;
+                    if (_waited >= goal.Duration)
+                    {
+                        _waited = 0;
+                        Advance();
+                    }
+
+                    return;
+
+                case GoalKind.Arrive:
+                    if (state.ValueAt(new Cell(LootboundWorld.Field, LootboundWorld.BodyB)) == 1)
+                    {
+                        Advance(); // back in the world, at the field
+                        return;
+                    }
+
+                    EmitOnce(state, trace, new Cell(LootboundWorld.Field, LootboundWorld.ArriveB));
                     return;
 
                 case GoalKind.Leave:

@@ -3,8 +3,47 @@
 *Era II continues — and for the first time since Lootbound Lab began, nobody quite knows what will
 happen. That is where the founder wanted the project to arrive.*
 
-Status: **Prediction sealed; implementation not yet begun.** (Committed before any code — the
-ancestry is the proof.)
+Status: **IMPLEMENTED, headless-verified; Unity validation pending; prediction unscored** (sealed
+at `cb6e6c8`, strictly before any code — the ancestry is the proof; it awaits the first human run
+under L-007).
+
+## Implementation record
+
+Almost nothing, as ordered: one external Kind (`ArriveB`, at the field only), one law
+(`ArriveLaw`: a body may re-enter, only while absent, empty-handed — arrival creates nothing),
+and the producer's itinerary extended to **two passages with a 60-tick absence between them**.
+Same object, same step index, same identity — persistent by construction, because nothing ever
+reset: the world simply kept being the world.
+
+**Headless timeline (solo run):** picked at the clearing t=8 · left at the station t=17 · gone
+t=23 · sixty ticks of a world alone · **present again t=86 · walks straight to the station — it
+does not search, it remembers — retrieves t=92 · puts the sword back in the clearing t=101 ·
+gone for good t=107.** Sixteen crossings in total. The world ends as it began — *unless someone
+interfered in between*, which is now the standing invitation of every live session.
+
+**Asymmetry noted as fact, not decision:** the player's current gestures (swap at the clearing,
+stow at the shelter) cannot remove an object from the station — the Traveller's cache is, for
+now, beyond the player's reach. If a phenomenon one day needs the player to interfere there, a
+law will have to earn its place through a debt, per the era's promise.
+
+## The tradition
+
+> **What became observable that wasn't before?**
+
+*Return by another. Until today only the player came back; now the world holds a second
+continuity — a body that leaves, stays away while the world goes on being real, and comes back to
+what it left. And its memory of the world is observable as a path: straight to the station, no
+search.*
+
+> **What illusion did the laboratory lose?**
+
+*The illusion that persistence is storage. The Traveller persists because nothing forgot — not
+because anything saved. Identity, here, is just the world's refusal to reset.*
+
+> **What surprised the founder?** *(third question — first standing use; to be answered at this
+> milestone's close, after the first human run)*
+
+*(pending)*
 
 ## The scientific question
 
