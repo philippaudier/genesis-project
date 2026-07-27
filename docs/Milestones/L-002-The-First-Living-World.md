@@ -93,3 +93,12 @@ in an order that can never be re-lived — the first past.
 *For the first time, a world has a past. Not a tick counter — a succession of events that could
 each happen only one first time, and the world can tell them. Before L-002, Genesis worlds had
 trajectories; now a world has a biography, and it wrote the document itself.*
+
+> **What illusion did the laboratory lose?** *(second tradition question, added upon L-003's
+> close, asked retroactively)*
+
+*The illusion that a biography is a life. Run-000002 proved it within a day: nine transitions
+lived, three told — and memory compresses too.*
+
+**Exited** — Unity EditMode validation green (82 tests, 2026-07-27); the first human run happened
+(Run-000002).

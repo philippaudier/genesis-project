@@ -85,3 +85,11 @@ be found again, replayed, compared. It ceases to be an intervention. It becomes 
 (The engineering restatement — "an external event can be observed, replayed, and causally
 attributed; a played session is a world object" — is kept as the implementation's echo of the same
 fact.)
+
+> **What illusion did the laboratory lose?** *(second tradition question, added upon L-003's
+> close, asked retroactively)*
+
+*The illusion that outside influence had to be invisible — that a hidden hand was the price of
+having a host.*
+
+**Exited** — Unity EditMode validation green (82 tests, 2026-07-27).

@@ -67,3 +67,16 @@ what it means belongs to no one yet.
 what happened again — nine movements where three were told, a second repair nobody knew existed,
 and the field's twelve entries: the narrative's crossroads, now countable. The reader stopped
 believing that only beginnings are events.*
+
+> **What illusion did the laboratory lose?** *(second tradition question — deposited by the
+> founder at this milestone's close, and now standing for every L milestone alongside the first)*
+
+*The illusion that only beginnings count. Time regained its thickness: a life is not a succession
+of first times — it is, mostly, a succession of returns. (The founder's restatement of this
+milestone's real achievement, adopted: the reader no longer privileges beginnings.)*
+
+**Exited** — Unity EditMode validation green (82 tests, 2026-07-27). Closed by the founder with
+Era I's theme restated: not "improve the reader" but **unlearn the simplifications** — L-001 lost
+the hidden hand, L-002 lost biography-as-life, L-003 lost firsts-as-events. L-004 deliberately not
+opened: time is being allowed to pass. The founder's prediction, on record: RD-L6 will find a
+fourth specimen before a single line of Patterns is written.
