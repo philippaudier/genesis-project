@@ -58,7 +58,15 @@ editable artefacts during the sprint: run files, observations, the carnet.
 | 000007 | systematic (narrated the other's full biography, incl. the restitution, with "!") | never | none — pure observation | **own biography empty**; own life suspended to watch another's |
 | 000008 | systematic | **causal yes, fault no** ("Si je ramasse… l'être semble la chercher") | cache emptied #2; **waiting post**: 109/127 ticks stood at the station to watch the search | tree 0 ticks; own sword untouched (3rd run in a row) |
 
-Observations filed: LB-Obs-005 (recognition arc + inversion), LB-Obs-006 (the experimenter).
+| 000009 | systematic | never | **tried to "attack" the being** ("sachant que je ne pourrais rien lui faire") — no channel exists; both swords hoarded; the other's sword repaired | — |
+| 000010 | background ("j'ai fait ma vie, il a fait sa vie") | never | took the other's returned sword; **"convoiter" named**; reader's labels inside the narrative | own sword: "ma old sword", less coveted |
+| 000011 | systematic | — ("puni par ma **convoitise**") | blocked ×7 at the clearing; **canonical order read as punishment** | tree: 2 ticks |
+| 000012 | systematic (models the being's passages) | **concealment**: "je ne voulais pas qu'il s'en aperçoive" | undid own interference; blocked again by id order | — |
+| 000013 | systematic (cross-run comparison) | never | sword stranded at the **Field — no player gesture exists there** | tree: 2 ticks |
+| 000014 | **habituated** ("comme à son habitude…") | never | the other's sword repaired again | the routine itself now ignorable |
+
+Observations filed: LB-Obs-005 (recognition arc + inversion), LB-Obs-006 (the experimenter),
+LB-Obs-007 (the tiebreak felt as punishment), LB-Obs-008 (the narrator's persistent world).
 Sealed predictions: **L-007 recognition CONFIRMED** (with inversion recorded) · **L-008
 responsibility SPLIT** (mechanism confirmed, affect refuted — founder to adjudicate).
 Pain noted, not fixed (freeze): the export prints `Kind(24)` for ArriveB (display name missing).
@@ -75,3 +83,45 @@ nothing, that too is a result: the world is sufficient, and the laboratory keeps
 
 > *At the start, we invented the questions. Now the questions begin to emerge from the world
 > itself. L-009 will not be chosen — it will be asked for.*
+
+---
+
+# SPRINT CLOSED — the synthesis (10 specimens: Runs 000005–000014)
+
+## The surprises, gathered
+
+1. Recognition debuted **inverted** (self mistaken for other) and ended **habituated** ("comme à
+   son habitude…") — the full arc in ten runs.
+2. The player **became the laboratory**: waiting posts, conditional protocols, manipulations.
+3. An **arbitrary tiebreak was felt as punishment** — the world's least significant code produced
+   its most charged sentence.
+4. **Concealment appeared**: an interference undone so the other would not notice — belief
+   management toward a machine that notices nothing.
+5. The narrator **lives in a persistent world that does not exist** — six of ten narratives
+   presuppose continuity across resets.
+6. The reader's vocabulary **colonised the narrator** ("the other sword" inside French).
+7. Desire inverted LB-001's expectation: the invested sword is "ma old sword"; the coveted one
+   is the other's. And the other's sword was *repaired* by the player, twice, unprompted.
+8. One attempted **aggression on the other's body** — the membrane has no such channel.
+
+## The one question, answered by tally
+
+> *What is the smallest law that would make possible the greatest number of observed phenomena —
+> which debt keeps returning?*
+
+- **Persistence across sessions** — demanded (as lived fiction) by 6 of 10 narratives: return,
+  habit, "comme avant", concealment-from-future-notice. RFC-L003 was founded on day one and
+  deferred until a world demanded it. **The demand-side document now exists, written by the
+  founder's own runs.** Enables the most narrated phenomena by turning them from fiction to fact.
+- **Choice in taking** — blocked desire in 3 runs (11, 12, 13): the player cannot choose which
+  object a gesture touches, and cannot take at all where no gesture exists (the Field).
+- **Acting on the other's body** — voiced once (run 9). Recorded, not yet insistent.
+
+The world has spoken twice, loudly. **L-009 is the founder's choice between the two demands the
+world actually voiced** — the laboratory presents the tally and stops.
+
+## Debts (classified at close, per sprint discipline — see DEBTS.md)
+
+RD-L8 (dependency between biographies — promoted from the carnet, now observation-backed) ·
+RD-L9 (when a gesture could touch several objects, what chooses?) · RD-L10 (the narrator
+persists, the world does not — what happens when a world remembers as long as its inhabitants?).
