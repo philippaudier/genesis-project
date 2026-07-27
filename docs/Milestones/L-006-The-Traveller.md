@@ -1,4 +1,4 @@
-# L-006 — The Traveller
+s# L-006 — The Traveller
 
 *The first milestone of Era II — **the worlds live**. Article 6 is satisfied: the reader is ahead;
 the world may grow. The Traveller is not a feature. It is Era II's first phenomenon.*
@@ -33,6 +33,22 @@ is exact** — the trace suffices, one record, several biographies. The scientif
 answered mechanically: **yes — two biographies interacted without having been written for each
 other.** (The sealed prediction is NOT scored on this — per its own rule, it awaits the first
 human run with the Traveller active.)
+
+## The sealed prediction — scored (LB-Obs-004)
+
+**REFUTED.** The first human run's narrative registers *presence* — "observer pour la première
+fois, un autre, faire sa vie" — and its behaviour met the encounter first (the broadcast line,
+from t=0) and the absence last (two Acts on an empty clearing, the run's final events, untold).
+Robustness: the laboratory's own contamination (disclosed in Run-000003's caveats) biased the
+subject *toward* absence; presence won anyway. Founder's record: 3 hits, 1 miss.
+
+The refutation's most valuable residue is methodological, filed in the carnet as **the Faithful
+Window**: the observer UI broadcast every location at all times — an omniscience the world's
+bodies do not have — and nothing can be missing for someone who always sees where everything is.
+The prediction may have failed against the instrument, not the world. A window that shows only
+what a body could see from where it stands would let the world decide what is absent. The
+laboratory counts this refutation as a win: the prediction was real enough to lose, and losing
+it taught more than confirming it would have.
 
 ## The tradition
 
