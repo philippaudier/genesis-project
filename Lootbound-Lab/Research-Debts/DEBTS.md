@@ -3,6 +3,9 @@
 *Questions, never solutions. A debt is paid by observations, never by design. Statuses: Open ·
 Paid (by LB-Obs-NNN) · Forgiven (the question dissolved).*
 
+*Research Sprint 001 discipline (while it runs): no debt is paid or classified. They accumulate.
+Classification happens once, at the sprint's end — we finally know how to wait.*
+
 ---
 
 | # | The debt | Status |
