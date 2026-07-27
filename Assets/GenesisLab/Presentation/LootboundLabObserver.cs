@@ -30,13 +30,29 @@ namespace Genesis.Presentation
         private bool _paused;
         private string _biography = "";
 
+        private string _worldPath;
+        private string _worldName;
+        private int _persistedCount;
+
         private void Start()
         {
-            ResetWorld();
+            OpenWorld();
         }
 
-        private void ResetWorld()
+        /// <summary>
+        /// L-009 (RFC-L003): a session is an observation window on a continuing world. Opening is
+        /// ONE operation with no branch on "is this the first session": find the current world's
+        /// file, replay whatever history it holds (a new world is the case of nothing to replay),
+        /// and continue appending. The world's file IS its trace; nothing is saved — nothing is
+        /// allowed to forget.
+        /// </summary>
+        private void OpenWorld()
         {
+            string directory = System.IO.Path.Combine(Application.dataPath, "..", "Lootbound-Lab", "Worlds");
+            System.IO.Directory.CreateDirectory(directory);
+            _worldPath = CurrentWorldFile(directory);
+            _worldName = System.IO.Path.GetFileNameWithoutExtension(_worldPath);
+
             _state = LootboundWorld.BuildInitialState();
             _relations = LootboundWorld.BuildRelations(_state);
             _laws = LootboundWorld.BuildLaws();
@@ -45,6 +61,103 @@ namespace Genesis.Presentation
             _traveller = TravellerEnabled ? new TravellerProducer() : null;
             _accumulator = 0f;
             _biography = "";
+
+            long age = 0;
+            foreach (string line in System.IO.File.ReadAllLines(_worldPath))
+            {
+                string[] parts = line.Split(' ');
+                if (parts.Length == 5 && parts[0] == "e")
+                {
+                    var crossing = new ExternalEvent(
+                        new Tick(long.Parse(parts[1])),
+                        new Cell(new Place(int.Parse(parts[3])), KindById(int.Parse(parts[2]))),
+                        long.Parse(parts[4]));
+                    _trace.Append(crossing);
+                    if (crossing.Boundary.Value + 2 > age)
+                    {
+                        age = crossing.Boundary.Value + 2;
+                    }
+                }
+                else if (parts.Length == 2 && parts[0] == "s" && long.Parse(parts[1]) > age)
+                {
+                    age = long.Parse(parts[1]);
+                }
+            }
+
+            _state = _runner.Run(_state, _relations, _laws, _trace, age); // replay: the world catches up with itself
+            _persistedCount = _trace.Events.Count;
+        }
+
+        private static string CurrentWorldFile(string directory)
+        {
+            int highest = 0;
+            bool abandoned = false;
+            foreach (string file in System.IO.Directory.GetFiles(directory, "World-*.log"))
+            {
+                string name = System.IO.Path.GetFileNameWithoutExtension(file);
+                if (int.TryParse(name.Substring(6), out int number) && number > highest)
+                {
+                    highest = number;
+                    abandoned = System.IO.File.ReadAllText(file).Contains("\na ");
+                }
+            }
+
+            if (highest == 0 || abandoned)
+            {
+                highest++;
+                string path = System.IO.Path.Combine(directory, $"World-{highest:000}.log");
+                System.IO.File.WriteAllText(path, $"# World-{highest:000} — a continuing world (RFC-L003; append-only)\n");
+                return path;
+            }
+
+            return System.IO.Path.Combine(directory, $"World-{highest:000}.log");
+        }
+
+        private static Kind KindById(int id)
+        {
+            if (id == 11) return LootboundWorld.Go;
+            if (id == 12) return LootboundWorld.Act;
+            if (id == 13) return LootboundWorld.Attack;
+            if (id == 21) return LootboundWorld.GoB;
+            if (id == 22) return LootboundWorld.ActB;
+            if (id == 23) return LootboundWorld.LeaveB;
+            if (id == 24) return LootboundWorld.ArriveB;
+            return new Kind(id);
+        }
+
+        private void PersistNewCrossings()
+        {
+            var lines = new System.Text.StringBuilder();
+            for (int i = _persistedCount; i < _trace.Events.Count; i++)
+            {
+                ExternalEvent crossing = _trace.Events[i];
+                lines.Append($"e {crossing.Boundary.Value} {crossing.Target.Kind.Value} {crossing.Target.Place.Value} {crossing.Amount}\n");
+            }
+
+            if (lines.Length > 0)
+            {
+                System.IO.File.AppendAllText(_worldPath, lines.ToString());
+                _persistedCount = _trace.Events.Count;
+            }
+        }
+
+        private void CloseSession()
+        {
+            if (_worldPath != null)
+            {
+                PersistNewCrossings();
+                System.IO.File.AppendAllText(_worldPath, $"s {_state.CurrentTick.Value}\n");
+            }
+        }
+
+        private void OnDestroy()
+        {
+            CloseSession();
+        }
+
+        private void OnApplicationQuit()
+        {
+            CloseSession();
         }
 
         private void Update()
@@ -62,7 +175,10 @@ namespace Genesis.Presentation
 
             if (keyboard.rKey.wasPressedThisFrame)
             {
-                ResetWorld();
+                // The ceremony (RFC-L003): abandoning a world is an act the record keeps.
+                PersistNewCrossings();
+                System.IO.File.AppendAllText(_worldPath, $"a {_state.CurrentTick.Value}\n");
+                OpenWorld(); // the next world begins; the old file remains, closed, on the shelf
                 return;
             }
 
@@ -108,8 +224,9 @@ namespace Genesis.Presentation
                 }
 
                 _state = _runner.Run(_state, _relations, _laws, _trace, 1);
+                PersistNewCrossings(); // append-on-tick: the file never rewrites, only grows
                 _biography = BiographyChronicler.Chronicle(
-                    _trace, _state.CurrentTick.Value, LootboundWorld.OldSword, "Run-live", "Sword-1000");
+                    _trace, _state.CurrentTick.Value, LootboundWorld.OldSword, _worldName, "Sword-1000");
             }
         }
 
@@ -169,7 +286,7 @@ namespace Genesis.Presentation
             text.AppendLine();
             text.AppendLine("```");
             text.AppendLine("Producer: Human");
-            text.AppendLine("World:    L-002");
+            text.AppendLine($"World:    {_worldName} (L-002 laws)");
             text.AppendLine($"Date:     {System.DateTime.Now:yyyy-MM-dd HH:mm}");
             text.AppendLine($"Length:   {_state.CurrentTick.Value} ticks");
             text.AppendLine("```");
@@ -257,7 +374,7 @@ namespace Genesis.Presentation
         private void OnGUI()
         {
             GUILayout.BeginArea(new Rect(12, 12, 640, 720));
-            GUILayout.Label($"LOOTBOUND LAB — the first living world      tick {_state.CurrentTick.Value}{(_paused ? "   [paused]" : "")}");
+            GUILayout.Label($"LOOTBOUND LAB — {_worldName}, a continuing world      tick {_state.CurrentTick.Value}{(_paused ? "   [paused]" : "")}");
             GUILayout.Space(6);
             GUILayout.Label($"You are at: {NameOf(PlayerPlace())}");
             string someoneElse = BodyBPlace();

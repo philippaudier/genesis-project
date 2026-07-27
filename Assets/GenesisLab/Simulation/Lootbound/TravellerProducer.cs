@@ -86,6 +86,29 @@ namespace Genesis.Simulation.Lootbound
             }
 
             Goal goal = _itinerary[_current];
+
+            // L-009 guard: a FRESH producer that discovers its body already absent — a continued
+            // world whose visit happened in an earlier session — retires silently instead of
+            // emitting dead intents forever. Whether the being ever returns is a producer-policy
+            // question RFC-L003 explicitly defers; in L-009 the visit is not repeated.
+            if (_current == 0 && goal.Kind == GoalKind.WalkTo)
+            {
+                bool anywhere = false;
+                foreach (Place place in LootboundWorld.Spatial)
+                {
+                    if (state.ValueAt(new Cell(place, LootboundWorld.BodyB)) == 1)
+                    {
+                        anywhere = true;
+                    }
+                }
+
+                if (!anywhere)
+                {
+                    _current = _itinerary.Count;
+                    return;
+                }
+            }
+
             bool atGoalPlace = state.ValueAt(new Cell(goal.Place, LootboundWorld.BodyB)) == 1;
 
             switch (goal.Kind)
