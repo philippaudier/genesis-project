@@ -215,6 +215,9 @@ namespace Genesis.Presentation
             if (kind == LootboundWorld.Go) return "Go";
             if (kind == LootboundWorld.Act) return "Act";
             if (kind == LootboundWorld.Attack) return "Attack";
+            if (kind == LootboundWorld.GoB) return "GoB";
+            if (kind == LootboundWorld.ActB) return "ActB";
+            if (kind == LootboundWorld.LeaveB) return "LeaveB";
             return kind.ToString();
         }
 
