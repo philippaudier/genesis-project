@@ -34,6 +34,17 @@ The more elegant an explanation appears, the riskier the predictions it must pro
 
 One never argues against an observation. One changes the theory.
 
+## Article 6 — The laboratory stays one generation ahead of the world
+
+*(Added 2026-07-27 — earned, not decreed: the forensic replay of Run-000002 showed the reader had
+lost six of nine transitions of a single sword. Had ten systems been added first, that discovery
+would lie buried under thousands of events. It was visible because the world was still small.)*
+
+If the world is to grow richer, the laboratory must already know how to observe the new phenomena.
+When the laboratory discovers a limit in itself, that limit is resolved **before** a new class of
+phenomena is introduced. Eras therefore alternate: the reader improves while the world stays
+simple; the world grows while the reader stays stable; never both at once.
+
 ---
 
 ## The motto

@@ -102,11 +102,21 @@ namespace Genesis.Tests
             StringAssert.Contains("Acquisition", biography);
             StringAssert.Contains("First wear", biography);
             StringAssert.Contains("First repair", biography);
-            StringAssert.Contains("First superior sword discovered", biography);
-            StringAssert.Contains("Replacement refused", biography);
+            StringAssert.Contains("First presence at the clearing while the other sword lay there", biography);
+            StringAssert.Contains("Left the clearing carrying this sword while the other lay there", biography);
             StringAssert.Contains("Stored at the shelter", biography);
-            StringAssert.Contains("Voluntary re-equipment", biography);
-            StringAssert.Contains("Status: First complete biography observed.", biography);
+            StringAssert.Contains("Retrieved from the shelter again", biography);
+            StringAssert.Contains("Status: All seven firsts observed.", biography);
+
+            // L-003: the reader's vocabulary is RD-L6-bounded — no intention, no invented property.
+            StringAssert.DoesNotContain("refused", biography);
+            StringAssert.DoesNotContain("Voluntary", biography);
+            StringAssert.DoesNotContain("superior", biography);
+
+            // L-003: the movement layer — every transition, not only firsts. The bot session moves
+            // the sword exactly three times: chest -> hand, hand -> chest, chest -> hand.
+            StringAssert.Contains("The object changed location 3 times.", biography);
+            StringAssert.Contains("Entries at the repair station before the first repair: 1", biography);
 
             // Irreversibility: replaying the same run yields the same biography — and each first
             // occurred exactly once.
