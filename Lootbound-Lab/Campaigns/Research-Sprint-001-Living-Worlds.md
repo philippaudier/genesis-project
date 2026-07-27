@@ -49,6 +49,20 @@ editable artefacts during the sprint: run files, observations, the carnet.
 - Predictions are scored only at sprint end, on the accumulated record — except where a sealed
   scoring rule says "first human run", which binds as written.
 
+## Specimen log
+
+| Run | S1 Recognition | S2 Responsibility | S3 Interference | S4 Silence |
+|---|---|---|---|---|
+| 000005 | sometimes — **inverted** ("un 2ème être… ce n'était que moi") | never | swapped swords at the clearing twice; **used** the other's returned sword (wear 7 on it) | — |
+| 000006 | **systematic** ("l'être est revenu… pas mon imagination") | never (watched the search of a cache they had emptied; no fault language) | cache emptied #1; stored at the shelter | own sword untouched |
+| 000007 | systematic (narrated the other's full biography, incl. the restitution, with "!") | never | none — pure observation | **own biography empty**; own life suspended to watch another's |
+| 000008 | systematic | **causal yes, fault no** ("Si je ramasse… l'être semble la chercher") | cache emptied #2; **waiting post**: 109/127 ticks stood at the station to watch the search | tree 0 ticks; own sword untouched (3rd run in a row) |
+
+Observations filed: LB-Obs-005 (recognition arc + inversion), LB-Obs-006 (the experimenter).
+Sealed predictions: **L-007 recognition CONFIRMED** (with inversion recorded) · **L-008
+responsibility SPLIT** (mechanism confirmed, affect refuted — founder to adjudicate).
+Pain noted, not fixed (freeze): the export prints `Kind(24)` for ArriveB (display name missing).
+
 ## The end (after ~10 runs)
 
 Gather — not the traces, not the biographies: **the surprises.** Then one question only:
