@@ -17,11 +17,15 @@ namespace Genesis.Presentation
         [Tooltip("Real seconds per logical tick. Presentation knowledge only; the world knows ticks.")]
         public float SecondsPerTick = 0.4f;
 
+        [Tooltip("L-006: whether the Traveller (a second producer) inhabits the world this session.")]
+        public bool TravellerEnabled = true;
+
         private SimulationState _state;
         private RelationSet _relations;
         private System.Collections.Generic.IReadOnlyList<ITransition> _laws;
         private TickRunner _runner;
         private ExternalEventTrace _trace;
+        private TravellerProducer _traveller;
         private float _accumulator;
         private bool _paused;
         private string _biography = "";
@@ -38,6 +42,7 @@ namespace Genesis.Presentation
             _laws = LootboundWorld.BuildLaws();
             _runner = LootboundWorld.BuildRunner();
             _trace = new ExternalEventTrace(LootboundWorld.BuildMembrane());
+            _traveller = TravellerEnabled ? new TravellerProducer() : null;
             _accumulator = 0f;
             _biography = "";
         }
@@ -97,6 +102,11 @@ namespace Genesis.Presentation
             while (_accumulator >= SecondsPerTick)
             {
                 _accumulator -= SecondsPerTick;
+                if (_traveller != null && !_traveller.Done)
+                {
+                    _traveller.Step(_state, _trace); // one more producer; the world will never know
+                }
+
                 _state = _runner.Run(_state, _relations, _laws, _trace, 1);
                 _biography = BiographyChronicler.Chronicle(
                     _trace, _state.CurrentTick.Value, LootboundWorld.OldSword, "Run-live", "Sword-1000");
@@ -220,10 +230,25 @@ namespace Genesis.Presentation
         private string SwordLine(Place sword, string label)
         {
             long loc = _state.ValueAt(new Cell(sword, LootboundWorld.Location));
-            string where = loc == 0 ? "in hand" : NameOf(new Place((int)loc));
+            string where = loc == LootboundWorld.HeldByA ? "in hand"
+                : loc == LootboundWorld.HeldByB ? "carried by someone"
+                : NameOf(new Place((int)loc));
             long wear = _state.ValueAt(new Cell(sword, LootboundWorld.Wear));
             long repairs = _state.ValueAt(new Cell(sword, LootboundWorld.Repairs));
             return $"{label}: {where}   wear {wear}   repairs {repairs}";
+        }
+
+        private string BodyBPlace()
+        {
+            foreach (Place place in LootboundWorld.Spatial)
+            {
+                if (_state.ValueAt(new Cell(place, LootboundWorld.BodyB)) == 1)
+                {
+                    return NameOf(place);
+                }
+            }
+
+            return null;
         }
 
         private void OnGUI()
@@ -232,8 +257,14 @@ namespace Genesis.Presentation
             GUILayout.Label($"LOOTBOUND LAB — the first living world      tick {_state.CurrentTick.Value}{(_paused ? "   [paused]" : "")}");
             GUILayout.Space(6);
             GUILayout.Label($"You are at: {NameOf(PlayerPlace())}");
+            string someoneElse = BodyBPlace();
+            if (someoneElse != null)
+            {
+                GUILayout.Label($"Someone else is at: {someoneElse}");
+            }
+
             GUILayout.Label(SwordLine(LootboundWorld.OldSword, "Old sword"));
-            GUILayout.Label(SwordLine(LootboundWorld.NewSword, "Better sword"));
+            GUILayout.Label(SwordLine(LootboundWorld.NewSword, "Other sword"));
             GUILayout.Label($"Wood: {_state.ValueAt(new Cell(LootboundWorld.Pack, LootboundWorld.Wood))}");
             GUILayout.Space(6);
             GUILayout.Label($"From here you can walk to: {ReachableFromHere()}");

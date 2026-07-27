@@ -35,24 +35,27 @@ namespace Genesis.Simulation.Lootbound
     }
 
     /// <summary>
-    /// Walking: a Go intent at a place moves the player marker there — but only across a declared
-    /// relation. Space is the graph; there is no other way to move.
+    /// Walking: a Go intent at a place moves a body's marker there — but only across a declared
+    /// relation. Space is the graph; there is no other way to move. One law, any body (L-006):
+    /// the law is instantiated per (place, body kind, intent kind) and never knows who drives.
     /// </summary>
     public sealed class MoveLaw : ITransition
     {
         private readonly Place _target;
+        private readonly Kind _bodyKind;
         private readonly Cell _goCell;
         private readonly Cell _hereCell;
         private readonly ReadScope _readScope;
         private readonly RelationScope _relationScope;
 
-        public MoveLaw(Place target)
+        public MoveLaw(Place target, Kind bodyKind, Kind goKind)
         {
             _target = target;
-            _goCell = new Cell(target, LootboundWorld.Go);
-            _hereCell = LootboundCells.P(target);
+            _bodyKind = bodyKind;
+            _goCell = new Cell(target, goKind);
+            _hereCell = new Cell(target, bodyKind);
             _readScope = new ReadScope(_goCell, _hereCell);
-            _relationScope = new RelationScope(new[] { target }, new[] { LootboundWorld.PlayerAt });
+            _relationScope = new RelationScope(new[] { target }, new[] { bodyKind });
         }
 
         public ReadScope ReadScope => _readScope;
@@ -72,7 +75,7 @@ namespace Genesis.Simulation.Lootbound
                 IReadOnlyList<Relation> outgoing = view.OutgoingRelations(_target);
                 for (int i = 0; i < outgoing.Count; i++)
                 {
-                    Cell neighbour = LootboundCells.P(outgoing[i].Target);
+                    Cell neighbour = new Cell(outgoing[i].Target, _bodyKind);
                     if (view.Read(neighbour) == 1)
                     {
                         contributions.Add(new Contribution(neighbour, -1));
@@ -80,6 +83,118 @@ namespace Genesis.Simulation.Lootbound
                         break;
                     }
                 }
+            }
+
+            return contributions;
+        }
+    }
+
+    /// <summary>
+    /// Body B's one gesture (L-006): at a place, ActB is a toggle — holding nothing, pick up the
+    /// sword lying here (lowest id first, canonical); holding something, put it down here. The
+    /// meaning of the gesture lives in this law, never in the trace.
+    /// </summary>
+    public sealed class PickDropLaw : ITransition
+    {
+        private readonly Place _place;
+        private readonly Cell _actCell;
+        private readonly Cell _hereCell;
+        private readonly ReadScope _readScope;
+
+        public PickDropLaw(Place place)
+        {
+            _place = place;
+            _actCell = new Cell(place, LootboundWorld.ActB);
+            _hereCell = new Cell(place, LootboundWorld.BodyB);
+            _readScope = new ReadScope(
+                _actCell, _hereCell,
+                LootboundCells.Loc(LootboundWorld.OldSword), LootboundCells.Loc(LootboundWorld.NewSword));
+        }
+
+        public ReadScope ReadScope => _readScope;
+        public RelationScope RelationScope => RelationScope.Empty;
+
+        public IReadOnlyList<Contribution> Apply(IRelationalStateView view)
+        {
+            long act = view.Read(_actCell);
+            if (act <= 0)
+            {
+                return new Contribution[0];
+            }
+
+            var contributions = new List<Contribution> { new Contribution(_actCell, -act) };
+            if (view.Read(_hereCell) == 1)
+            {
+                Place? held = null;
+                Place? onGround = null;
+                foreach (Place sword in LootboundWorld.Swords) // ascending id: canonical order
+                {
+                    long loc = view.Read(LootboundCells.Loc(sword));
+                    if (loc == LootboundWorld.HeldByB && !held.HasValue)
+                    {
+                        held = sword;
+                    }
+
+                    if (loc == _place.Value && !onGround.HasValue)
+                    {
+                        onGround = sword;
+                    }
+                }
+
+                if (held.HasValue)
+                {
+                    contributions.Add(new Contribution(
+                        LootboundCells.Loc(held.Value), _place.Value - LootboundWorld.HeldByB));
+                }
+                else if (onGround.HasValue)
+                {
+                    contributions.Add(new Contribution(
+                        LootboundCells.Loc(onGround.Value), LootboundWorld.HeldByB - _place.Value));
+                }
+            }
+
+            return contributions;
+        }
+    }
+
+    /// <summary>
+    /// Departure (L-006): body B may leave the world, from the field only. Departure may not
+    /// destroy — whatever the body holds is put down where it stands; then the marker goes to
+    /// zero. Objects are conserved; only drivers leave.
+    /// </summary>
+    public sealed class DepartLaw : ITransition
+    {
+        private static readonly Cell LeaveCell = new Cell(LootboundWorld.Field, LootboundWorld.LeaveB);
+        private static readonly Cell AtField = new Cell(LootboundWorld.Field, LootboundWorld.BodyB);
+
+        private readonly ReadScope _readScope = new ReadScope(
+            LeaveCell, AtField,
+            LootboundCells.Loc(LootboundWorld.OldSword), LootboundCells.Loc(LootboundWorld.NewSword));
+
+        public ReadScope ReadScope => _readScope;
+        public RelationScope RelationScope => RelationScope.Empty;
+
+        public IReadOnlyList<Contribution> Apply(IRelationalStateView view)
+        {
+            long leave = view.Read(LeaveCell);
+            if (leave <= 0)
+            {
+                return new Contribution[0];
+            }
+
+            var contributions = new List<Contribution> { new Contribution(LeaveCell, -leave) };
+            if (view.Read(AtField) == 1)
+            {
+                foreach (Place sword in LootboundWorld.Swords)
+                {
+                    if (view.Read(LootboundCells.Loc(sword)) == LootboundWorld.HeldByB)
+                    {
+                        contributions.Add(new Contribution(
+                            LootboundCells.Loc(sword), LootboundWorld.Field.Value - LootboundWorld.HeldByB));
+                    }
+                }
+
+                contributions.Add(new Contribution(AtField, -1));
             }
 
             return contributions;

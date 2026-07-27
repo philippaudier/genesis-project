@@ -27,25 +27,41 @@ namespace Genesis.Simulation.Lootbound
         public static readonly Place[] Swords = { OldSword, NewSword };
 
         // ------------------------------------------------------------------ kinds (internal state)
-        /// <summary>1 at exactly one spatial place: where the player stands.</summary>
+        /// <summary>1 at exactly one spatial place: where body A stands. (The world knows bodies,
+        /// never who drives them — a human, a bot, a replay: provenance-blindness, RFC-L001.)</summary>
         public static readonly Kind PlayerAt = new Kind(1);
         public static readonly Kind Wear = new Kind(2);
         public static readonly Kind Repairs = new Kind(3);
-        /// <summary>On swords: the spatial place id where it lies; 0 = carried in hand.</summary>
+        /// <summary>On swords: the spatial place id where it lies; 0 = held by body A;
+        /// 1 = held by body B (declared convention — 1 is not a place id).</summary>
         public static readonly Kind Location = new Kind(4);
         public static readonly Kind Wood = new Kind(5);
+        /// <summary>1 at at most one spatial place: where body B stands; all zero = absent
+        /// (L-006: the world carries two bodies; a body may leave).</summary>
+        public static readonly Kind BodyB = new Kind(6);
+
+        /// <summary>Location value meaning "held by body A".</summary>
+        public const long HeldByA = 0;
+        /// <summary>Location value meaning "held by body B".</summary>
+        public const long HeldByB = 1;
 
         // ------------------------------------------------------------------ kinds (the membrane)
-        /// <summary>External: 1 at a spatial place = the producer intends to walk THERE.</summary>
+        /// <summary>External: 1 at a spatial place = body A's driver intends to walk THERE.</summary>
         public static readonly Kind Go = new Kind(11);
-        /// <summary>External: 1 at a spatial place = interact here (meaning belongs to that place's law).</summary>
+        /// <summary>External: 1 at a spatial place = body A interacts here (meaning belongs to that place's law).</summary>
         public static readonly Kind Act = new Kind(12);
-        /// <summary>External: 1 at the tree = strike it.</summary>
+        /// <summary>External: 1 at the tree = body A strikes it.</summary>
         public static readonly Kind Attack = new Kind(13);
+        /// <summary>External: 1 at a spatial place = body B's driver intends to walk THERE.</summary>
+        public static readonly Kind GoB = new Kind(21);
+        /// <summary>External: 1 at a spatial place = body B picks up / puts down here (toggle law).</summary>
+        public static readonly Kind ActB = new Kind(22);
+        /// <summary>External: 1 at the field = body B leaves the world (departure drops what is held).</summary>
+        public static readonly Kind LeaveB = new Kind(23);
 
         public static Membrane BuildMembrane()
         {
-            return new Membrane(new[] { Go, Act, Attack });
+            return new Membrane(new[] { Go, Act, Attack, GoB, ActB, LeaveB });
         }
 
         /// <summary>
@@ -60,12 +76,16 @@ namespace Genesis.Simulation.Lootbound
             {
                 cells[new Cell(place, PlayerAt)] = place == Shelter ? 1 : 0;
                 cells[new Cell(place, Go)] = 0;
+                cells[new Cell(place, BodyB)] = place == Tree ? 1 : 0;
+                cells[new Cell(place, GoB)] = 0;
+                cells[new Cell(place, ActB)] = 0;
             }
 
             cells[new Cell(Shelter, Act)] = 0;
             cells[new Cell(Station, Act)] = 0;
             cells[new Cell(Clearing, Act)] = 0;
             cells[new Cell(Tree, Attack)] = 0;
+            cells[new Cell(Field, LeaveB)] = 0;
 
             foreach (Place sword in Swords)
             {
@@ -93,19 +113,22 @@ namespace Genesis.Simulation.Lootbound
             return new RelationSet(state, relations.ToArray());
         }
 
-        /// <summary>The five interpreting laws — the honest price of RFC-L001, paid.</summary>
+        /// <summary>The interpreting laws — the honest price of RFC-L001, paid for both bodies.</summary>
         public static IReadOnlyList<ITransition> BuildLaws()
         {
             var laws = new List<ITransition>();
             foreach (Place place in Spatial)
             {
-                laws.Add(new MoveLaw(place));
+                laws.Add(new MoveLaw(place, PlayerAt, Go));
+                laws.Add(new MoveLaw(place, BodyB, GoB));
+                laws.Add(new PickDropLaw(place));
             }
 
             laws.Add(new HarvestLaw());
             laws.Add(new RepairLaw());
             laws.Add(new SwapLaw());
             laws.Add(new StowLaw());
+            laws.Add(new DepartLaw());
             return laws;
         }
 
@@ -118,9 +141,13 @@ namespace Genesis.Simulation.Lootbound
                 { Repairs, new AdditionResolver() },
                 { Location, new AdditionResolver() },
                 { Wood, new AdditionResolver() },
+                { BodyB, new AdditionResolver() },
                 { Go, new AdditionResolver() },
                 { Act, new AdditionResolver() },
-                { Attack, new AdditionResolver() }
+                { Attack, new AdditionResolver() },
+                { GoB, new AdditionResolver() },
+                { ActB, new AdditionResolver() },
+                { LeaveB, new AdditionResolver() }
             };
             return new TickRunner(new TransitionRunner(resolvers));
         }

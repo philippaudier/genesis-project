@@ -314,9 +314,15 @@ namespace Genesis.Simulation.Lootbound
 
         private static string PlaceName(long locationValue)
         {
-            if (locationValue == 0) return "in hand";
+            // Declared conventions (L-006): 0 = held by body A ("in hand", the historical name);
+            // 1 = held by body B. Neither is a place id (place ids are >= 100).
+            if (locationValue == LootboundWorld.HeldByA) return "in hand";
+            if (locationValue == LootboundWorld.HeldByB) return "held (body B)";
             if (locationValue == LootboundWorld.Shelter.Value) return "shelter";
             if (locationValue == LootboundWorld.Clearing.Value) return "clearing ground";
+            if (locationValue == LootboundWorld.Station.Value) return "station ground";
+            if (locationValue == LootboundWorld.Field.Value) return "field ground";
+            if (locationValue == LootboundWorld.Tree.Value) return "tree ground";
             return $"place {locationValue}";
         }
 
