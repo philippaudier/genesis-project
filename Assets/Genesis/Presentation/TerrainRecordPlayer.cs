@@ -240,8 +240,10 @@ namespace Genesis.Presentation
                     int b = a + 1;
                     int c = a + _width;
                     int d = c + 1;
-                    triangles[t++] = a; triangles[t++] = c; triangles[t++] = b;
-                    triangles[t++] = b; triangles[t++] = c; triangles[t++] = d;
+                    // Wound so the front faces point up: with x = col and z = -row, the order
+                    // (a, b, c) gives a +Y normal. The reverse hides the world under itself.
+                    triangles[t++] = a; triangles[t++] = b; triangles[t++] = c;
+                    triangles[t++] = b; triangles[t++] = d; triangles[t++] = c;
                 }
             }
 
