@@ -140,6 +140,9 @@ Read these in order.
 1.
 README.md
 
+1b.
+docs/Design/00-WHY.md  (why Genesis exists — assembled only from sentences that already existed; read before everything else has a reason)
+
 2.
 docs/Constitution/00-CONSTITUTION.md
 

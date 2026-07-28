@@ -39,7 +39,9 @@ Failed Expectations         (the non-happened — scored ONLY against sealed exp
 World Corrections           (what the world/corpus forced the laboratory to correct along the way —
                              the story of the research, not of the world)
   ↓
-Reduction                   (findings tried against existing primitives before any design)
+Reduction                   (findings tried against existing primitives before any design;
+                             asks ADR-0006's three questions — what did the world learn? the
+                             laboratory? Genesis? — each answer routed to its one home)
   ↓
 Decision
 ```
