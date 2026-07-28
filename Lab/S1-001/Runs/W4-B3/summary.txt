@@ -1,0 +1,33 @@
+world: W4-B3
+ticks run: 150 of planned 150
+aborted at 2^40 guard: False
+first unchanged tick pair after rain: none
+last two recorded states identical: False
+final max |kind(2)| value: 20
+final max driving potential gradient across a relation: 1
+descent-pattern change count: 1; lock tick: 0
+
+audit:
+kind(2) net of declared crossings: 0 violation(s)
+kind(3)+kind(4) summed: 0 violation(s)
+kind(5): 150 violation(s)
+  tick 0->1: expected 270, found 271
+  tick 1->2: expected 271, found 272
+  tick 2->3: expected 272, found 273
+  tick 3->4: expected 273, found 274
+  tick 4->5: expected 274, found 275
+  tick 5->6: expected 275, found 276
+  tick 6->7: expected 276, found 277
+  tick 7->8: expected 277, found 278
+  tick 8->9: expected 278, found 279
+  tick 9->10: expected 279, found 280
+  ... (140 more)
+
+negativity:
+no negative kind(2) value occurred in the run
+
+partition (final state):
+terminal-minimum partition (convention: potential = kind(1)+kind(2); steepest descent; tie -> lowest place id)
+class terminal=place(24) members=9: [0,3,6,9,12,15,18,21,24]
+class terminal=place(25) members=9: [1,4,7,10,13,16,19,22,25]
+class terminal=place(26) members=9: [2,5,8,11,14,17,20,23,26]

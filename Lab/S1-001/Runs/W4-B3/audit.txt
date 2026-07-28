@@ -1,0 +1,14 @@
+kind(2) net of declared crossings: 0 violation(s)
+kind(3)+kind(4) summed: 0 violation(s)
+kind(5): 150 violation(s)
+  tick 0->1: expected 270, found 271
+  tick 1->2: expected 271, found 272
+  tick 2->3: expected 272, found 273
+  tick 3->4: expected 273, found 274
+  tick 4->5: expected 274, found 275
+  tick 5->6: expected 275, found 276
+  tick 6->7: expected 276, found 277
+  tick 7->8: expected 277, found 278
+  tick 8->9: expected 278, found 279
+  tick 9->10: expected 279, found 280
+  ... (140 more)

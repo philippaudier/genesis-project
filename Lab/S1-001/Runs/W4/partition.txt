@@ -1,0 +1,4 @@
+terminal-minimum partition (convention: potential = kind(1)+kind(2); steepest descent; tie -> lowest place id)
+class terminal=place(24) members=9: [0,3,6,9,12,15,18,21,24]
+class terminal=place(25) members=9: [1,4,7,10,13,16,19,22,25]
+class terminal=place(26) members=9: [2,5,8,11,14,17,20,23,26]

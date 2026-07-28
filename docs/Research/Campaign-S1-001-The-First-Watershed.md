@@ -1,6 +1,10 @@
 # Campaign S1-001 — The First Watershed
 
-Status: **Designed — sealed by this commit. Execution = separate authorisation.**
+Status: **Executed (2026-07-28).** Report: `Lab/S1-001/Runs/REPORT.md` — claims and facts only.
+Observations filed: 011 (the stasis), 012 (W3 frozen at gradient 2). A0/B1/B3 confirmed ·
+A1/A4 refuted · A2/A3/A5/B2 not exercised. All six sealed informal expectations failed.
+**Decision withheld — the reduction is a separate authorisation.**
+(Sealed as designed at `7a4814e`; nothing below this status line was modified after the seal.)
 Science: Science-001 — Geomorphology (first campaign of the register).
 Series note: `S1` = Science-001. One campaign register (`docs/Research/`); the prefix marks the
 science. Protocol: `TEMPLATE-Campaign.md` (canonical, first use).

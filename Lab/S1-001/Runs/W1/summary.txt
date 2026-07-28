@@ -1,0 +1,34 @@
+world: W1
+ticks run: 120 of planned 120
+aborted at 2^40 guard: False
+first unchanged tick pair after rain: 20
+last two recorded states identical: True
+final max |kind(2)| value: 20
+final max driving potential gradient across a relation: 1
+descent-pattern change count: 1; lock tick: 0
+
+audit:
+kind(2) net of declared crossings: 0 violation(s)
+
+negativity:
+no negative kind(2) value occurred in the run
+
+partition (final state):
+terminal-minimum partition (convention: potential = kind(1)+kind(2); steepest descent; tie -> lowest place id)
+class terminal=place(0) members=1: [0]
+class terminal=place(8) members=1: [8]
+class terminal=place(10) members=3: [1,9,10]
+class terminal=place(16) members=3: [7,16,17]
+class terminal=place(20) members=5: [2,11,18,19,20]
+class terminal=place(24) members=5: [6,15,24,25,26]
+class terminal=place(30) members=7: [3,12,21,27,28,29,30]
+class terminal=place(32) members=7: [5,14,23,32,33,34,35]
+class terminal=place(40) members=17: [4,13,22,31,36,37,38,39,40,41,42,43,44,49,58,67,76]
+class terminal=place(48) members=7: [45,46,47,48,57,66,75]
+class terminal=place(50) members=7: [50,51,52,53,59,68,77]
+class terminal=place(56) members=5: [54,55,56,65,74]
+class terminal=place(60) members=5: [60,61,62,69,78]
+class terminal=place(64) members=3: [63,64,73]
+class terminal=place(70) members=3: [70,71,79]
+class terminal=place(72) members=1: [72]
+class terminal=place(80) members=1: [80]
