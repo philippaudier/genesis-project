@@ -28,9 +28,17 @@ namespace Genesis.Lab.S1_001
                 return Execution.RunAll("Runs");
             }
 
-            Console.WriteLine("S1-001 laboratory (Campaign S1-001 - The First Watershed)");
-            Console.WriteLine("  --smoke    calibrate instruments on toy worlds (no sealed parcel is run)");
-            Console.WriteLine("  --execute  run the sealed parcels (authorised 2026-07-28)");
+            if (args.Length >= 1 && args[0] == "--execute-s1-002")
+            {
+                Console.WriteLine("Execution of Campaign S1-002 is not authorised.");
+                Console.WriteLine("The campaign is sealed (4885d04); execution requires separate authorisation.");
+                return 2;
+            }
+
+            Console.WriteLine("Science-001 laboratory");
+            Console.WriteLine("  --smoke            calibrate instruments on toy worlds (no sealed parcel is run)");
+            Console.WriteLine("  --execute          run Campaign S1-001's sealed parcels (authorised 2026-07-28)");
+            Console.WriteLine("  --execute-s1-002   (refused until authorised)");
             return 0;
         }
     }
@@ -55,6 +63,10 @@ namespace Genesis.Lab.S1_001
             Check("partition reader: toy slope terminates at the low end", PartitionReaderOnToySlope);
             Check("partition report passes the vocabulary gate; the gate itself catches a plant", VocabularyGateWorks);
             Check("sealed parcels build to their sealed parameters (no ticks run)", SealedParcelsBuild);
+            Check("flux counter matches hand-known toy transfers", FluxCounterOnToys);
+            Check("flux counter consistency check passes on an additive toy run", FluxConsistencyOnToy);
+            Check("flux counter discriminates a wrong divisor convention", FluxDiscriminatesConvention);
+            Check("S1-002 parcels build to their sealed parameters (no ticks run)", S1002ParcelsBuild);
 
             Console.WriteLine();
             if (Failures.Count == 0)
@@ -296,6 +308,101 @@ namespace Genesis.Lab.S1_001
                 "the reader's own report used forbidden vocabulary");
             Assert(PartitionReader.VocabularyViolations("a basin appeared").Count == 1,
                 "the gate failed to catch a planted forbidden word");
+        }
+
+        // Calibration toys deliberately belong to NO campaign: a 2-cell slope of 5 (the sealed
+        // sweep stops at 4) and chains with initial water (no sealed parcel starts wet).
+
+        private static void FluxCounterOnToys()
+        {
+            var places = new List<Place> { new Place(0), new Place(1) };
+            var cells = new Dictionary<Cell, long>
+            {
+                [new Cell(places[0], K.Elevation)] = 5,
+                [new Cell(places[0], K.Water)] = 0,
+                [new Cell(places[1], K.Elevation)] = 0,
+                [new Cell(places[1], K.Water)] = 0,
+            };
+            var state = new SimulationState(Tick.Zero, cells);
+            var relations = new RelationSet(state,
+                new Relation(places[0], places[1]), new Relation(places[1], places[0]));
+
+            IReadOnlyList<FluxCounter.EdgeFlux> flux =
+                FluxCounter.FluxAt(state, relations, places, K.Elevation, K.Water, Divisors.Naive);
+            Assert(flux.Count == 1, "one edge should carry flux");
+            Assert(flux[0].Source == places[0] && flux[0].Target == places[1] && flux[0].Amount == 2,
+                "slope 5, naive divisor: the edge should carry floor(5/2) = 2");
+
+            (SimulationState chain, RelationSet chainRelations, IReadOnlyList<Place> chainPlaces) = ToyChain(12, 0, 0);
+            IReadOnlyList<FluxCounter.EdgeFlux> chainFlux =
+                FluxCounter.FluxAt(chain, chainRelations, chainPlaces, K.Elevation, K.Water, Divisors.Naive);
+            Assert(chainFlux.Count == 1 && chainFlux[0].Amount == 6, "chain (12,0,0): 0->1 should carry 6");
+            long first = FluxCounter.FirstTransferTick(new[] { chain }, chainRelations, chainPlaces,
+                K.Elevation, K.Water, Divisors.Naive, new Relation(chainPlaces[0], chainPlaces[1]));
+            Assert(first == -1 || first == 0, "first-transfer scan should not crash on a single state");
+        }
+
+        private static ParcelRun ToyChainRun()
+        {
+            (SimulationState state, RelationSet relations, IReadOnlyList<Place> places) = ToyChain(12, 0, 0);
+            var set = new FixtureSet(new FlowFixture(places, K.Water, Divisors.Naive, new AdditiveResolver()));
+            var parcel = new Parcel("toy-flux", state, relations, set, EmptyRain(), places, 10);
+            return ParcelRun.Execute(parcel, 10);
+        }
+
+        private static void FluxConsistencyOnToy()
+        {
+            ParcelRun run = ToyChainRun();
+            IReadOnlyList<FluxCounter.Mismatch> mismatches = FluxCounter.ConsistencyCheck(
+                run.States, run.Parcel.Relations, run.Parcel.Places, run.Parcel.Trace,
+                K.Elevation, K.Water, Divisors.Naive);
+            Assert(mismatches.Count == 0, $"counter disagreed with the record: {mismatches.Count} mismatch(es)");
+        }
+
+        private static void FluxDiscriminatesConvention()
+        {
+            ParcelRun run = ToyChainRun();
+            IReadOnlyList<FluxCounter.Mismatch> mismatches = FluxCounter.ConsistencyCheck(
+                run.States, run.Parcel.Relations, run.Parcel.Places, run.Parcel.Trace,
+                K.Elevation, K.Water, Divisors.DegreeAware);
+            Assert(mismatches.Count > 0, "the counter failed to notice a wrong divisor convention");
+        }
+
+        private static void S1002ParcelsBuild()
+        {
+            IReadOnlyList<Parcel> parcels = WorldsS1002.All();
+            Assert(parcels.Count == 12, "V0 + 5×V1 + 3×V2 + V3 + V4a + V4b = 12 parcels");
+
+            Parcel v0 = parcels[0];
+            Assert(v0.Places.Count == 2 && v0.Trace.Events.Count == 2 * WorldsS1002.RainTicks,
+                "V0: two cells, rain on both");
+
+            for (int d = 0; d <= 4; d++)
+            {
+                Parcel v1 = parcels[1 + d];
+                Assert(v1.Places.Count == 2, $"V1-d{d}: two cells");
+                Assert(v1.Initial.ValueAt(new Cell(new Place(0), K.Elevation)) == d, $"V1-d{d}: high cell E = {d}");
+                Assert(v1.Trace.Events.Count == WorldsS1002.RainTicks, $"V1-d{d}: rain on one cell only");
+            }
+
+            for (int k = 1; k <= 3; k++)
+            {
+                Parcel v2 = parcels[5 + k];
+                Assert(v2.Places.Count == k + 1, $"V2-k{k}: centre + {k} leaves");
+                Assert(v2.Initial.ValueAt(new Cell(new Place(0), K.Elevation)) == 1, $"V2-k{k}: centre E = 1");
+            }
+
+            Parcel v3 = parcels[9];
+            Assert(v3.Places.Count == 5, "V3: five cells");
+            Parcel v4b = parcels[11];
+            Assert(v4b.Places.Count == 6, "V4b: six places");
+            Assert(v4b.Relations.Count == 12, "V4b: six edges, both directions");
+            foreach (Parcel parcel in parcels)
+            {
+                Assert(parcel.PlannedTicks == WorldsS1002.PlannedTicks, $"{parcel.Name}: 30 planned ticks");
+            }
+            // No S1-002 parcel is ticked here, and no hand derivation is consulted:
+            // execution is not authorised; the laboratory stays blind.
         }
 
         private static void SealedParcelsBuild()
