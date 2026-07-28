@@ -1,0 +1,11 @@
+world: V3
+ticks run: 30
+total counted flux over the run: 45
+first-transfer tick per edge (edges that ever fired):
+  0->1: tick 2  (firing ticks: 2,4,6,7,9,10,11,13,14,15,17,18,19,21,22)
+  1->2: tick 5  (firing ticks: 5,8,10,12,14,16,18,20,22,23,25,27,28)
+  2->3: tick 9  (firing ticks: 9,13,15,19,21,24,26,29)
+  3->4: tick 14  (firing ticks: 14,20,25)
+first negative kind(2) value: none
+consistency check (C5 convention): 0 mismatch(es)
+kind(2) conservation audit: 0 violation(s)

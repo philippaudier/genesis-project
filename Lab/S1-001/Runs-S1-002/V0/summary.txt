@@ -1,0 +1,8 @@
+world: V0
+ticks run: 30
+total counted flux over the run: 0
+first-transfer tick per edge (edges that ever fired):
+  (none - no edge ever fired)
+first negative kind(2) value: none
+consistency check (C5 convention): 0 mismatch(es)
+kind(2) conservation audit: 0 violation(s)

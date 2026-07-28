@@ -1,8 +1,12 @@
 # Campaign S1-002 — The First Flow
 
-Status: **SEALED by this commit** (review accepted by the founder 2026-07-28; F-1 deposited
-pre-design at `c9fbf87`; design at `6286a5b`; C3/C4 slots hand-derived and filled at seal, per
-protocol). Implementation and execution remain separate authorisations.
+Status: **Executed (2026-07-29).** Report: `Lab/S1-001/Runs-S1-002/REPORT.md`. **Six of six
+claims CONFIRMED — every hand derivation exact to the tick, in every world, on every edge;
+Consistency Check 0 mismatches × 12 worlds.** Observation-013 filed (the first transfers in
+Science-001's history). Expectation 3 failed as the sealed hand had itself predicted. E4 never
+invoked. **Decision withheld — the reduction is a separate authorisation.**
+(Sealed at `4885d04` — F-1 pre-design at `c9fbf87`, design at `6286a5b`; the sealed sections
+were never modified.)
 
 ## Question
 

@@ -1,0 +1,13 @@
+world: V4b
+ticks run: 30
+total counted flux over the run: 46
+first-transfer tick per edge (edges that ever fired):
+  0->1: tick 2  (firing ticks: 2,5,7,10,12,15,17,20,22,25,27,29)
+  0->2: tick 2  (firing ticks: 2,5,7,10,12,15,17,20,22,25,27,29)
+  1->3: tick 6  (firing ticks: 6,11,16,21,25,28)
+  2->3: tick 6  (firing ticks: 6,11,16,21,25,28)
+  3->4: tick 7  (firing ticks: 7,12,17,22,24,26,29)
+  4->5: tick 13  (firing ticks: 13,23,27)
+first negative kind(2) value: none
+consistency check (C5 convention): 0 mismatch(es)
+kind(2) conservation audit: 0 violation(s)
