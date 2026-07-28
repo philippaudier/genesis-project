@@ -22,14 +22,15 @@ namespace Genesis.Lab.S1_001
 
             if (args.Length >= 1 && args[0] == "--execute")
             {
-                Console.WriteLine("Execution is not authorised.");
-                Console.WriteLine("Campaign S1-001 is sealed; execution requires separate authorisation.");
-                return 2;
+                // Gate opened under the founder's execution authorisation (Campaign S1-001,
+                // post-seal filings, 2026-07-28). The parcels run exactly as sealed.
+                Console.WriteLine("Executing Campaign S1-001 as sealed:");
+                return Execution.RunAll("Runs");
             }
 
             Console.WriteLine("S1-001 laboratory (Campaign S1-001 - The First Watershed)");
             Console.WriteLine("  --smoke    calibrate instruments on toy worlds (no sealed parcel is run)");
-            Console.WriteLine("  --execute  (refused until authorised)");
+            Console.WriteLine("  --execute  run the sealed parcels (authorised 2026-07-28)");
             return 0;
         }
     }

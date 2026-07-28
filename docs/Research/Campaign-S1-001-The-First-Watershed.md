@@ -218,3 +218,25 @@ A fixture must be replaceable without touching the laboratory. The harness never
 executing GravityFixture / FlowFixture / ErosionFixture — it executes a **FixtureSet**. S1-002
 will replace laws; that operation must be an instrument substitution, never a rewrite of the
 laboratory.
+
+## Execution authorisation (founder, 2026-07-28)
+
+> **Execution of Campaign S1-001 — The First Watershed is authorised.**
+
+Covers ONLY: opening the `--execute` gate; running W0–W4 exactly as sealed; raw trace
+recording; observations in the house form. Does NOT cover: interpretation; reduction; fixture
+or instrument modification; the birth of any law; the creation of any vocabulary.
+*The world speaks. The laboratory writes. Nothing more.*
+
+Execution rules, binding from now on:
+
+- **E1 — No Mid-Run Insight.** No idea born during an execution may modify that execution.
+  Finish; then open another campaign.
+- **E2 — Trace First.** The campaign's first artifact is the trace. Every observation must be
+  traceable to it; the report is only a reading.
+- **E3 — One Surprise, One Observation.** Linked-looking surprises are filed as separate
+  observations; a theory, if any, comes later. Vocabulary-late applies to surprises too.
+
+First report bound to be austere: claims + status, traces, observations, unexpected
+manifestations, failed expectations, world corrections — no conclusions, no interpretation.
+The reduction comes after, separately.
