@@ -150,11 +150,16 @@ needs to know. Looking for a watershed respects "no law knows the landscape" for
 
 These are questions, not articles. Each is a separate future decision.
 
-- **Q-G1 — The multi-quantity cell.** Today a cell carries essentially one quantity. This
-  domain wants several (elevation, water, sediment, material, resistance…). The question is not
-  the list: **how do several quantities coexist without breaking Composition, D1, Commutativity,
-  and the Membrane?** This is the true first RFC of the science — before gravity, before
-  erosion. Nothing can be transported until the laboratory knows what carrying is.
+- **Q-G1 — The multi-quantity cell.** This domain wants several quantities per place
+  (elevation, water, sediment, material, resistance…). The question is not the list: **how do
+  several quantities coexist without breaking Composition, D1, Commutativity, and the
+  Membrane?** This is the true first RFC of the science — before gravity, before erosion.
+  Nothing can be transported until the laboratory knows what carrying is.
+  *(Correction, 2026-07-28: this question's original wording claimed "today a cell carries
+  essentially one quantity" — false. A cell has been the pair (Place, Kind) since RFC-0003;
+  the scalar world of the campaigns was a usage, never a kernel limit. See RFC-G001, which
+  found Q-G1 pre-answered and recorded the one genuinely new condition: conservation under
+  conversion.)*
 - **Q-G2 — Scale coupling.** Fire in seconds, regrowth in seasons, erosion in centuries. The
   hope is that resolution may change without the ontology changing. That is a claim of theorem
   calibre — **a hoped-for theorem, not a principle.** It stays open until a reduction or a proof
