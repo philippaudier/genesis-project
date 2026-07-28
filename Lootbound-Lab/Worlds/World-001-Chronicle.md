@@ -22,5 +22,10 @@ Firsts              first world file · first replayed opening · first session 
 Lasts               last event: the founder walking home (t=177) · last tick: 340
 ```
 
+*Appended after the session-2 export surfaced (Run-000015):* the continued session's narrative
+was three words — **"L'histoire persiste."** — and the record shows the inhabitant spent 224 of
+307 ticks at the Shelter, then put both swords away there before the ceremony. **The house was
+tidied, then abandoned — closed like a house for winter.**
+
 **Abandoned** — 2026-07-28, at tick 340, by the ceremony. The first closed book on the shelf.
 Its record remains replayable forever. Succeeded by World-002.
