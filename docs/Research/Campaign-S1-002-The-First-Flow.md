@@ -1,12 +1,12 @@
 # Campaign S1-002 — The First Flow
 
-Status: **Executed (2026-07-29).** Report: `Lab/S1-001/Runs-S1-002/REPORT.md`. **Six of six
-claims CONFIRMED — every hand derivation exact to the tick, in every world, on every edge;
-Consistency Check 0 mismatches × 12 worlds.** Observation-013 filed (the first transfers in
-Science-001's history). Expectation 3 failed as the sealed hand had itself predicted. E4 never
-invoked. **Decision withheld — the reduction is a separate authorisation.**
-(Sealed at `4885d04` — F-1 pre-design at `c9fbf87`, design at `6286a5b`; the sealed sections
-were never modified.)
+Status: **Closed — Outcome A (2026-07-29).** Report: `Lab/S1-001/Runs-S1-002/REPORT.md`;
+Observation-013. Six of six claims confirmed, every hand derivation exact; Consistency Check
+0 mismatches × 12. **H-S1-1 survives S1-002** (best current explanation of Science-001's
+minimal worlds, domain explicitly limited); F-1 untouched (no in-domain support, no negative
+reduction — its trial belongs to structured worlds); **Method-001 — Hand vs Machine founded**
+(`docs/Methods/`); RD-10 paid in part. See the Reduction and Decision sections at the end.
+(Sealed at `4885d04` — F-1 pre-design at `c9fbf87`; the sealed sections were never modified.)
 
 ## Question
 
@@ -180,3 +180,42 @@ Ni 5. Ni 9. Ni 14. Je soupçonne que ce sera la découverte d'une **méthode**. 
 "main contre machine" fonctionne aussi bien que son design le promet, alors Genesis n'aura pas
 seulement répondu à RD-10. Il aura inventé une nouvelle manière de tester ses propres sciences.
 Et cette méthode pourra voyager.*
+
+## Reduction (authorised and performed 2026-07-29 — founder's, adopted on review)
+
+The founder's framing of record: the result is not "H-S1-1 is true" nor "F-1 is false" — it is
+**"the laboratory correctly predicted the kernel's behaviour over the entire domain covered by
+S1-002."** Four distinct confirmations: the kernel is *comprehensible*, not merely
+deterministic (the hand derives the ticks; the world reproduces them — no black box); the
+Manual Derivation Boundary is experimentally validated; the instruments are now credible in
+both directions (B3 showed they detect a false world; the Consistency Check shows they do not
+invent falsehood in a true one); and the three-layer separation — quick intuition / hand
+derivation / world — is real: three objects, three verdicts, the world arbitrating.
+
+- **R1.** The quantitative predictions derived solely from the fixture text are confirmed over
+  the entirety of the domain covered by S1-002.
+- **R2.** **H-S1-1 survives S1-002** and becomes the **best current explanation** of
+  Science-001's minimal worlds. Its domain remains explicitly limited to those worlds. *Survives*
+  is deliberate: a hypothesis lives until the world forces it to die.
+- **R3.** No S1-002 result provides experimental support for F-1. Its claimed domain exceeding
+  minimal worlds, **no negative reduction is pronounced** — the scored-apart protection worked
+  exactly as intended; F-1's trial belongs to structured worlds.
+- **R4.** **The Hand-vs-Machine method is validated as an experimental method of Genesis**,
+  reusable in any science whose campaigns are fully derivable → founded as
+  `docs/Methods/Method-001-Hand-vs-Machine.md`, the Methods register's first and only file.
+- The rhythms remain exactly where the report left them: in the record, claimed by no one,
+  promoted to nothing — a candidate for a future Observation, nothing more.
+
+## Decision
+
+**Outcome A, as bound in advance:** every hand prediction exact; H-S1-1 earns its in-domain
+status; the frontier is identified (in minimal worlds, an edge transports iff the potential
+difference reaches the local divisor); **F-1's trial moves to a structured-world campaign —
+S1-003 material.** RD-10 is paid in part by Observation-013; its remainder — does the local
+condition alone govern structured worlds? — is exactly F-1's question.
+
+Founder's closing sentence, deposited: *S1-001 taught us that the world speaks before us.
+S1-002 teaches something subtler: when we truly understand the world, it can happen that it
+says exactly what our hand had already written. That is not a victory over the world — it is
+the sign that, for one small piece of it, our understanding and its reality have finally
+coincided.*

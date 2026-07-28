@@ -107,6 +107,7 @@ Milestones/
 Observations/
 Research/
 Sciences/
+Methods/
 Journal/
 
 Assets/
