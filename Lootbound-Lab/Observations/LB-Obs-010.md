@@ -90,4 +90,11 @@ RD-L10: the contradiction has narrowed in the narratives themselves — "toujour
 
 ## Status
 
-Open — awaiting the founder's adjudication of the sealed prediction.
+**Adjudicated by the founder: SPLIT — a deferred confirmation.** In the founder's words: the
+first narrative is the discovery, not the habit; the second reaches the prediction exactly.
+Neither a pure hit nor a refutation — the announced phenomenon arrived; it simply was not
+first. Founder's record: 4 hits, 1 miss, 2 splits.
+
+The founder also elevated this observation's unexpected phenomenon: the tidying before the
+ceremony is named **a rite** — the first observed. "Rites do not exist because the system
+rewards them. They exist because the inhabitants give them meaning." Open.
