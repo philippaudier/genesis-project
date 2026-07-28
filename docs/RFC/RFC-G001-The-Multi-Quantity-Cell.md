@@ -1,6 +1,6 @@
 # RFC-G001 — The Multi-Quantity Cell
 
-Status: **Draft — awaiting founder review**
+Status: **Accepted (2026-07-28, on founder review — one hypothesis named on review, see H1)**
 Origin: Science-001 charter, Q-G1. Writing authorised by the founder 2026-07-28 — *"not because
 geomorphology needs it, but because the kernel has met a limit the corpus itself revealed."*
 Series note: `G` = science-demanded (as `L` = world-demanded). Filed under G because the demand
@@ -95,6 +95,15 @@ content, never of the kernel. It is stated here as a **theorem candidate with a 
 obligation**: it must be demonstrated in the harness before any Science-001 campaign relies on
 a conversion.
 
+**H1 — the emission-atomicity hypothesis (named on review, not decided).** The additivity
+argument silently uses a second property: the pair (−rock, +sediment) must remain **one causal
+act of one law** — atomic from the law's point of view, not the commit's. Today this holds by
+API shape: the runner collects a transition's *complete* contribution list before any commit,
+so no path can drop half an emission. But "held by API shape" is not "named as a theorem's
+hypothesis" — a future runner (incremental, streaming, partial-failure) could break it silently.
+H1 is therefore recorded as an explicit hypothesis of the test obligation above; the harness
+will say whether it is load-bearing. It is deliberately **not** a decision of this RFC.
+
 ## Decisions
 
 - **D-G1 — No new primitive. No kernel change is authorised by this RFC.** Multi-quantity worlds
@@ -144,8 +153,21 @@ The first campaign requires **zero kernel work**. Its sealed slots, when authori
 
 ## Decision Record
 
-Decision: **Draft — awaiting founder review.**
-Proposed rationale for acceptance, if the review sustains it: not because the design is good,
-but because the demonstration could not be avoided — the primitive already exists, the theorems
-already cover it, and the only honest act left was to record the one condition (additivity under
-conversion) that no scalar world could ever have revealed.
+Decision: **Accepted**
+Date: 2026-07-28
+Reviewed by: the founder.
+Rationale (founder's, verbatim):
+
+> *This RFC introduces no new primitive. Its contribution is to demonstrate that the existing
+> kernel already expresses heterogeneous state, and to record the first conservation condition
+> that only heterogeneous worlds can reveal: conversion preserves accounting iff resolver
+> algebra preserves additivity. The kernel was not extended; its latent consequences were made
+> explicit.*
+
+Amendment on review: **H1** (emission atomicity) named as an explicit hypothesis of the test
+obligation — the theorem candidate was using it without naming it. Not a decision; the harness
+adjudicates whether it is load-bearing.
+
+Reviewer's note on the genre, kept for the corpus: this is a **reduction RFC** — it founds
+almost nothing; it discovers. Successful reductions are to be celebrated exactly as new laws
+are: the hardest decision to write in an ambitious project is *"the kernel does not change."*
