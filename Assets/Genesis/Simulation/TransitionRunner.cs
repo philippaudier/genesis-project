@@ -47,6 +47,8 @@ namespace Genesis.Simulation
             return Apply(snapshot, new RelationSet(snapshot), transitions);
         }
 
+        private static readonly IReadOnlyList<Contribution> NoExternalContributions = new Contribution[0];
+
         /// <summary>
         /// Produces the next state by collecting every transition's contributions — each read through
         /// its declared relational view of the snapshot — grouping them by target cell, and
@@ -56,6 +58,22 @@ namespace Genesis.Simulation
             SimulationState snapshot,
             RelationSet relations,
             IReadOnlyList<ITransition> transitions)
+        {
+            return Apply(snapshot, relations, transitions, NoExternalContributions);
+        }
+
+        /// <summary>
+        /// As above, with crossings of the membrane merged into the same pool (RFC-L001; ADR-0005):
+        /// external contributions enter the identical grouping and the identical per-kind resolution
+        /// as law contributions — no second write path, no privilege. They are seeded first, because
+        /// within a tick the crossing precedes the laws' action; resolvers are commutative by policy
+        /// (DN-001), so this ordering carries no semantic weight.
+        /// </summary>
+        public SimulationState Apply(
+            SimulationState snapshot,
+            RelationSet relations,
+            IReadOnlyList<ITransition> transitions,
+            IReadOnlyList<Contribution> externalContributions)
         {
             if (snapshot == null)
             {
@@ -72,9 +90,26 @@ namespace Genesis.Simulation
                 throw new ArgumentNullException(nameof(transitions));
             }
 
-            // 1. Collect every contribution. Each transition receives only the view materialising its
-            //    declared contract.
+            if (externalContributions == null)
+            {
+                throw new ArgumentNullException(nameof(externalContributions));
+            }
+
+            // 1. Collect every contribution. External crossings first (they preceded the tick), then
+            //    each transition through the view materialising its declared contract.
             var amountsByCell = new Dictionary<Cell, List<long>>();
+            for (int i = 0; i < externalContributions.Count; i++)
+            {
+                Contribution crossing = externalContributions[i];
+                if (!amountsByCell.TryGetValue(crossing.Target, out List<long> crossingAmounts))
+                {
+                    crossingAmounts = new List<long>();
+                    amountsByCell[crossing.Target] = crossingAmounts;
+                }
+
+                crossingAmounts.Add(crossing.Amount);
+            }
+
             for (int i = 0; i < transitions.Count; i++)
             {
                 ITransition transition = transitions[i];

@@ -77,5 +77,56 @@ namespace Genesis.Simulation
 
             return state;
         }
+
+        /// <summary>
+        /// Runs an <em>observed</em> world: as above, with an external event trace applied at tick
+        /// boundaries (RFC-L001; ADR-0005; invariant 7). Each tick, the crossings recorded for the
+        /// current boundary are merged into that tick's contribution pool — same resolvers, same
+        /// commit, one mechanism — and become visible in the next snapshot, never mid-tick. The host
+        /// holds no seam into this loop: run = initial state + relations + laws + trace, and nothing
+        /// else can touch the world while it is observed.
+        /// </summary>
+        public SimulationState Run(
+            SimulationState initial,
+            RelationSet relations,
+            IReadOnlyList<ITransition> transitions,
+            ExternalEventTrace trace,
+            long count)
+        {
+            if (initial == null)
+            {
+                throw new ArgumentNullException(nameof(initial));
+            }
+
+            if (relations == null)
+            {
+                throw new ArgumentNullException(nameof(relations));
+            }
+
+            if (transitions == null)
+            {
+                throw new ArgumentNullException(nameof(transitions));
+            }
+
+            if (trace == null)
+            {
+                throw new ArgumentNullException(nameof(trace));
+            }
+
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), count, "Cannot run a negative number of ticks.");
+            }
+
+            SimulationState state = initial;
+            for (long i = 0; i < count; i++)
+            {
+                IReadOnlyList<Contribution> crossings = trace.ContributionsAt(state.CurrentTick);
+                SimulationState transformed = _transitionRunner.Apply(state, relations, transitions, crossings);
+                state = transformed.WithTickAdvanced();
+            }
+
+            return state;
+        }
     }
 }
