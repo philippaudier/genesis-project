@@ -245,6 +245,25 @@ First report bound to be austere: claims + status, traces, observations, unexpec
 manifestations, failed expectations, world corrections — no conclusions, no interpretation.
 The reduction comes after, separately.
 
+## Adjudication of the founder's personal predictions (founder's, 2026-07-29)
+
+- **P-A (82%, W0 reproduces the family) — CONFIRMED.** Not merely qualitatively: it played its
+  anchor role exactly.
+- **P-B (71%, the first discriminator will be A3) — REFUTED.** A3 was never exercised. The
+  first discriminator was *none*: the world refused the very terrain where the two columns
+  hoped to part.
+- **P-C (64%, the first Unexpected Manifestation will concern the reader) — REFUTED.** The
+  reader behaved; the surprise came from the world itself — the stasis.
+- **P-D (58%, B3 reveals a weakness of the audit) — SPLIT.** Not during execution but during
+  construction: "detect" had to be given a precise meaning, and B3 then validated that
+  definition. An instrument matured; the world erred nowhere. Neither full victory nor defeat.
+- **P-E (43%, the most interesting phenomenon emerges from fixture coupling) — REFUTED.** The
+  most interesting phenomenon was the stasis, born before any coupling could express itself.
+
+Tally: **1 confirmed, 3 refuted, 1 split.** Fact worth the record: a single phenomenon — the
+stasis — felled three predictions at once. Per the house verdict of Run-000003: predictions
+real enough to lose.
+
 ## Reduction (authorised and performed 2026-07-28 — founder's, adopted on review)
 
 The founder's framing of record: *the world did not answer "your theories are false"; it

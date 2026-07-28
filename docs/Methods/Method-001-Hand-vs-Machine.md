@@ -60,3 +60,10 @@ the three-layer separation observed working in a single campaign.
   (another mechanism deriving the same ticks would pass identically — the Reduction Test, not
   this method, adjudicates between mechanisms).
 - One validating campaign so far; a second science's use will test whether the method travels.
+
+## Standing caution (founder's, 2026-07-29)
+
+This method exerts a gravitational pull: a laboratory that knows how to calculate may
+unconsciously begin choosing **only calculable campaigns**. Sciences do not exist to confirm
+their capacity to calculate; they exist to meet the places where they stop understanding. A
+campaign may be *chosen because it threatens this method* — never merely because it suits it.
