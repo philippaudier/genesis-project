@@ -91,6 +91,31 @@ may force work on a lower one. Genesis will never be "finished" — only coheren
 welcome another researcher, and one day, an inhabitant. No science on this ladder exists until
 an observation demands it; the ladder itself decides nothing.
 
+### The Silent World (deposited 2026-07-29 — named, not built)
+
+The ladder's last rung says *the player enters a world that already existed*. That world has a
+name now, deposited by the founder and deliberately left unbuilt:
+
+> **The Silent World** — a world that owes nothing. No science is founded for it, no inhabitant
+> lives in it, no laboratory reads it. Climate, geology, vegetation, fire, rivers, erosion,
+> seasons — and no one. Ever.
+
+It is Genesis's horizon-object, and it carries its own condition of legitimacy: **it may only be
+made of laws that earned the corpus — never of placements.** A Silent World assembled today
+would have to be *posed* (its rivers drawn, its forest decided), which the sciences' central
+definition forbids: *a manifestation is never a placement*. So it is not a next step beside the
+ladder; it is what the ladder builds.
+
+Two further guards, recorded so the idea cannot be spent early: the world's autonomy between
+observations remains the deliberately-unbuilt gap of LB-Obs-009 (persistence is not autonomy —
+it must arrive from narratives, if ever); and a world created *in order to* demonstrate that
+the world does not need us would be the observer manufacturing his own phenomenon, which
+Article 8 of the Lootbound Constitution forbids. The honest path is the one already running:
+if an inhabitant's carnet one day asks for a world that lives without him, the demand will have
+come from a narrative — and the Silent World will become inevitable instead of decorative.
+
+*The Visitor enters the Silent World.*
+
 ## What Genesis Will Never Be
 
 - A visual engine (Unity handles rendering)
