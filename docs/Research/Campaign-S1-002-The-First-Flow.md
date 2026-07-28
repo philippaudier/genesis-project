@@ -1,8 +1,115 @@
 # Campaign S1-002 — The First Flow
 
-Status: **Proposed — design not begun.** This file is created *before* any design so that the
-founder's pre-design deposit below carries provable antecedence. The design will be added in a
-later commit; the seal in another.
+Status: **Designed — awaiting founder review. NOT sealed.** (F-1 deposited pre-design at
+`c9fbf87`.) After review, the seal is its own commit, at which the two open filing slots
+(V3/V4 hand-derivations) MUST be filled — the blind-slot tradition.
+
+## Question
+
+> **What minimal condition transforms a gradient into transport?**
+
+Sought: one unit crossing one relation — the frontier between an immobile world and a dynamic
+one. Not sought: a landscape, a realistic flow, a divergence theory, a validation of anything.
+
+## The theory on trial
+
+**H-S1-1** (filed in S1-001's reduction): *an edge fires iff the potential difference reaches
+the local divisor — the integer floor is an activation threshold.* Its trial form here: every
+claim below carries a **hand-computed prediction, derived from the fixture text without running
+anything, sealed before execution**. The record then tests the derivation. Determinism makes
+every deviation exactly attributable: either the hand was wrong (re-derivable, checkable) or
+**H-S1-1 is incomplete as a predictor — and F-1 gains its first evidence.**
+
+**F-1's status: deposited intuition, scored apart — deliberately NOT a prediction column.**
+Honesty note: F-1's natural domain (global structure interacting with activation) likely
+exceeds these minute worlds; S1-002 gives it only its *first chance* to appear. If H-S1-1
+survives S1-002 intact, F-1 is not refuted — its trial moves to a structured-world campaign.
+
+## Blind Spot Audit (before seal)
+
+1. **The crossing-timing convention is the likeliest error site**: a crossing at boundary t is
+   applied during the tick that transforms state t and is first visible at t+1. Every hand
+   prediction depends on getting this exactly right — that is deliberate: it is the sharpest
+   available test of whether the laboratory understands its own kernel.
+2. Tiny worlds cannot exercise F-1's structural claim — declared, accepted, deferred.
+3. **B2/H1 (conversion under conflict) remains unexercised after this campaign too** — no
+   conversion fixture runs here. The debt is visible and deliberately deferred to a dedicated
+   campaign; recorded so it cannot be lost.
+4. Rain here is a *continuous point source* (never stops), unlike S1-001's 20-tick uniform
+   rain — a third source shape; the distributed-uniform blind spot remains only partly paid.
+5. Fixture Transparency is exercised for real: S1-002 uses the S1-001 fixtures **unchanged** —
+   implementation is world-builders plus one instrument completion, zero fixture edits.
+
+## Worlds (all parameters bound at design; run length 30 ticks each)
+
+Kinds: kind(1) elevation (static), kind(2) water (moved). Additive resolver. Point rain =
++1 into kind(2) at ONE declared place, every boundary 0–29.
+
+- **V0 — Stasis control.** 2 cells, flat (E = 0,0), rain on BOTH cells (uniform). The Obs-011
+  stasis must reproduce at minimal scale: zero transfers, ever.
+- **V1 — The threshold sweep.** Five 2-cell worlds, naive divisor (2): E = (d, 0) for
+  d ∈ {0,1,2,3,4}; rain on the high cell only.
+- **V2 — The local-structure sweep.** Three stars, degree-aware divisor (deg+1): centre E = 1,
+  k leaves at E = 0, k ∈ {1,2,3}; rain on the centre only.
+- **V3 — The cascade.** 5-cell chain, flat E, naive divisor; rain on one end. Watched: the
+  first-transfer tick of each successive edge (does transport propagate, and at what rhythm?).
+- **V4 — The locality pair.** Two worlds sharing an identical 1-hop neighbourhood around a
+  watched edge, differing only beyond it (single delivery path vs forked delivery path from
+  the rain place to the watched edge). Watched: the first-transfer tick of the watched edge in
+  each world.
+
+## Claims (H-S1-1 hand-derivations; sealed before execution)
+
+| # | Claim | Hand prediction |
+|---|---|---|
+| C0 | V0 reproduces the stasis at 2 cells | Zero transfers in 30 ticks; totals = crossings exactly |
+| C1 | V1 first-transfer ticks, per d | d=0 → tick 2 · d=1 → tick 1 · d=2 → tick 0 · d=3 → tick 0 · d=4 → tick 0 |
+| C2 | V2 first-transfer tick = k (structure enters ONLY through the local divisor) | k=1 → tick 1 · k=2 → tick 2 · k=3 → tick 3 |
+| C3 | V3 per-edge first-transfer ticks | **SLOT — to be hand-derived and filled at seal** |
+| C4 | V4 watched-edge first-transfer ticks (both worlds) | **SLOT — to be hand-derived and filled at seal** |
+| C5 | Instrument cross-check: the completed per-edge flux counter's counts equal the transfers recoverable from `states.csv` | Exact equality, every edge, every tick, every world |
+
+Adjudication rule (bound now): a record/prediction mismatch is first re-derived by hand from
+the fixture text; an arithmetic error is a World Correction; a correct derivation that still
+mismatches the record is **H-S1-1 shown incomplete → Outcome C**.
+
+## Expectations (informal, sealed, non-scored)
+
+1. V1 d=0, after onset: the edge fires every *other* tick (an alternation — period-2's echo at
+   two cells).
+2. **V1 d=4 produces the campaign's first negative value at tick 1** (transfer 2 against water
+   0 — A5's ghost, in a 2-cell world, from hand arithmetic alone).
+3. V3's cascade has a constant per-hop delay.
+4. V4's two worlds differ in first-transfer tick (delivery structure matters to *timing* even
+   if H-S1-1 predicts both exactly).
+5. No world ever freezes while rain falls; every world would freeze within a few ticks if rain
+   stopped (not tested here — rain never stops).
+
+## Instruments
+
+Sealed S1-001 instruments unchanged, plus **the per-edge flux counter completed to S1-001's
+sealed spec** (the recorded World-Correction gap, honoured here) — implemented and calibrated
+on toys BEFORE execution; C5 is its trial on real records. First-transfer detection = first
+non-zero per-edge flux.
+
+## Confidence declaration (laboratory's, at seal)
+
+C0 95 · C1 85 · C2 80 · C3 (slot) · C4 (slot) · C5 90. (C1/C2 deliberately below the
+arithmetic's apparent certainty: the timing convention is where hands err.)
+
+## Outcomes (bound in advance)
+
+- **A** — Every hand prediction exact: H-S1-1 survives its native domain and earns *candidate
+  mechanism (in-domain)* status; the frontier is identified; F-1's trial moves to a
+  structured-world campaign (S1-003 material).
+- **B** — First flow fails to occur where predicted (a world stays still that should not):
+  H-S1-1 is wrong, not incomplete — recorded, not rescued.
+- **C** — Flow occurs but deviates from a correct derivation: **H-S1-1 incomplete; F-1 gains
+  its first evidence.**
+- **D** — C5 fails (the flux counter disagrees with the states record): instrument refuted;
+  fix the reader before trusting any other row.
+
+Per ADR-0003's amendment: none of B/C/D is a failure of the campaign.
 
 ---
 
