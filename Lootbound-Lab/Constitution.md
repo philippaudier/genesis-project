@@ -55,6 +55,21 @@ existing law. The principle is the world-content sibling of Genesis's Reduction 
 When several implementations can produce the same observable phenomenon, the laboratory always
 prefers the smallest one.
 
+## Article 8 — No hidden hand in the observer
+
+*(Added 2026-07-28 — earned, not decreed, per the tariff: two independent demonstrations.
+Run-000003: the laboratory disclosed a fact of the world before the narrative was given — a
+declared breach, a measured bias. World-001's tidying: the first rite observed had value only
+because nobody had asked for it; a requested ceremony would have measured nothing. Historical
+commentary: Invariant 7 forbids a hidden hand **in the world**; Article 8 forbids one **in the
+observer**. The symmetry is intellectual, not structural — invariants speak of the world, the
+Constitution speaks of the laboratory.)*
+
+The laboratory may not create the phenomenon it seeks to observe. A protocol that provokes,
+schedules, or owes the behaviour under study has manufactured its own variable; whatever it
+measures thereafter is itself. Rarity of findings may be recorded as a trace, never set as an
+objective.
+
 ---
 
 ## The motto
