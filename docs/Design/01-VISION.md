@@ -60,6 +60,37 @@ In ten years, Genesis should be:
 4. **Referenced.** Other projects learn from Genesis's approach.
 5. **Invisible.** Players don't know Genesis exists. They just know the world feels real.
 
+## The Ladder of Sciences (horizon, not a register)
+
+Genesis studies the world domain by domain. Each domain is a **science**: it enters with a
+question, earns its laws through observation, and lives in `docs/Sciences/` — one file per
+science, created only the day that science becomes inevitable, never in advance.
+
+The expected ascent — aspiration, deliberately unnumbered as a register:
+
+```text
+Foundation (the kernel — proven)
+    ↓
+Geomorphology        matter · relief · water · erosion · sediment
+    ↓
+Climate              energy · temperature · pressure · wind · rain
+    ↓
+Ecology              soils · nutrients · plants · succession · fire
+    ↓
+Animal life          energy · needs · perception · movement · reproduction
+    ↓
+Collective life      groups · territories · transmission · cooperation · conflict
+    ↓
+Civilisation         settlements · resources · techniques · culture · history
+    ↓
+The Visitor          the player enters a world that already existed
+```
+
+This is a direction, not a roadmap: every rung stays open forever, and a discovery on any rung
+may force work on a lower one. Genesis will never be "finished" — only coherent enough to
+welcome another researcher, and one day, an inhabitant. No science on this ladder exists until
+an observation demands it; the ladder itself decides nothing.
+
 ## What Genesis Will Never Be
 
 - A visual engine (Unity handles rendering)
