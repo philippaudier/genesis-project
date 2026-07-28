@@ -44,6 +44,16 @@ place, the dwelt place, or neither?*
 Shares H-002 with P1. No additional participants required — only an additional scoring pass over
 data already collected.
 
+## The founder's Genesis II prediction (filed 2026-07-28, unsealed — era-scale, this program's
+master hypothesis)
+
+> **Attachment does not form primarily toward objects, characters or rewards. It forms toward the
+> stories places have accumulated.** The shelter will become "the place where I hid his sword";
+> the station, "the place he always came back to"; the field, "the place where that sword lay for
+> days". **Geography will become autobiographical.** *(The founder: "if this is wrong, I will be
+> delighted to lose a fifth time — it is finally ambitious enough to deserve a real refutation.")*
+> Scored over Genesis II, against this program's accumulating narratives.
+
 ## Death condition
 
 Paid if a replicated relation links per-place regularities to narrative mention (including a null:
