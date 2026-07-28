@@ -1,8 +1,8 @@
 # Campaign S1-002 — The First Flow
 
-Status: **Designed — awaiting founder review. NOT sealed.** (F-1 deposited pre-design at
-`c9fbf87`.) After review, the seal is its own commit, at which the two open filing slots
-(V3/V4 hand-derivations) MUST be filled — the blind-slot tradition.
+Status: **SEALED by this commit** (review accepted by the founder 2026-07-28; F-1 deposited
+pre-design at `c9fbf87`; design at `6286a5b`; C3/C4 slots hand-derived and filled at seal, per
+protocol). Implementation and execution remain separate authorisations.
 
 ## Question
 
@@ -40,6 +40,14 @@ survives S1-002 intact, F-1 is not refuted — its trial moves to a structured-w
 5. Fixture Transparency is exercised for real: S1-002 uses the S1-001 fixtures **unchanged** —
    implementation is world-builders plus one instrument completion, zero fixture edits.
 
+## Manual Derivation Boundary (founder's clarification, adopted on review)
+
+> **Every reference calculation recorded in this campaign must be reproducible from the fixture
+> text alone — without execution, and without consulting any prior result.**
+
+This is not a general rule; it is the particular property S1-002 stands on. The campaign's
+entire evidential value depends on the hand having had no access to the machine.
+
 ## Worlds (all parameters bound at design; run length 30 ticks each)
 
 Kinds: kind(1) elevation (static), kind(2) water (moved). Additive resolver. Point rain =
@@ -53,10 +61,14 @@ Kinds: kind(1) elevation (static), kind(2) water (moved). Additive resolver. Poi
   k leaves at E = 0, k ∈ {1,2,3}; rain on the centre only.
 - **V3 — The cascade.** 5-cell chain, flat E, naive divisor; rain on one end. Watched: the
   first-transfer tick of each successive edge (does transport propagate, and at what rhythm?).
-- **V4 — The locality pair.** Two worlds sharing an identical 1-hop neighbourhood around a
-  watched edge, differing only beyond it (single delivery path vs forked delivery path from
-  the rain place to the watched edge). Watched: the first-transfer tick of the watched edge in
-  each world.
+- **V4 — The locality pair.** Two worlds sharing an identical 1-hop neighbourhood around the
+  watched edge X→Y (X's neighbours = {M, Y} and Y's = {X} in both), differing only upstream
+  of M. Topologies pinned at seal:
+  - **V4a (single path):** chain R–A1–M–X–Y, flat E, naive divisor, rain +1 at R.
+    (Structurally identical to V3 relabelled — an internal replication, accepted as such.)
+  - **V4b (forked path):** R–A1–M and R–A2–M (a diamond upstream), then M–X–Y; flat E, naive
+    divisor, rain +1 at R.
+  Watched: the first-transfer tick of X→Y in each world.
 
 ## Claims (H-S1-1 hand-derivations; sealed before execution)
 
@@ -65,8 +77,8 @@ Kinds: kind(1) elevation (static), kind(2) water (moved). Additive resolver. Poi
 | C0 | V0 reproduces the stasis at 2 cells | Zero transfers in 30 ticks; totals = crossings exactly |
 | C1 | V1 first-transfer ticks, per d | d=0 → tick 2 · d=1 → tick 1 · d=2 → tick 0 · d=3 → tick 0 · d=4 → tick 0 |
 | C2 | V2 first-transfer tick = k (structure enters ONLY through the local divisor) | k=1 → tick 1 · k=2 → tick 2 · k=3 → tick 3 |
-| C3 | V3 per-edge first-transfer ticks | **SLOT — to be hand-derived and filled at seal** |
-| C4 | V4 watched-edge first-transfer ticks (both worlds) | **SLOT — to be hand-derived and filled at seal** |
+| C3 | V3 per-edge first-transfer ticks | **Filled at seal, by hand:** edge 1 → tick 2 · edge 2 → tick 5 · edge 3 → tick 9 · edge 4 → tick 14. *(Hop delays 3, 4, 5 — increasing: the hand derivation already stands in tension with sealed informal expectation 3, which predicted a constant delay. Left standing as designed; Slot D will adjudicate against the record.)* |
+| C4 | V4 watched-edge first-transfer ticks (both worlds) | **Filled at seal, by hand:** V4a → tick 14 · V4b → **tick 13**. *(The fork accelerates the watched edge by one tick even though its 1-hop neighbourhood is identical — structure reaching timing through delivered state, exactly as the mechanism permits: both numbers derive from the fixture text alone.)* |
 | C5 | Instrument cross-check: the completed per-edge flux counter's counts equal the transfers recoverable from `states.csv` | Exact equality, every edge, every tick, every world |
 
 Adjudication rule (bound now): a record/prediction mismatch is first re-derived by hand from
@@ -94,8 +106,10 @@ non-zero per-edge flux.
 
 ## Confidence declaration (laboratory's, at seal)
 
-C0 95 · C1 85 · C2 80 · C3 (slot) · C4 (slot) · C5 90. (C1/C2 deliberately below the
-arithmetic's apparent certainty: the timing convention is where hands err.)
+C0 95 · C1 85 · C2 80 · C3 75 · C4 70 · C5 90. (C1/C2 deliberately below the arithmetic's
+apparent certainty: the timing convention is where hands err. C3/C4 lower still — each is a
+20–30-step hand simulation, and every step is an opportunity for the boundary convention to
+bite.)
 
 ## Outcomes (bound in advance)
 
