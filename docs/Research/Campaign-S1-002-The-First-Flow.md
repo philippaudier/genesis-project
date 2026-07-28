@@ -147,3 +147,32 @@ S1-001 asked: *does the world flow?* S1-002 asks: **when does it begin to flow?*
 seeks no landscape — one unit crossing one relation. Worlds deliberately minute (lines, stars,
 a handful of cells): not a phenomenon, a **frontier** — the exact boundary between an immobile
 world and a dynamic one. The important word in the question is *minimal*.
+
+## Execution authorisation (founder, 2026-07-29)
+
+> **Execution of Campaign S1-002 — The First Flow is authorised.**
+
+Covers ONLY: opening `--execute-s1-002`; running V0–V4 exactly as sealed; full trace recording;
+instrument computation including the per-edge flux counter; the factual report. Does NOT cover:
+reduction; interpretation; modification of any builder or fixture; **rewriting of any manual
+derivation**; promotion of H-S1-1; evaluation of F-1.
+
+New rule, binding for this campaign and on the record:
+
+- **E4 — The Hand Cannot Blink.** Once execution begins, the manual derivation is intangible.
+  A wrong addition, an inverted sign, a misapplied divisor — nothing is corrected. The world is
+  never compared to a reconstructed derivation; it is compared to **the one that existed before
+  it spoke.** Otherwise it is no longer a test.
+
+Founder's watch order: the Consistency Check first (the witness — if it passes everywhere,
+every observed transfer is credible; if it breaks, no timing means anything), as B3 was watched
+first in S1-001.
+
+## Founder's out-of-campaign intuition (deposited 2026-07-29, pre-execution; explicitly outside
+the campaign, scored never)
+
+Verbatim: *Je soupçonne que le résultat le plus précieux de S1-002 ne sera pas un tick. Ni 2.
+Ni 5. Ni 9. Ni 14. Je soupçonne que ce sera la découverte d'une **méthode**. Si la comparaison
+"main contre machine" fonctionne aussi bien que son design le promet, alors Genesis n'aura pas
+seulement répondu à RD-10. Il aura inventé une nouvelle manière de tester ses propres sciences.
+Et cette méthode pourra voyager.*

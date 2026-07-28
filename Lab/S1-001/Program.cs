@@ -30,9 +30,10 @@ namespace Genesis.Lab.S1_001
 
             if (args.Length >= 1 && args[0] == "--execute-s1-002")
             {
-                Console.WriteLine("Execution of Campaign S1-002 is not authorised.");
-                Console.WriteLine("The campaign is sealed (4885d04); execution requires separate authorisation.");
-                return 2;
+                // Gate opened under the founder's execution authorisation (2026-07-29, recorded
+                // in the campaign document with rule E4). The parcels run exactly as sealed.
+                Console.WriteLine("Executing Campaign S1-002 as sealed:");
+                return ExecutionS1002.RunAll("Runs-S1-002");
             }
 
             Console.WriteLine("Science-001 laboratory");
