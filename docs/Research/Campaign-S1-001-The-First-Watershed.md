@@ -181,3 +181,40 @@ corrected by RFC-0003, H1 named — recorded in RFC-G001. Empty afterwards would
 ## Decision
 
 *(After execution, reduction first.)*
+
+---
+
+# Post-seal filings
+
+> This section is APPENDED after the seal (`7a4814e`) and is provably distinct from the sealed
+> design by git ancestry. Nothing above this line has been modified.
+
+## Founder's personal predictions (filed 2026-07-28 — after seal, before implementation; scored apart)
+
+Verbatim:
+
+- **P-A (82%)** — W0 produira exactement les régimes attendus. Pas parce que CT-003 est
+  correcte. Parce que W0 est précisément construit pour retrouver la famille d'origine.
+- **P-B (71%)** — Le premier discriminateur ne sera pas A5. Il sera A3. Je pense que le
+  verrouillage du réseau apparaîtra avant que nous comprenions pourquoi.
+- **P-C (64%)** — Le premier *Unexpected Manifestation* concernera le lecteur de partition…
+  pas le monde. Autrement dit : nous découvrirons une convention implicite dans la manière de
+  lire le réseau, avant de découvrir une nouvelle physique.
+- **P-D (58%)** — B3 trouvera au moins une faiblesse mineure dans l'audit avant que celui-ci ne
+  soit considéré comme terminé. Les contrôles négatifs sont souvent plus riches que prévu.
+- **P-E (43%)** — Le phénomène le plus intéressant de toute S1-001 ne figurera aujourd'hui ni
+  dans CT-003 ni dans Genesis-019. Il émergera du couplage entre les fixtures. Je lui donne une
+  probabilité relativement faible, mais suffisamment élevée pour vouloir la dater avant toute
+  ligne de code.
+
+## Implementation authorisation (founder, 2026-07-28)
+
+> *Authorisation granted: implementation of `Lab/S1-001/` as specified by Campaign S1-001.*
+> Conditions: no modification of the sealed design; no execution; no observation; no reduction.
+
+## Fixture Transparency (deposited as an implementation discipline, not an RFC)
+
+A fixture must be replaceable without touching the laboratory. The harness never knows it is
+executing GravityFixture / FlowFixture / ErosionFixture — it executes a **FixtureSet**. S1-002
+will replace laws; that operation must be an instrument substitution, never a rewrite of the
+laboratory.
