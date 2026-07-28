@@ -77,4 +77,7 @@ All six sealed informal expectations failed:
 
 ## Decision
 
-Withheld. The reduction is a separate authorisation.
+Withheld at reporting time. The reduction was subsequently authorised and performed the same
+day — see the Reduction and Decision sections of the campaign document
+(`docs/Research/Campaign-S1-001-The-First-Watershed.md`): **Outcome B**, successor question
+RD-10, ADR-0003 amended (the refutation rule, fifth instance).

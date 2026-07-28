@@ -1,10 +1,10 @@
 # Campaign S1-001 — The First Watershed
 
-Status: **Executed (2026-07-28).** Report: `Lab/S1-001/Runs/REPORT.md` — claims and facts only.
-Observations filed: 011 (the stasis), 012 (W3 frozen at gradient 2). A0/B1/B3 confirmed ·
-A1/A4 refuted · A2/A3/A5/B2 not exercised. All six sealed informal expectations failed.
-**Decision withheld — the reduction is a separate authorisation.**
-(Sealed as designed at `7a4814e`; nothing below this status line was modified after the seal.)
+Status: **Closed — Outcome B (2026-07-28).** Report: `Lab/S1-001/Runs/REPORT.md`.
+Observations: 011 (the stasis), 012 (frozen at gradient 2). A0/B1/B3 confirmed · A1/A4 refuted ·
+A2/A3/A5/B2 not exercised. Reduction performed under separate authorisation — see the Reduction
+and Decision sections at the end of this document. Successor question: **RD-10**.
+(Sealed as designed at `7a4814e`; the sealed sections were never modified.)
 Science: Science-001 — Geomorphology (first campaign of the register).
 Series note: `S1` = Science-001. One campaign register (`docs/Research/`); the prefix marks the
 science. Protocol: `TEMPLATE-Campaign.md` (canonical, first use).
@@ -244,3 +244,46 @@ Execution rules, binding from now on:
 First report bound to be austere: claims + status, traces, observations, unexpected
 manifestations, failed expectations, world corrections — no conclusions, no interpretation.
 The reduction comes after, separately.
+
+## Reduction (authorised and performed 2026-07-28 — founder's, adopted on review)
+
+The founder's framing of record: *the world did not answer "your theories are false"; it
+answered "your experiment never reached the domain where those theories speak."* A2/A3/A5/B2
+are not refuted — not exercised. And W0's confirmation keeps the chain corpus → laboratory
+valid: the rupture is elsewhere.
+
+- **R1.** The campaign produced **no evidence against CT-003 itself.** It refuted CT-003's
+  **transfer claim** to the composite potential, in its sealed form. Laboratory note
+  strengthening R1 (fact): the only in-domain behaviour observed *agrees* with the corpus
+  family — W1 froze with all gradients ≤ 1, which is exactly the family's own freeze theorem.
+- **R2.** The dominant observed behaviour is a **stasis**, predicted by no imagination. It
+  becomes the new founding question.
+- **R3.** The laboratory now owns a phenomenon the corpus could not express: uniform rain, a
+  persistent gradient, a composite potential — **and no flux.** Obs-011 and Obs-012 constitute
+  Science-001's first native domain.
+- **R4.** The next reduction must not seek a new theory of divergence. It must seek: **what
+  minimal condition makes a gradient effectively transporting?** → opened as **RD-10**.
+
+**H-S1-1 (hypothesis, kept strictly apart from the findings above).** The fixtures' text
+supplies a candidate mechanism: an edge fires iff the potential difference reaches the local
+divisor (the integer floor is an activation threshold); uniform crossings preserve kind(2)
+uniformity, so potential differences stayed equal to elevation differences (≤ 2 in every
+parcel) — below every divisor. Testable consequence, available for sealing in S1-002: any
+source asymmetry producing a difference ≥ the local divisor should produce the first transfer
+in Science-001's history. A hypothesis with a prediction — not a finding.
+
+Bookkeeping: no discriminating claim was exercised — the CT-003 / Genesis-019 disagreement
+stands exactly as filed; the suspicion clause remains satisfied and unresolved.
+
+## Decision
+
+**Outcome B, as bound in advance:** no basin-scale convergence arose; the candidate law
+collection is insufficient *as watered* — recorded, not rescued. The missing condition is
+Science-001's first demanded question (RD-10). Outcome C did not occur (no discrimination);
+Outcome D did not occur (the instruments were confirmed — B3's leak was caught exactly).
+
+Per the standing rule — now graved: this campaign refuted two claims, failed all six sealed
+expectations, produced no watershed, **and did not fail**: it produced exploitable knowledge
+and a new phenomenon. This is the fifth structurally independent instance of the refutation
+rule and the first from a science; the founder's condition is met, and **ADR-0003 is amended
+accordingly** (see ADR-0003, Amendment 2026-07-28).

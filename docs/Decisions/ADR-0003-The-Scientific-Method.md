@@ -112,6 +112,21 @@ classical project — and this ADR exists so the inversion is a discipline, not 
 - The method applies to discovery. Milestones remain governed by ADR-0002; the two meet where an
   accepted decision authorises a build.
 
+## Amendment — the refutation rule (2026-07-28)
+
+> **A campaign, experiment, or reduction is never judged by whether its predictions survive. It
+> succeeds if it produces exploitable knowledge. Refutation is therefore a successful outcome
+> whenever it reduces uncertainty or exposes a new phenomenon.**
+
+Graved earned, not decreed, on the founder's pre-declared condition of a fifth structurally
+independent instance — ideally from a science. The five instances of record: Run-000003 (first
+scored refutation, house verdict "a win — the prediction was real enough to lose"); Campaign-001
+(Outcome D — *both theories wrong* — bound in advance as a victory); RFC-L003 (a proposal
+predicting its own losses: "losses are observations"); LB-001 ("recorded, not rescued");
+**Campaign S1-001** (two claims refuted, all sealed expectations failed, no watershed — and a
+new phenomenon, Obs-011, plus a successor question, RD-10: the first instance from a science).
+A campaign fails only when it cannot produce an exploitable answer.
+
 ## Related
 
 - ADR-0002 — how Genesis builds; shares the epistemic base.
