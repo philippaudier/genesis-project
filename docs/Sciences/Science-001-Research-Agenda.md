@@ -7,26 +7,29 @@
 
 ---
 
-## RD-10 — active
+## RD-10 — paid
 
 *What minimal condition makes a gradient effectively transporting?*
-State: **partially reduced.** Payment: Obs-013 — in minimal worlds, an edge transports iff the
-potential difference reaches the local divisor.
-Remainder: structured worlds.
+State: **paid by Obs-013 and Obs-014.** At the relation scale, an edge transports iff the
+potential difference reaches the local divisor. At the trajectory scale, the condition does
+not govern alone: structure determines what state arrives and therefore which later local
+thresholds are met. The two scales are compatible; no landscape-level law is implied.
 
-## F-1 — awaiting its trial
+## F-1 — supported hypothesis (S1-003 domain)
 
 Founder's dated intuition (`c9fbf87`, pre-design): local activation × global structure will
 interact.
-State: no experimental support in minimal worlds; **no negative reduction pronounced** — its
-claimed domain was deliberately protected.
-Trial: S1-003.
+State: **first experimental support from Obs-014.** A one-unit relief difference produced a
+Water-state difference outside its cell, still mirrored-asymmetric after sixty ticks without
+forcing. Domain limited to S1-003's strict pair; not a theory and not a general claim of
+amplification.
 
-## H-S1-1 — best current explanation (minimal worlds)
+## H-S1-1 — best current explanation (local activation)
 
 State: **survives S1-002** (six of six sealed hand derivations exact). Domain explicitly
-limited to minimal worlds. *Survives* — a hypothesis lives until the world forces it to die.
-Next threat: S1-003.
+extended only as far as S1-003's zero-mismatch flux reconstruction permits: it explains whether
+a present edge fires. **It does not predict a structured parcel's trajectory by itself.**
+*Survives* — a hypothesis lives until the world forces it to die.
 
 ## Rhythms — passive
 
@@ -35,11 +38,13 @@ k+1; V1-d3 double-fires then alternates; V3's upstream edges fire irregularly un
 interaction.
 Rule: **do not promote.** A candidate for a future Observation, nothing more.
 
-## Locality (timing) — a manifestation, not a theory
+## Locality (timing and reach) — a manifestation, not a theory
 
 State: first quantitative manifestation observed — two worlds with identical 1-hop
 neighbourhoods around the watched edge produced different first-transfer ticks (14 vs 13);
-structure reached timing through delivered state, fully hand-derivable.
+structure reached timing through delivered state, fully hand-derivable. Obs-014 adds reach
+beyond hand-computability: a one-cell relief difference produced its first Water difference
+outside that cell and left a non-zero mirrored difference after forcing stopped.
 Rule: to be kept distinct from any theory of locality.
 
 ## Conversion under conflict (B2 / H1) — unexercised through two campaigns
@@ -50,16 +55,15 @@ Deliberately deferred; **awaits a dedicated campaign.** Recorded here so it cann
 
 ---
 
-## S1-003 — deliberately NOT opened
+## S1-003 — closed, Outcome A
 
-The science has something more precious than an immediate sequel: time.
-
-Its founding question is fixed now, before any design exists (founder's, 2026-07-29):
+Founding question (founder's, fixed before design, 2026-07-29):
 
 > **What is the smallest structure capable of making a purely local derivation lie?**
 
-Design criterion, binding: S1-003 must be chosen **because it threatens Method-001, not
-because it resembles it.** This is not F-1's rescue; it is F-1's first right to speak.
+Result: the local derivation did not become false; it became insufficient as a trajectory
+prediction. S1-003 crossed Method-001's frontier without violating it and gave F-1 its first
+experimental support. No successor campaign is opened by this reduction.
 
 ## The standing adversary
 

@@ -10,6 +10,11 @@
 Validated by: **Campaign S1-002 — The First Flow** (2026-07-29; six of six sealed hand
 derivations exact to the tick across twelve worlds; Observation-013).
 
+Boundary trial: **Campaign S1-003 — The First Uncalculated Parcel** (2026-07-29;
+Observation-014). The campaign was chosen beyond hand-computability, so Method-001 correctly
+did not apply. Rigour continued through sealed outcomes and discriminating instruments; this
+confirms the boundary without extending the method.
+
 ## What it tests
 
 **An understanding — not a world.** A deterministic system can still be opaque. This method
@@ -52,6 +57,12 @@ S1-002: C0–C5 all confirmed, exact (threshold sweep 2/1/0/0/0; stars k→k; ca
 locality pair 14/13); Consistency Check 0 mismatches × 12 worlds; one quick intuition
 (constant cascade delay) lost to the hand derivation, and the world sided with the hand —
 the three-layer separation observed working in a single campaign.
+
+S1-003: deliberate boundary trial. No complete trajectory was derived by hand; the method was
+not invoked outside its domain. A sealed risky prediction, exhaustive losing outcomes, a
+symmetric control, and independently calibrated witnesses produced a credible result with
+zero reconstruction mismatches. This is evidence that stopping Method-001 where it stops
+applying need not stop the science. It does not validate a new reusable method.
 
 ## Limits
 

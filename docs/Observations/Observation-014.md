@@ -49,9 +49,15 @@ same law family. It remains a measured fact here and is not used to classify Out
 
 ## Hypotheses
 
-Withheld — the reduction of Campaign S1-003 is not authorised. Evaluation of F-1, the remaining
-payment of RD-10, and any change to Method-001 or the Science-001 agenda belong to that separate
-act.
+Reduction authorised 2026-07-29:
+
+- F-1 receives its first experimental support, limited to S1-003's domain.
+- H-S1-1 survives as the explanation of local activation, not as a complete trajectory
+  predictor for structured parcels.
+- RD-10 is paid by separating the relation-scale activation condition from the trajectory-scale
+  role of delivered state and structure.
+- Method-001's hand-computability frontier is confirmed, neither extended nor refuted.
+- The negative Water value is excluded from this reduction.
 
 ## Status
 

@@ -1,8 +1,9 @@
 # Campaign S1-003 — The First Uncalculated Parcel
 
-Status: **EXECUTED — Outcome A; reduction withheld.** Sealed 2026-07-29 by the founder's
-approval of the question, U0/U1 pair, six outcomes, and confidence declaration. Execution
-authorised separately on 2026-07-29 and recorded below. Report: `Runs-S1-003/REPORT.md`.
+Status: **CLOSED — Outcome A (2026-07-29).** Sealed 2026-07-29 by the founder's approval of
+the question, U0/U1 pair, six outcomes, and confidence declaration. Execution and reduction
+were authorised separately and are recorded below. Report: `Runs-S1-003/REPORT.md`;
+Observation-014.
 
 ## Founding question
 
@@ -276,3 +277,39 @@ The gate was opened in commit `cba37a6`, before either campaign parcel was run.
 U0 and U1 ran for 120 ticks exactly as sealed. The bound mechanical classification is
 **Outcome A — P-S1-003 confirmed, persistent.** The complete record and factual witnesses are
 under `Runs-S1-003/`. No reduction, promotion, or decision is authorised by this execution.
+
+## Reduction (authorised and performed 2026-07-29)
+
+Founder:
+
+> *« oui vas y »*
+
+- **R1 — F-1 receives its first experimental support.** U0 and U1 differed in exactly one
+  static elevation value. The resulting Water records first differed outside that cell and
+  remained measurably asymmetric after forcing stopped. Local activation and structure
+  therefore interacted in the domain of this campaign. This is support for F-1, not promotion
+  to theory and not a claim of general amplification.
+- **R2 — H-S1-1 survives, with its limit exposed.** Every counted transfer remained consistent
+  with the local threshold rule; the independent reconstruction found zero mismatches.
+  H-S1-1 still explains whether a present edge fires. It is insufficient by itself to predict
+  the later history of a place in a structured parcel, because state arriving from beyond the
+  initial neighbourhood changes later local readings.
+- **R3 — RD-10 is paid.** At the relation scale, the minimal activation condition is the local
+  divisor threshold identified by S1-002. At the trajectory scale, that condition does not
+  govern alone: structure controls which state reaches a relation and therefore which later
+  thresholds are met. The apparent single question resolves into two compatible scales.
+- **R4 — Method-001's frontier holds.** S1-003 was deliberately not hand-derived and therefore
+  did not apply Hand vs Machine outside its declared domain. Exact foreknowledge was replaced
+  by an antecedent seal, discriminating witnesses, and exhaustive losing outcomes. The campaign
+  remained rigorous beyond hand-computability without extending or refuting Method-001. One
+  campaign does not earn a second reusable method.
+- **R5 — The negative Water value is excluded.** It was measured here but already existed in
+  S1-002 under the same law family. It neither classifies Outcome A nor enters this reduction.
+
+## Decision
+
+**Outcome A, as bound in advance.** P-S1-003 is confirmed and persistent in this parcel pair.
+F-1 advances from deposited intuition to a supported hypothesis within S1-003's domain.
+H-S1-1 remains the best current explanation of local activation, no longer mistaken for a
+trajectory predictor. RD-10 is paid. No law, RFC, new method, landscape word, or successor
+campaign is opened.
