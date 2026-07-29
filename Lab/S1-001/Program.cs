@@ -38,16 +38,17 @@ namespace Genesis.Lab.S1_001
 
             if (args.Length >= 1 && args[0] == "--execute-s1-003")
             {
-                Console.Error.WriteLine(
-                    "REFUSED: Campaign S1-003 is sealed for implementation, not authorised for execution.");
-                return 2;
+                // Gate opened by the founder's explicit execution authorisation on 2026-07-29:
+                // "oui execute". The pair runs exactly as sealed.
+                Console.WriteLine("Executing Campaign S1-003 as sealed:");
+                return ExecutionS1003.RunAll("Runs-S1-003");
             }
 
             Console.WriteLine("Science-001 laboratory");
             Console.WriteLine("  --smoke            calibrate instruments on toy worlds (no sealed parcel is run)");
             Console.WriteLine("  --execute          run Campaign S1-001's sealed parcels (authorised 2026-07-28)");
             Console.WriteLine("  --execute-s1-002   run Campaign S1-002's sealed parcels (authorised 2026-07-29)");
-            Console.WriteLine("  --execute-s1-003   refused: a second, explicit authorisation is required");
+            Console.WriteLine("  --execute-s1-003   run Campaign S1-003's sealed pair (authorised 2026-07-29)");
             return 0;
         }
     }
