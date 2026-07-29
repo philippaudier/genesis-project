@@ -306,3 +306,22 @@ expectations, produced no watershed, **and did not fail**: it produced exploitab
 and a new phenomenon. This is the fifth structurally independent instance of the refutation
 rule and the first from a science; the founder's condition is met, and **ADR-0003 is amended
 accordingly** (see ADR-0003, Amendment 2026-07-28).
+
+## Correction before a successor (2026-07-29)
+
+Cold review for Campaign S1-004 found a dormant mismatch between W4's sealed description and
+its implementation:
+
+- the sealed text said Elevation was “written only by the erosion fixture”;
+- `ConversionFixture` actually wrote only `−Rock, +Sediment`;
+- `SedimentTransportFixture` moved Sediment;
+- flow and the partition reader continued to read `Elevation + Water`;
+- therefore neither conversion nor transport could have changed the relief reading.
+
+This correction does not alter S1-001's outcome: W4 produced zero conversion events, so the
+unreached fixture could not affect any recorded state or verdict. The false statement remains
+in its sealed historical location; this postscript corrects it without rewriting what was
+claimed before execution.
+
+No successor may call the W4 candidate “relief transformation” without first defining and
+testing a surface reading that the moved matter can actually change.
