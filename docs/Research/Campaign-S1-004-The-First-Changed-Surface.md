@@ -1,13 +1,12 @@
 # Campaign S1-004 — The First Changed Surface
 
-Status: **EXECUTED (2026-07-29). Outcome A — first changed surface, exactly as derived.**
+Status: **CLOSED (2026-07-29). Outcome A — first changed surface, exactly as derived.**
 Report: `Lab/S1-004/Runs/REPORT.md`; Observation-015. C0–C5 all held; matter invariant; no
 negative value. **One World Correction, in the driver and not the world:** the first execution
 scored **E** because its C5 reader conflated three things; run 1 is kept whole
 (`REPORT-run-1-outcome-E.md`) and, determinism obliging, run 2 reproduced its record byte for
 byte — only the reading changed. **Adjudicated by the founder: Outcome A stands, with the instrumental World Correction kept**
-(see the adjudication at the end of this document). **Decision withheld: the reduction is not
-authorised.**
+(see the adjudication at the end of this document). **Reduction performed; Decision recorded.**
 (Sealed `b114a34`; gate 7 CONFORMING `76ccaf1`; gate 8 `76b646f`; run 1 `dc36f8c`.)
 
 Gate 4 — the founder's approval, verbatim:
@@ -355,4 +354,47 @@ campaign may settle for itself.)
 Deposited by the founder on the phenomenon itself: *Genesis did not move an elevation. It moved
 one unit of conserved matter — and the surface, which exists only as a reading, became other.*
 
-**The reduction remains a separate act. The phenomenon is acquired.**
+**The phenomenon is acquired.**
+
+---
+
+# Reduction (authorised and performed 2026-07-29)
+
+Founder:
+
+> *« La réduction reste à toi. »*
+
+- **R1 — S-S1-1 receives its first support.** In the domain of this strict pair, a solid
+  surface needed no writable Elevation kind. `Base + Rock + Sediment` was a derived reading,
+  and it changed when conserved matter changed place. This is a supported hypothesis about
+  representation, not a universal definition of relief.
+- **R2 — T-S1-1 is discriminated by the strict pair.** Conversion alone changed matter's
+  register and left every local surface reading invariant in M0. Adding only Sediment transport
+  made M1's reading change at two places. In this domain, conversion made mobile matter;
+  transport changed its spatial distribution and therefore the surface.
+- **R3 — D-G2's test obligation is discharged for the observed case.** Two fixtures contributed
+  `+1` and `−1` to the same Sediment cell; the shared additive resolver was invoked once and
+  committed zero. `Rock + Sediment` remained 30. H1 survives its first exercised
+  cross-fixture conflict: the conversion pair arrived whole. One minimal campaign does not
+  promote H1 to a universal theorem about every possible future runner.
+- **R4 — no geomorphology law enters the corpus.** The candidate potential, conversion, and
+  transport fixtures remain laboratory content. Their composition produced a phenomenon; that
+  does not yet establish uniqueness, scale behaviour, persistence, or fitness for a world.
+- **R5 — the World Correction earns a narrow campaign rule.** A post-result reader may be
+  corrected and a record reclassified only when the sealed criterion was unambiguous, the raw
+  record already contained its witnesses, the correction follows solely from that criterion,
+  the record and thresholds remain unchanged, and the false verdict remains readable. Had the
+  original reader correctly applied the criterion and the witnesses diverged, the adverse
+  outcome would stand.
+- **R6 — the next debt is accumulation.** S1-004 proved that one conserved unit can change a
+  minimal surface. It did not show whether repeated changes accumulate into durable spatial
+  structure rather than shuttle, flatten, oscillate, or disperse. That question becomes RD-11;
+  no successor campaign is opened by naming it.
+
+# Decision
+
+Outcome A stands with the instrumental World Correction preserved. Observation-015 is
+adopted. S-S1-1 and T-S1-1 become supported hypotheses limited to S1-004's domain. D-G2 is
+experimentally witnessed once; H1 survives. The canonical campaign protocol receives the
+adjudication rule. RD-11 opens. No RFC, production law, new method, landscape formation, or
+demonstration is authorised by this reduction.

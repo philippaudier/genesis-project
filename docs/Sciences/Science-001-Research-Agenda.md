@@ -47,11 +47,34 @@ beyond hand-computability: a one-cell relief difference produced its first Water
 outside that cell and left a non-zero mirrored difference after forcing stopped.
 Rule: to be kept distinct from any theory of locality.
 
-## Conversion under conflict (B2 / H1) — unexercised through two campaigns
+## Conversion under conflict (D-G2 / H1) — first exercised
 
-State: the additivity criterion and the emission-atomicity hypothesis (RFC-G001) have never
-been tested in anger — S1-001 produced no conversion event; S1-002 ran none by design.
-Deliberately deferred; **awaits a dedicated campaign.** Recorded here so it cannot be lost.
+State: **witnessed by Obs-015.** At boundary 2 in M1, Conversion and Transport contributed
+`+1/−1` to the same Sediment cell; the additive resolver committed zero and total
+Rock + Sediment remained 30. D-G2's observed case held. H1 survives its first real
+cross-fixture conflict; it is not promoted to a universal theorem.
+
+## S-S1-1 — supported representation hypothesis (minimal domain)
+
+State: **first support from Obs-015.** A solid surface can be read as
+`Base + Rock + Sediment`; no writable Elevation kind was required in S1-004. One minimal
+three-place pair does not establish that this is the unique or sufficient representation for
+extended relief.
+
+## T-S1-1 — supported mechanism hypothesis (minimal domain)
+
+State: **discriminated by S1-004's strict pair.** Conversion alone left M0 locally
+surface-invariant. Adding only Sediment transport changed M1 at two places. Persistence,
+accumulation, and spatial scaling remain outside the result.
+
+## RD-11 — active
+
+> **What makes conserved surface change accumulate into durable spatial structure rather than
+> merely shuttle, flatten, oscillate, or disperse?**
+
+Origin: Obs-015. One unit moved and changed a three-place surface exactly as derived. The
+science still has no evidence that repeated local changes build persistent extended relief.
+No campaign is opened; the debt waits for a discriminating design.
 
 ---
 
@@ -64,6 +87,18 @@ Founding question (founder's, fixed before design, 2026-07-29):
 Result: the local derivation did not become false; it became insufficient as a trajectory
 prediction. S1-003 crossed Method-001's frontier without violating it and gave F-1 its first
 experimental support. No successor campaign is opened by this reduction.
+
+## S1-004 — closed, Outcome A
+
+Founding question:
+
+> **What is the smallest conserved movement of matter that makes a world's solid surface
+> different from its initial surface?**
+
+Result: M0 remained `[10,10,10]`; M1, differing only by Sediment transport, became
+`[9,11,10]` after tick 3 with total matter invariant. The first classifier's false E remains
+as a World Correction; the adjudicated outcome is A. Candidate fixtures remain laboratory
+content.
 
 ## The standing adversary
 

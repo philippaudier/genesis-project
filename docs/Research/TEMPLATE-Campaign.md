@@ -55,3 +55,10 @@ Standing rules:
   experimental world.
 - Post-seal, pre-execution personal predictions may be filed and dated (the Campaign-002
   precedent); they are scored apart.
+- **A reader correction cannot rescue a correctly failed witness.** A post-result reader may be corrected
+  and an immutable record reclassified only when all of the following hold: the sealed criterion
+  was unambiguous; the original record already contains its witnesses; the correction follows
+  solely from that criterion; no record, threshold, prediction, or outcome changes; and the
+  false verdict remains readable in ancestry. A deterministic replay may confirm byte identity
+  but creates no new evidence. If the original reader correctly applied the sealed criterion
+  and its witnesses diverged, the adverse outcome stands. *(S1-004 adjudication, 2026-07-29.)*

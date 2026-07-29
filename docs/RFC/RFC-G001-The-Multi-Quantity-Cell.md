@@ -168,6 +168,18 @@ Amendment on review: **H1** (emission atomicity) named as an explicit hypothesis
 obligation — the theorem candidate was using it without naming it. Not a decision; the harness
 adjudicates whether it is load-bearing.
 
+## Test-obligation record (Campaign S1-004, 2026-07-29)
+
+Observation-015 exercised conversion under conflict for the first time. At boundary 2 in M1,
+one conversion emitted `−1 Rock, +1 Sediment` while Sediment transport emitted `−1 Sediment`
+from the same origin and `+1` at its neighbour. The contested origin Sediment cell received
+`[+1,−1]`; its additive resolver was invoked once and committed zero. Total Rock + Sediment
+remained 30, and the conversion pair arrived whole.
+
+Reduction: **D-G2's test obligation is discharged for this observed case. H1 survives its
+first exercised cross-fixture conflict.** This does not make H1 a universal theorem about
+incremental, streaming, or future runners; its stated death condition remains.
+
 Reviewer's note on the genre, kept for the corpus: this is a **reduction RFC** — it founds
 almost nothing; it discovers. Successful reductions are to be celebrated exactly as new laws
 are: the hardest decision to write in an ambitious project is *"the kernel does not change."*

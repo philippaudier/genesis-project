@@ -51,9 +51,16 @@ record identical to the digit: a second execution reproduced `states.csv`, `read
 
 ## Hypotheses
 
-Withheld — the reduction of Campaign S1-004 is not authorised. The campaign's candidates
-(S-S1-1: a relief need not be a writable quantity; T-S1-1: only transport can change the
-surface reading) are recorded in the sealed design and are not adjudicated here.
+Reduction authorised 2026-07-29:
+
+- **S-S1-1 receives first support:** in this strict pair, the solid surface was a derived
+  reading over conserved kinds, not a writable Elevation quantity.
+- **T-S1-1 is supported in-domain:** conversion alone left M0's surface invariant; adding only
+  Sediment transport changed M1's surface.
+- **D-G2 is witnessed in the observed collision; H1 survives:** the paired conversion arrived
+  whole, additive resolution committed the expected local delta, and total matter remained 30.
+- No candidate fixture is promoted to a Genesis law. Scale, persistence, and accumulation remain
+  untested.
 
 ## Status
 
