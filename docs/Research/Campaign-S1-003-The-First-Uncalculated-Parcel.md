@@ -1,8 +1,8 @@
 # Campaign S1-003 — The First Uncalculated Parcel
 
-Status: **SEALED — implementation authorised; execution forbidden.** Sealed 2026-07-29 by the
-founder's approval of the question, U0/U1 pair, six outcomes, and confidence declaration. From
-this point, the campaign text is intangible until a verdict exists.
+Status: **EXECUTED — Outcome A; reduction withheld.** Sealed 2026-07-29 by the founder's
+approval of the question, U0/U1 pair, six outcomes, and confidence declaration. Execution
+authorised separately on 2026-07-29 and recorded below. Report: `Runs-S1-003/REPORT.md`.
 
 ## Founding question
 
@@ -262,3 +262,17 @@ Founder, 2026-07-29:
 
 Interpretation fixed at seal: approval covers the question, parcel pair, outcomes, and confidence;
 it authorises blind implementation. It does **not** authorise execution.
+
+### Execution authorisation
+
+Founder, 2026-07-29, after the blind instrument was committed and calibrated:
+
+> *« oui execute »*
+
+The gate was opened in commit `cba37a6`, before either campaign parcel was run.
+
+### Execution record
+
+U0 and U1 ran for 120 ticks exactly as sealed. The bound mechanical classification is
+**Outcome A — P-S1-003 confirmed, persistent.** The complete record and factual witnesses are
+under `Runs-S1-003/`. No reduction, promotion, or decision is authorised by this execution.

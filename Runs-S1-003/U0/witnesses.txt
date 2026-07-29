@@ -1,0 +1,8 @@
+world: U0
+ticks: 120
+flux reconstruction mismatches: 0
+conservation violations: 0
+most negative water: -1 at tick 8, place 10
+maximum |left-right|: 0 at tick 0
+left-right at tick 60: 0
+left-right at tick 120: 0

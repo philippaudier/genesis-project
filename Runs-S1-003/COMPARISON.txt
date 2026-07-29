@@ -1,0 +1,7 @@
+first U0/U1 water difference: tick 19, place 16 (U0=1, U1=2)
+difference outside perturbed cell: True
+difference at perturbed cell: True
+U0 mirror violation: False
+U1 mirror difference at tick 120: True
+instrument failure: False
+bound outcome: A - confirmed, persistent
