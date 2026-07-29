@@ -5,7 +5,9 @@ Revised 2026-07-29 after cold review (gate 3): the hand derivation was re-comput
 independently and holds tick for tick; four changes followed — the cross-fixture collision at
 boundary 2 became an explicit claim (C5), outcome **F** was added to close a gap the falsifier
 had opened, a **conformance gate** was added between implementation and execution, and the
-three-place choice was justified.
+three-place choice was justified. A second instrument review corrected one overclaim: a bad
+resolution would not be silent in the cross-kind total; the global audit and local collision
+witness are independent and must both scream.
 
 ## The resistance that opens this Draft
 
@@ -155,9 +157,10 @@ SedimentTransport  → (A, Sediment, −1)
 Two contributions to one cell is a **conflict**: the additive resolver is invoked exactly once
 and commits a delta of 0, leaving `Sediment(A) = 1` and `S(A) = 9`. **D-G2 and H1 do not merely
 apply here — they meet in a single cell, for the first time in the project's history.** Were
-additivity to fail, the derived reading would be wrong by exactly one unit, and the failure
-would be silent in every per-kind total. The derivation depends on it; so it is claimed (C5)
-and witnessed (measurement 13), not assumed.
+additivity to fail, the derived reading would be wrong by exactly one unit. In this trajectory
+the cross-kind `Rock + Sediment` audit should also fail by one; that global witness and the
+local resolver witness are deliberately independent. The derivation depends on the collision;
+so it is claimed (C5) and witnessed (measurement 13), not assumed.
 
 Bound first events:
 
@@ -186,7 +189,10 @@ Every tick, both worlds:
 11. first tick M0 and M1 solid surfaces differ;
 12. minimum value of every Kind;
 13. **contributions per cell per tick** — which cells received more than one, from which
-    fixtures, and the committed delta (the resolver's own witness; C5 is scored on it).
+    fixtures, the resolver invocation count and inputs, and the committed delta. Fixture
+    provenance is collected by the laboratory from each fixture's transitions on the same
+    snapshot; actual invocation is recorded by a counting additive resolver bound into the run.
+    Neither requires a kernel change. C5 is scored only when both witnesses agree.
 
 ## Derived claims
 
@@ -200,7 +206,7 @@ Every tick, both worlds:
 - **C5 — Cross-fixture additivity:** at boundary 2 in M1, cell (A, Sediment) receives two
   contributions from two fixtures (+1 conversion, −1 transport); the resolver is invoked exactly
   once and commits 0. This is where D-G2 and H1 are actually exercised rather than assumed;
-  its failure would falsify the derived surface by exactly one unit.
+  its failure would falsify the derived surface and the cross-kind audit by exactly one unit.
 
 ## Risky prediction
 
@@ -251,7 +257,11 @@ On foreign toys only:
 3. a Sediment transfer changes source and target readings with opposite equal deltas;
 4. the cross-kind ledger detects a dropped half-pair;
 5. the transport reconstruction detects an incorrect edge amount;
-6. identical toy records produce no cross-world surface difference.
+6. identical toy records produce no cross-world surface difference;
+7. a counting additive resolver receives a planted `(+1, −1)` conflict exactly once and records
+   committed delta 0;
+8. a planted provenance record that omits either fixture contribution disagrees with the
+   resolver inputs and makes the collision witness fail.
 
 ## Kill criteria before seal
 
