@@ -1,6 +1,17 @@
 # Campaign S1-004 — The First Changed Surface
 
-Status: **DRAFT — no implementation; no execution.**
+Status: **SEALED by this commit (2026-07-29). Implementation authorised. Execution NOT
+authorised.**
+
+Gate 4 — the founder's approval, verbatim:
+
+> *« J'approuve la question, la paire M0/M1, la prédiction, C5, les issues A–F et la confiance
+> de 95/100. J'autorise le sceau et l'implémentation, mais pas l'exécution. »*
+
+Everything below this line was fixed before the seal and is not modified afterwards. Gate 7
+(conformance) and gate 8 (a second explicit authorisation) still stand between this file and
+any result.
+
 Revised 2026-07-29 after cold review (gate 3): the hand derivation was re-computed
 independently and holds tick for tick; four changes followed — the cross-fixture collision at
 boundary 2 became an explicit claim (C5), outcome **F** was added to close a gap the falsifier
