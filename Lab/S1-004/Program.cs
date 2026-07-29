@@ -22,15 +22,16 @@ namespace Genesis.Lab.S1_004
 
             if (args.Length >= 1 && args[0] == "--execute")
             {
-                Console.WriteLine("Execution of Campaign S1-004 is not authorised.");
-                Console.WriteLine("Sealed at b114a34; the founder authorised the seal and the implementation only.");
-                Console.WriteLine("Gate 7 (conformance) and gate 8 (a second authorisation) come first.");
-                return 2;
+                // Gate 7 closed CONFORMING (76ccaf1); gate 8 opened by the founder's second
+                // explicit authorisation (2026-07-29). M0 and M1 run exactly as sealed.
+                Console.WriteLine("Executing Campaign S1-004 as sealed:");
+                Console.WriteLine();
+                return Execution.RunAll("Runs");
             }
 
             Console.WriteLine("S1-004 laboratory (Campaign S1-004 - The First Changed Surface)");
             Console.WriteLine("  --calibrate  discharge the instrument obligations on foreign toys");
-            Console.WriteLine("  --execute    (refused until authorised)");
+            Console.WriteLine("  --execute    run M0 and M1 as sealed (authorised 2026-07-29)");
             return 0;
         }
     }

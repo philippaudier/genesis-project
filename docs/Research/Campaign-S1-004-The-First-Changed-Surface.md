@@ -1,12 +1,22 @@
 # Campaign S1-004 — The First Changed Surface
 
-Status: **SEALED by this commit (2026-07-29). Implementation authorised. Execution NOT
-authorised.**
+Status: **SEALED (`b114a34`). Gate 7 closed, CONFORMING (`76ccaf1`). Execution authorised
+(2026-07-29). Reduction NOT authorised.**
 
 Gate 4 — the founder's approval, verbatim:
 
 > *« J'approuve la question, la paire M0/M1, la prédiction, C5, les issues A–F et la confiance
 > de 95/100. J'autorise le sceau et l'implémentation, mais pas l'exécution. »*
+
+Gate 7 — conformance: `Lab/S1-004/CONFORMANCE.md`, **CONFORMING — no World Correction**;
+eleven sealed terms verified line by line, eight calibrations passed on foreign toys, no M0 or
+M1 tick executed during the review.
+
+Gate 8 — the founder's execution authorisation, verbatim:
+
+> *« J'autorise l'exécution de Campaign S1-004 — The First Changed Surface : M0 et M1, six ticks
+> exactement comme scellés, avec enregistrement complet et classification selon les issues A–F.
+> Je n'autorise pas encore la réduction. »*
 
 Everything below this line was fixed before the seal and is not modified afterwards. Gate 7
 (conformance) and gate 8 (a second explicit authorisation) still stand between this file and
