@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="CompetenceTransportFixture.cs" />
     <Compile Include="..\..\Assets\Genesis\Simulation\*.cs" LinkBase="Kernel" />
     <Compile Include="..\S1-001\FixtureSet.cs" LinkBase="Shared" />
     <Compile Include="..\S1-001\Fixtures.cs" LinkBase="Shared" />

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Genesis.Simulation;
+using Genesis.Lab.S1_001;
 using Genesis.Lab.S1_004;
 
 namespace Genesis.Lab.RD11_Probe
@@ -19,6 +20,15 @@ namespace Genesis.Lab.RD11_Probe
             public int First;
             public int Again;
             public int Period => Again - First;
+        }
+
+        private sealed class ProbeParcel
+        {
+            public SimulationState Initial;
+            public RelationSet Relations;
+            public FixtureSet Set;
+            public ExternalEventTrace Crossings;
+            public IReadOnlyList<Place> Places;
         }
 
         public static int Main()
@@ -112,7 +122,133 @@ namespace Genesis.Lab.RD11_Probe
 
             Console.WriteLine();
             Console.WriteLine("This output asks where to look next. It proves nothing.");
+
+            Console.WriteLine();
+            Console.WriteLine("EXPLORATORY COMPETENCE SWEEP — SAME CONTAMINATED PARCEL");
+            Console.WriteLine("threshold | first full-state recurrence | cycle surface(s) | matter | min | classification");
+            for (long threshold = 0; threshold <= 6; threshold++)
+            {
+                Console.WriteLine(ExploreCompetence(threshold));
+            }
+
             return 0;
+        }
+
+        private static string ExploreCompetence(long threshold)
+        {
+            ProbeParcel parcel = BuildCompetenceParcel(threshold);
+            var runner = new TickRunner(new TransitionRunner(parcel.Set.Resolvers));
+            SimulationState state = parcel.Initial;
+            long initialMatter = Matter(state, parcel.Places);
+            long minimum = Minimum(state, parcel.Places);
+            var seen = new Dictionary<string, int>();
+            var surfaces = new List<string>();
+            Repeat repeat = null;
+
+            for (int tick = 0; tick <= Horizon; tick++)
+            {
+                string full = FullSignature(state, parcel.Places);
+                surfaces.Add(SurfaceSignature(state, parcel.Places));
+                minimum = Math.Min(minimum, Minimum(state, parcel.Places));
+                if (seen.TryGetValue(full, out int first))
+                {
+                    repeat = new Repeat { First = first, Again = tick };
+                    break;
+                }
+
+                seen.Add(full, tick);
+                if (tick < Horizon)
+                {
+                    state = runner.Run(state, parcel.Relations, parcel.Set.Transitions,
+                        parcel.Crossings, 1);
+                }
+            }
+
+            if (repeat == null)
+            {
+                return $"{threshold,9} | none through {Horizon,-9} | {surfaces[surfaces.Count - 1],-20} | " +
+                    $"{initialMatter}->{Matter(state, parcel.Places),-2} | {minimum,3} | unresolved";
+            }
+
+            var cycle = new List<string>();
+            for (int tick = repeat.First; tick < repeat.Again; tick++)
+            {
+                if (!cycle.Contains(surfaces[tick]))
+                {
+                    cycle.Add(surfaces[tick]);
+                }
+            }
+
+            string classification;
+            if (repeat.Period != 1)
+            {
+                classification = $"material orbit p{repeat.Period}";
+            }
+            else
+            {
+                classification = IsFlat(cycle[0]) ? "flat fixed point" : "non-uniform fixed point";
+            }
+
+            string recurrence = $"t{repeat.First}->t{repeat.Again} (p{repeat.Period})";
+            string cycleSurfaces = string.Join(" / ", cycle);
+            string matter = $"{initialMatter}->{Matter(state, parcel.Places)}";
+            return $"{threshold,9} | {recurrence,-27} | {cycleSurfaces,-23} | {matter,-6} | {minimum,3} | {classification}";
+        }
+
+        private static ProbeParcel BuildCompetenceParcel(long threshold)
+        {
+            var places = new List<Place> { new Place(0), new Place(1), new Place(2) };
+            var cells = new Dictionary<Cell, long>();
+            foreach (Place place in places)
+            {
+                cells[new Cell(place, K4.Base)] = 0;
+                cells[new Cell(place, K4.Rock)] = Worlds4.RockAtEachPlace;
+                cells[new Cell(place, K4.Sediment)] = 0;
+                cells[new Cell(place, K4.Water)] = 0;
+            }
+
+            var initial = new SimulationState(Tick.Zero, cells);
+            var relations = new RelationSet(initial,
+                new Relation(places[0], places[1]), new Relation(places[1], places[0]),
+                new Relation(places[1], places[2]), new Relation(places[2], places[1]));
+
+            var additive = new AdditiveResolver();
+            var fixtures = new List<IFixture>
+            {
+                new SurfaceFlowFixture(places, Worlds4.Constant2, additive),
+                new SurfaceConversionFixture(places, Worlds4.Constant2, Worlds4.Threshold,
+                    additive, additive),
+                new CompetenceTransportFixture(places, Worlds4.Constant2, threshold, additive),
+            };
+
+            var crossings = new ExternalEventTrace(new Membrane(new[] { K4.Water }));
+            crossings.Append(new ExternalEvent(new Tick(0), new Cell(places[0], K4.Water),
+                Worlds4.CrossingAmount));
+            crossings.Append(new ExternalEvent(new Tick(1), new Cell(places[0], K4.Water),
+                Worlds4.CrossingAmount));
+
+            return new ProbeParcel
+            {
+                Initial = initial,
+                Relations = relations,
+                Set = new FixtureSet(fixtures.ToArray()),
+                Crossings = crossings,
+                Places = places,
+            };
+        }
+
+        private static bool IsFlat(string surface)
+        {
+            string[] values = surface.Trim('[', ']').Split(',');
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] != values[0])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private static string Describe(Repeat repeat)

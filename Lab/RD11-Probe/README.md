@@ -26,3 +26,8 @@ The probe compares two state signatures:
 The distinction matters: a repeated surface does not imply that the world
 itself has repeated.
 
+After the baseline exposed a period-2 material orbit, a second exploratory
+pass changed only one candidate term: Sediment transport required its
+prospective transfer to strictly exceed a competence threshold. Thresholds
+`0..6` were swept on the same contaminated parcel. Threshold `0` is the
+existing transport rule and serves as the internal reproduction control.

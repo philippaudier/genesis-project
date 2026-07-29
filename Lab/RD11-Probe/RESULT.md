@@ -51,3 +51,36 @@ ceased** from:
 
 No law, hypothesis, campaign, or Observation is promoted by this probe.
 
+## Exploratory competence sweep
+
+The resistance suggested one minimal distinction: the existing transport moves
+Sediment for every positive prospective transfer. An exploratory fixture
+therefore required the prospective transfer to be **strictly greater** than a
+competence threshold. Nothing else changed. Threshold `0` reproduces the
+existing rule.
+
+```text
+threshold  recurrence       cycle surface(s)           classification
+0          t10 -> t12 (p2)  [10,10,10] / [8,12,10]    material orbit
+1          t6  -> t7  (p1)  [8,11,11]                 non-uniform fixed point
+2          t5  -> t6  (p1)  [9,10,11]                 non-uniform fixed point
+3          t7  -> t8  (p1)  [9,11,10]                 non-uniform fixed point
+4          t7  -> t8  (p1)  [9,11,10]                 non-uniform fixed point
+5          t7  -> t8  (p1)  [10,10,10]                flat fixed point
+6          t7  -> t8  (p1)  [10,10,10]                flat fixed point
+```
+
+All seven variants conserved `Rock + Sediment = 30` and kept every value
+non-negative.
+
+This sweep exposes a qualitative three-way boundary in the contaminated
+parcel:
+
+1. no competence distinction: matter keeps shuttling;
+2. an intermediate distinction: matter moves, then rests in a non-uniform
+   complete state;
+3. an excessive distinction: no durable relief is constructed.
+
+That boundary earns a candidate question; it does not answer it. The values,
+parcel, and resulting surfaces are now contaminated and unavailable to a
+future campaign.
