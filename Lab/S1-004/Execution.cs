@@ -322,49 +322,111 @@ namespace Genesis.Lab.S1_004
             return true;
         }
 
-        /// <summary>C5: the two witnesses agree, and the contested cell committed 0.</summary>
+        /// <summary>
+        /// C5 — a literal transcription of the sealed sentence: *"at boundary 2 in M1, cell
+        /// (A, Sediment) receives two contributions from two fixtures (+1 conversion, −1
+        /// transport); the resolver is invoked exactly once and commits 0."*
+        ///
+        /// The claim is about **that cell and that kind's resolver** — not about every contested
+        /// cell and not about every resolver. Run 1's driver conflated three things (see the
+        /// World Correction in the report); this reader does not. Same-fixture contention on
+        /// Water at a middle place is ordinary flow and is reported separately, never scored here.
+        /// </summary>
         private static string C5(Result m1, out bool passed)
         {
-            int boundary = FirstCollisionBoundary(m1);
-            if (boundary < 0)
+            var crossFixture = new List<string>();
+            int boundary = -1;
+            Cell contested = default;
+            List<Provenance.Entry> entries = null;
+
+            for (int b = 0; b < m1.Provenance.Count; b++)
+            {
+                foreach (KeyValuePair<Cell, List<Provenance.Entry>> collision in Provenance.Collisions(m1.Provenance[b]))
+                {
+                    if (collision.Key.Kind != K4.Sediment)
+                    {
+                        continue;
+                    }
+
+                    var fixtures = new HashSet<string>();
+                    foreach (Provenance.Entry entry in collision.Value)
+                    {
+                        fixtures.Add(entry.Fixture);
+                    }
+
+                    if (fixtures.Count < 2)
+                    {
+                        continue; // same-fixture contention is not the sealed claim
+                    }
+
+                    crossFixture.Add($"boundary {b}, place({collision.Key.Place.Value})");
+                    if (boundary < 0)
+                    {
+                        boundary = b;
+                        contested = collision.Key;
+                        entries = collision.Value;
+                    }
+                }
+            }
+
+            if (crossFixture.Count != 1)
             {
                 passed = false;
-                return "no cell was contested — C5 not exercised";
+                return $"expected exactly one cross-fixture Sediment collision; found {crossFixture.Count}"
+                     + (crossFixture.Count > 0 ? $" [{string.Join("; ", crossFixture)}]" : "");
             }
 
-            IReadOnlyList<KeyValuePair<Cell, List<Provenance.Entry>>> collisions =
-                Provenance.Collisions(m1.Provenance[boundary]);
-            var lines = new List<string>();
-            int sedimentCollisions = 0;
-            foreach (KeyValuePair<Cell, List<Provenance.Entry>> collision in collisions)
+            var provenanceAmounts = new List<long>();
+            foreach (Provenance.Entry entry in entries)
             {
-                if (collision.Key.Kind == K4.Sediment)
-                {
-                    sedimentCollisions++;
-                }
-
-                var amounts = new List<long>();
-                foreach (Provenance.Entry entry in collision.Value)
-                {
-                    amounts.Add(entry.Amount);
-                }
-
-                lines.Add($"place({collision.Key.Place.Value}) kind({collision.Key.Kind.Value}) [{string.Join(",", amounts)}]");
+                provenanceAmounts.Add(entry.Amount);
             }
 
-            long invocations = 0;
-            long committed = 0;
+            var sedimentInvocations = new List<SpyResolver.Invocation>();
             foreach (SpyResolver resolver in m1.Parcel.Spies)
             {
                 foreach (SpyResolver.Invocation invocation in resolver.Invocations)
                 {
-                    invocations++;
-                    committed += invocation.Committed;
+                    if (invocation.Kind == K4.Sediment)
+                    {
+                        sedimentInvocations.Add(invocation);
+                    }
                 }
             }
 
-            passed = sedimentCollisions == 1 && invocations == collisions.Count && committed == 0;
-            return $"boundary {boundary}: {string.Join(" ", lines)}; resolver invocations {invocations}, committed sum {committed}";
+            bool oneInvocation = sedimentInvocations.Count == 1;
+            bool committedZero = oneInvocation && sedimentInvocations[0].Committed == 0;
+            bool witnessesAgree = oneInvocation && SameAmounts(provenanceAmounts, sedimentInvocations[0].Amounts);
+
+            passed = boundary == 2
+                  && contested.Place == m1.Parcel.Places[0]
+                  && provenanceAmounts.Count == 2
+                  && oneInvocation && committedZero && witnessesAgree;
+
+            return $"boundary {boundary}, place({contested.Place.Value}) kind({contested.Kind.Value}) "
+                 + $"provenance [{string.Join(",", provenanceAmounts)}] from {entries.Count} fixtures; "
+                 + $"Sediment resolver invoked {sedimentInvocations.Count}×"
+                 + (oneInvocation ? $" [{string.Join(",", sedimentInvocations[0].Amounts)}] → {sedimentInvocations[0].Committed}" : "")
+                 + $"; witnesses agree: {witnessesAgree}";
+        }
+
+        private static bool SameAmounts(List<long> left, long[] right)
+        {
+            if (left.Count != right.Length)
+            {
+                return false;
+            }
+
+            var pool = new List<long>(right);
+            foreach (long value in left)
+            {
+                if (!pool.Remove(value))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         // --- classification --------------------------------------------------------------------
@@ -461,6 +523,24 @@ namespace Genesis.Lab.S1_004
 
             text.Append("\n## Classification\n\n");
             text.Append($"**Outcome {letter}** — {classification}.\n");
+
+            text.Append("\n## World Corrections\n\n");
+            text.Append("**The first execution scored E, and the fault was the driver's, not the world's.**\n");
+            text.Append("Run 1 is kept in full (`REPORT-run-1-outcome-E.md`, and the same `states.csv`, ");
+            text.Append("`readings.txt`, `resolver.txt` this run reproduces, determinism making them identical). ");
+            text.Append("Its C5 check conflated three things:\n\n");
+            text.Append("1. it counted contested cells of **every** kind, so ordinary same-fixture contention on ");
+            text.Append("Water at the middle place (`+5, −2` — B receiving from A while sending to C) was scored ");
+            text.Append("as if it were the sealed claim;\n");
+            text.Append("2. it compared the **whole run's** resolver invocations (4) against **one boundary's** ");
+            text.Append("contested cells (2);\n");
+            text.Append("3. it summed committed deltas across **all** resolvers (5 + 3 − 2 + 0 = 6) and required 0, ");
+            text.Append("instead of requiring 0 at the contested Sediment cell.\n\n");
+            text.Append("Run 1's own record already contained the disproof: `resolver.txt` shows `kind(4) [1,-1] → 0` ");
+            text.Append("— the Sediment resolver invoked exactly once in the entire run, committing 0. The reader was ");
+            text.Append("corrected against the **sealed sentence of C5**, quoted in the code, and not against the ");
+            text.Append("observed outcome. Because the kernel is deterministic, this run re-reads an identical record: ");
+            text.Append("no new evidence was created, and the founder may reject the re-reading and let outcome E stand.\n");
 
             text.Append("\n## Traces\n\n");
             text.Append("`Runs/M0/` and `Runs/M1/`: `states.csv` (every kind, every place, every tick, plus the ");

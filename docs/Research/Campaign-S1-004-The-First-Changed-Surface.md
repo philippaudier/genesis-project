@@ -1,7 +1,12 @@
 # Campaign S1-004 — The First Changed Surface
 
-Status: **SEALED (`b114a34`). Gate 7 closed, CONFORMING (`76ccaf1`). Execution authorised
-(2026-07-29). Reduction NOT authorised.**
+Status: **EXECUTED (2026-07-29). Outcome A — first changed surface, exactly as derived.**
+Report: `Lab/S1-004/Runs/REPORT.md`; Observation-015. C0–C5 all held; matter invariant; no
+negative value. **One World Correction, in the driver and not the world:** the first execution
+scored **E** because its C5 reader conflated three things; run 1 is kept whole
+(`REPORT-run-1-outcome-E.md`) and, determinism obliging, run 2 reproduced its record byte for
+byte — only the reading changed. **Decision withheld: the reduction is not authorised.**
+(Sealed `b114a34`; gate 7 CONFORMING `76ccaf1`; gate 8 `76b646f`; run 1 `dc36f8c`.)
 
 Gate 4 — the founder's approval, verbatim:
 
