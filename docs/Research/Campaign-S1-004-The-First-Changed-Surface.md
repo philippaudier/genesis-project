@@ -5,7 +5,9 @@ Report: `Lab/S1-004/Runs/REPORT.md`; Observation-015. C0–C5 all held; matter i
 negative value. **One World Correction, in the driver and not the world:** the first execution
 scored **E** because its C5 reader conflated three things; run 1 is kept whole
 (`REPORT-run-1-outcome-E.md`) and, determinism obliging, run 2 reproduced its record byte for
-byte — only the reading changed. **Decision withheld: the reduction is not authorised.**
+byte — only the reading changed. **Adjudicated by the founder: Outcome A stands, with the instrumental World Correction kept**
+(see the adjudication at the end of this document). **Decision withheld: the reduction is not
+authorised.**
 (Sealed `b114a34`; gate 7 CONFORMING `76ccaf1`; gate 8 `76b646f`; run 1 `dc36f8c`.)
 
 Gate 4 — the founder's approval, verbatim:
@@ -322,3 +324,35 @@ This Draft dies or is rewritten before seal if:
 8. Execution requires a second explicit authorisation.
 
 Until those gates are crossed, Genesis still has no law-earned changed relief.
+
+---
+
+# Post-execution — the founder's adjudication (2026-07-29)
+
+> **Outcome A — first changed surface, exactly as derived.**
+> **World Correction — the first classifier misread C5 and initially reported E.**
+
+Reasoning of record, the founder's: C5's criterion existed **before the world** and designated
+without ambiguity — boundary 2, `(A, Sediment)`, two fixtures, contributions `[+1,−1]`, one
+resolver invocation, committed delta `0`. The first classifier did not measure that criterion
+and obtain an unfavourable result; **it measured a different one** — every kind, several
+boundaries, all resolvers aggregated. Its E is therefore not a refutation of C5 but a **scope
+error in the transcription of the claim**.
+
+The requalification is admissible because: the sealed text did not change; the derivation did
+not change; the traces did not change; the first record already contained both required
+witnesses; the correction follows entirely from C5, with no threshold adjusted and no exception
+added; the second run produced no new evidence; and the false E remains readable at `dc36f8c`.
+
+**The discriminating rule, stated by the founder and kept here:**
+
+> *Had the initial reader applied C5 correctly and the two witnesses diverged, E would have had
+> to stand.* That is not what happened.
+
+(Whether this rule earns a place in `docs/Methods/` is a reduction-time question, not one this
+campaign may settle for itself.)
+
+Deposited by the founder on the phenomenon itself: *Genesis did not move an elevation. It moved
+one unit of conserved matter — and the surface, which exists only as a reading, became other.*
+
+**The reduction remains a separate act. The phenomenon is acquired.**
