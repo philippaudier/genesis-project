@@ -1,6 +1,11 @@
 # Campaign S1-004 — The First Changed Surface
 
 Status: **DRAFT — no implementation; no execution.**
+Revised 2026-07-29 after cold review (gate 3): the hand derivation was re-computed
+independently and holds tick for tick; four changes followed — the cross-fixture collision at
+boundary 2 became an explicit claim (C5), outcome **F** was added to close a gap the falsifier
+had opened, a **conformance gate** was added between implementation and execution, and the
+three-place choice was justified.
 
 ## The resistance that opens this Draft
 
@@ -84,6 +89,12 @@ S-S1-1 and T-S1-1 are campaign hypotheses, not RFC decisions.
 Two three-place bidirectional chains `A ↔ B ↔ C`, identical in initial state, relations,
 crossings, flow, conversion threshold, divisors, and additive resolvers.
 
+**Why three places and not two.** The phenomenon itself fits in `A ↔ B`. The third place earns
+its cost by giving `B → C` a flux *below* the conversion threshold in the same tick in which
+`A → B` is above it — **a within-world control showing that the threshold discriminates**
+rather than converting wherever water moves. Without C, a conversion everywhere and a
+conversion where the threshold is met would look identical.
+
 - **M0 — conversion only:** Water flow may convert Rock to Sediment, but Sediment cannot move.
 - **M1 — conversion + transport:** identical, with the candidate Sediment transport law active.
 
@@ -133,11 +144,28 @@ after tick 3   M0 S [10,10,10]
 Snapshot isolation is load-bearing and predicted: the Sediment emitted at boundary 1 cannot
 move until boundary 2; the second emitted unit cannot move during the boundary that emits it.
 
+**The collision at boundary 2 is the campaign's centre of gravity.** In M1, at that boundary,
+one cell receives contributions from two different fixtures:
+
+```text
+ConversionFixture  → (A, Sediment, +1)
+SedimentTransport  → (A, Sediment, −1)
+```
+
+Two contributions to one cell is a **conflict**: the additive resolver is invoked exactly once
+and commits a delta of 0, leaving `Sediment(A) = 1` and `S(A) = 9`. **D-G2 and H1 do not merely
+apply here — they meet in a single cell, for the first time in the project's history.** Were
+additivity to fail, the derived reading would be wrong by exactly one unit, and the failure
+would be silent in every per-kind total. The derivation depends on it; so it is claimed (C5)
+and witnessed (measurement 13), not assumed.
+
 Bound first events:
 
 - first Water flux: boundary 1, A→B, amount 5;
 - first conversion: boundary 1 at A, visible after tick 2;
 - first Sediment transport in M1: boundary 2, A→B, amount 1;
+- first cross-fixture conflict in M1: boundary 2, cell (A, Sediment), two contributions
+  (+1, −1), resolver invoked once, committed delta 0;
 - first changed SolidSurface in M1: after tick 3, A = 9 and B = 11;
 - M0 SolidSurface: unchanged through the full run by derivation C3.
 
@@ -156,7 +184,9 @@ Every tick, both worlds:
 9. first Sediment transport tick;
 10. first tick any `SolidSurface(P)` differs from its initial value;
 11. first tick M0 and M1 solid surfaces differ;
-12. minimum value of every Kind.
+12. minimum value of every Kind;
+13. **contributions per cell per tick** — which cells received more than one, from which
+    fixtures, and the committed delta (the resolver's own witness; C5 is scored on it).
 
 ## Derived claims
 
@@ -167,15 +197,23 @@ Every tick, both worlds:
 - **C3 — M0 surface invariance:** without Sediment transport, every local SolidSurface remains
   equal to its initial value, regardless of how many conversions occur.
 - **C4 — Base invariance:** Base never changes.
+- **C5 — Cross-fixture additivity:** at boundary 2 in M1, cell (A, Sediment) receives two
+  contributions from two fixtures (+1 conversion, −1 transport); the resolver is invoked exactly
+  once and commits 0. This is where D-G2 and H1 are actually exercised rather than assumed;
+  its failure would falsify the derived surface by exactly one unit.
 
 ## Risky prediction
 
 > **M1 will produce a non-zero change in SolidSurface at at least two places, while M0's
 > SolidSurface remains unchanged everywhere.**
 
-**Confidence: 95/100.** The first changed state is derived exactly from law text, but the
-campaign exists because four-kind composition, paired emissions, snapshot isolation, and two
-simultaneous transports have never met in one executed world.
+**Confidence: 95/100 — held only with gate 7 in place.** The derivation was re-computed
+independently at cold review and holds tick for tick, so its arithmetic risk is near zero. The
+residual risk is not in the numbers: it is that code which does not yet exist may not realise
+the prose sealed here. Without the conformance gate, 95 would be pricing that code; with it,
+the number stands. The campaign exists because four-kind composition, paired emissions,
+snapshot isolation, a cross-fixture collision, and two simultaneous transports have never met
+in one executed world.
 
 Falsifier: M0 changes SolidSurface anywhere, or M1 never reaches the derived `[9,11,10]` reading
 after tick 3 with the declared event witnesses intact.
@@ -193,6 +231,13 @@ No prediction about the final shape, later oscillation, or observer vocabulary i
 - **D — attribution failure:** M0's SolidSurface changes.
 - **E — accounting or instrument failure:** a paired emission is incomplete, total matter
   changes, reconstruction fails, or a witness cannot detect a planted corruption.
+- **F — the surface changes, but not as derived:** M1 transports and its SolidSurface does
+  change, at a different tick, place, or magnitude than `[9,11,10]` after tick 3. The
+  phenomenon exists; the reading of the mechanism does not. Adjudication, bound now: re-derive
+  by hand first — an arithmetic error is a **World Correction**; a *correct* derivation that
+  still mismatches the record means the mechanism-reading is incomplete, which is evidence, not
+  embarrassment. (Outcome C of S1-002, transposed. Without this letter the declared falsifier
+  had no home.)
 
 Later surface states are recorded but do not subdivide A. Persistence is not the first question
 and may not be invented as a scored result after seeing the record.
@@ -232,6 +277,12 @@ This Draft dies or is rewritten before seal if:
 4. Founder approves the question, exact pair, predictions, outcomes, and confidence.
 5. Seal.
 6. Only then may implementation begin.
-7. Execution requires a second explicit authorisation.
+7. **Conformance.** Before any execution, the implemented fixtures are read against the prose
+   sealed here, line by line: potential terms, threshold comparison, divisor, transport cap.
+   Any divergence is a **World Correction** recorded before the run — never a silent
+   adjustment, in either direction. *This gate exists because of an inversion worth naming: in
+   S1-002 the hand derived from committed code; here it derives from prose, since the fixtures
+   do not yet exist. The gate is what keeps Method-001 honest under that inversion.*
+8. Execution requires a second explicit authorisation.
 
 Until those gates are crossed, Genesis still has no law-earned changed relief.
