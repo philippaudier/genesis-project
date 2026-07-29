@@ -59,3 +59,16 @@ Then open Unity, put `TerrainRecordPlayer` on an empty GameObject, press Play.
 The rendered height is **elevation + water** — the potential the law actually reads. Colour:
 dry ground shaded by slope, water by depth, and **negative water in red**, because positivity
 is not a theorem here (Obs-004) and an instrument must never hide what it knows.
+
+The headless summary also reports the greatest water-depth range across the columns of any row,
+over the entire run. This is a **demo diagnostic, not a measurement**: it prevents the visible
+troughs from being mistaken for drainage channels if the water actually remains uniform across
+them.
+
+## Routing probe
+
+`dotnet run -- --routing-probe` runs a deliberately non-evidential A/B pair: the same 7×7 slope
+and the same point rain, once laterally flat and once with a sub-threshold corrugation. It reports
+only the first tick at which their water states differ. The exact pair is **prior exposure** and
+can never become a campaign specimen; if it reveals a viable question, a future sealed campaign
+must use independent parcels and declare this probe in its Blind Spot Audit.

@@ -15,6 +15,11 @@ namespace Genesis.Lab.Demo001
     {
         public static int Main(string[] args)
         {
+            if (args.Length == 1 && args[0] == "--routing-probe")
+            {
+                return RoutingProbe.Run();
+            }
+
             long maxStep = DemoWorld.MaxElevationStep();
             Console.WriteLine($"Demo-001 — a world to look at (no campaign, no evidence)");
             Console.WriteLine($"  grid            : {DemoWorld.Width}x{DemoWorld.Height}");
@@ -56,6 +61,9 @@ namespace Genesis.Lab.Demo001
             long totalRain = 0;
             long mostNegative = 0;
             long deepest = 0;
+            long greatestCrossColumnRange = 0;
+            long greatestCrossColumnRangeTick = 0;
+            int greatestCrossColumnRangeRow = 0;
             DateTime started = DateTime.UtcNow;
 
             for (long t = 0; t < DemoWorld.TotalTicks; t++)
@@ -68,6 +76,17 @@ namespace Genesis.Lab.Demo001
                     long water = state.ValueAt(new Cell(place, K.Water));
                     if (water < mostNegative) mostNegative = water;
                     if (water > deepest) deepest = water;
+                }
+
+                for (int row = 0; row < DemoWorld.Height; row++)
+                {
+                    long range = CrossColumnRange(state, places, row);
+                    if (range > greatestCrossColumnRange)
+                    {
+                        greatestCrossColumnRange = range;
+                        greatestCrossColumnRangeTick = t + 1;
+                        greatestCrossColumnRangeRow = row;
+                    }
                 }
 
                 if ((t + 1) % 50 == 0)
@@ -94,9 +113,32 @@ namespace Genesis.Lab.Demo001
             Console.WriteLine($"  water present at the end        : {finalTotal}   (equal ⇒ nothing appeared or vanished)");
             Console.WriteLine($"  deepest                         : {deepest}");
             Console.WriteLine($"  most negative                   : {mostNegative}");
+            Console.WriteLine($"  greatest cross-column range     : {greatestCrossColumnRange}"
+                + $"   (row {greatestCrossColumnRangeRow}, tick {greatestCrossColumnRangeTick})");
+            Console.WriteLine(greatestCrossColumnRange == 0
+                ? "  routing diagnostic              : no trough concentrated water; every row stayed column-uniform"
+                : "  routing diagnostic              : the relief produced unequal water depths across a row");
             Console.WriteLine($"  elapsed                         : {(DateTime.UtcNow - started).TotalSeconds:F1}s");
             Console.WriteLine($"  record                          : {Path.GetFullPath(path)} ({new FileInfo(path).Length / 1024} KB)");
             return 0;
+        }
+
+        private static long CrossColumnRange(
+            SimulationState state,
+            IReadOnlyList<Place> places,
+            int row)
+        {
+            long min = long.MaxValue;
+            long max = long.MinValue;
+            int first = row * DemoWorld.Width;
+            for (int col = 0; col < DemoWorld.Width; col++)
+            {
+                long water = state.ValueAt(new Cell(places[first + col], K.Water));
+                if (water < min) min = water;
+                if (water > max) max = water;
+            }
+
+            return max - min;
         }
 
         private static void AppendWaterRow(StringBuilder record, SimulationState state,
