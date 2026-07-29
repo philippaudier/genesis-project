@@ -32,7 +32,7 @@ namespace Genesis.Presentation
 
         private string _worldPath;
         private string _worldName;
-        private int _persistedCount;
+        private WorldLog _log;
 
         private void Start()
         {
@@ -85,7 +85,7 @@ namespace Genesis.Presentation
             }
 
             _state = _runner.Run(_state, _relations, _laws, _trace, age); // replay: the world catches up with itself
-            _persistedCount = _trace.Events.Count;
+            _log = new WorldLog(_worldPath, _trace.Events.Count);
         }
 
         private static string CurrentWorldFile(string directory)
@@ -127,27 +127,16 @@ namespace Genesis.Presentation
 
         private void PersistNewCrossings()
         {
-            var lines = new System.Text.StringBuilder();
-            for (int i = _persistedCount; i < _trace.Events.Count; i++)
-            {
-                ExternalEvent crossing = _trace.Events[i];
-                lines.Append($"e {crossing.Boundary.Value} {crossing.Target.Kind.Value} {crossing.Target.Place.Value} {crossing.Amount}\n");
-            }
-
-            if (lines.Length > 0)
-            {
-                System.IO.File.AppendAllText(_worldPath, lines.ToString());
-                _persistedCount = _trace.Events.Count;
-            }
+            _log?.AppendCrossings(_trace.Events);
         }
 
+        /// <summary>
+        /// Unity delivers one closing through two callbacks; the log writes one mark (see
+        /// <see cref="WorldLog"/>). A session that was lived once is recorded once.
+        /// </summary>
         private void CloseSession()
         {
-            if (_worldPath != null)
-            {
-                PersistNewCrossings();
-                System.IO.File.AppendAllText(_worldPath, $"s {_state.CurrentTick.Value}\n");
-            }
+            _log?.CloseSession(_trace.Events, _state.CurrentTick.Value);
         }
 
         private void OnDestroy()
@@ -176,8 +165,7 @@ namespace Genesis.Presentation
             if (keyboard.rKey.wasPressedThisFrame)
             {
                 // The ceremony (RFC-L003): abandoning a world is an act the record keeps.
-                PersistNewCrossings();
-                System.IO.File.AppendAllText(_worldPath, $"a {_state.CurrentTick.Value}\n");
+                _log.Abandon(_trace.Events, _state.CurrentTick.Value);
                 OpenWorld(); // the next world begins; the old file remains, closed, on the shelf
                 return;
             }

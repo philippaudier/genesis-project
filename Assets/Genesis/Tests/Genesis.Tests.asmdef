@@ -4,6 +4,7 @@
     "references": [
         "Genesis.Simulation",
         "Genesis.Core",
+        "Genesis.Presentation",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],
