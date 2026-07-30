@@ -74,10 +74,20 @@ remains the observer's reading `Base + Rock + Sediment`.
 
 ## Hypotheses
 
-Withheld. Reduction of Campaign S1-005 is not authorised. C-S1-1 is neither
-promoted nor entered into the Science-001 agenda by this Observation.
+Reduction authorised 2026-07-31:
+
+- **C-S1-1 receives first support in S1-005's exact domain:** transport
+  competence admitted the constructive prospective transfer of four and
+  refused the later remobilising transfer of one, separating a period-2
+  material orbit from a non-uniform complete-state fixed point.
+- **S-S1-1 and T-S1-1 survive:** the surface remained a reading over conserved
+  matter; conversion, transport, and the transport guard retained distinct
+  causal roles.
+- RD-11 is paid at the minimal relation scale. Spatial extension, renewed
+  forcing, and robustness across scales remain outside the record and become
+  RD-12.
+- No candidate fixture is promoted to a production Genesis law.
 
 ## Status
 
 Open
-

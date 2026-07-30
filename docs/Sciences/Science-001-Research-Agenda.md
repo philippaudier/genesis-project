@@ -65,16 +65,38 @@ extended relief.
 
 State: **discriminated by S1-004's strict pair.** Conversion alone left M0 locally
 surface-invariant. Adding only Sediment transport changed M1 at two places. Persistence,
-accumulation, and spatial scaling remain outside the result.
+accumulation, and spatial scaling remained outside that result. **S1-005 extends the mechanism
+one step:** transport competence separated continued remobilisation from complete-state rest
+after both worlds had constructed the same changed surface. Domain remains two minimal strict
+pairs; spatial scaling is still outside it.
 
-## RD-11 — active
+## C-S1-1 — supported competence hypothesis (minimal domain)
+
+State: **first support from Obs-016.** In S1-005's exact two-place pair, a prospective-transfer
+guard admitted the amount 4 that constructed `[7,9]` and refused the later amount 1 that would
+remobilise it. The control entered a complete-state period-2 orbit; the candidate entered a
+non-uniform complete-state fixed point. The supported object is the causal distinction between
+mobilisation and rest — **not competence value 1 as a universal constant**, and not a production
+law.
+
+## RD-11 — paid at the minimal relation scale
 
 > **What makes conserved surface change accumulate into durable spatial structure rather than
 > merely shuttle, flatten, oscillate, or disperse?**
 
-Origin: Obs-015. One unit moved and changed a three-place surface exactly as derived. The
-science still has no evidence that repeated local changes build persistent extended relief.
-No campaign is opened; the debt waits for a discriminating design.
+Origin: Obs-015. **Paid in its minimal domain by Obs-016.** Two worlds first constructed the
+same conserved surface. Without competence the complete state shuttled with period 2; with
+competence one it reached a non-uniform complete-state fixed point with zero later
+contributions. The result identifies a minimal answer, not extended accumulation.
+
+## RD-12 — active
+
+> **Can a local transport competence remain form-building across an extended parcel and
+> repeated forcing, rather than merely pin one minimal configuration?**
+
+Origin: Obs-016. The two-place result paid minimal durability but did not test spatial
+extension, renewed crossings, scale robustness, or formation vocabulary. No campaign is
+opened; the debt waits for a discriminating design.
 
 ---
 
@@ -99,6 +121,19 @@ Result: M0 remained `[10,10,10]`; M1, differing only by Sediment transport, beca
 `[9,11,10]` after tick 3 with total matter invariant. The first classifier's false E remains
 as a World Correction; the adjudicated outcome is A. Candidate fixtures remain laboratory
 content.
+
+## S1-005 — closed, Outcome A
+
+Founding question:
+
+> **Can a minimum Sediment-transport competence turn conserved surface shuttling into a
+> durable non-uniform material state after forcing ceases, without preventing the surface
+> change that precedes it?**
+
+Result: N0 and N1 both first reached `[7,9]`. N0 then entered a complete-state period-2 orbit;
+N1, differing only by competence `0 → 1`, entered a non-uniform complete-state fixed point
+from tick 4 with no later contributions. C-S1-1 receives first support in this exact domain.
+RD-11 is paid minimally; RD-12 opens. Candidate fixtures remain laboratory content.
 
 ## The standing adversary
 

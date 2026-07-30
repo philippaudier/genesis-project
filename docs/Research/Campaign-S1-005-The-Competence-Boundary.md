@@ -1,8 +1,8 @@
 # Campaign S1-005 — The Competence Boundary
 
-Status: **EXECUTED (2026-07-30) — Outcome A, discriminating support.**
+Status: **CLOSED (2026-07-31) — Outcome A, discriminating support.**
 Report: `Lab/S1-005/Runs/REPORT.md`; Observation-016. C0–C6 held. Matter
-invariant, no negative value, zero reconstruction fault. **Reduction withheld.**
+invariant, no negative value, zero reconstruction fault. **Reduction performed.**
 Seal `7b739b4`; instrument `acf17b8`; execution gate `cf1f2fd`; immutable
 record `3fc47a2`.
 
@@ -399,3 +399,76 @@ section.
 9. separate founder authorisation to reduce.
 
 This draft authorises none of them.
+
+---
+
+# Reduction (authorised and performed 2026-07-31)
+
+Founder:
+
+> *« J’autorise le push du commit 25a16a0 vers origin/main et J’autorise la
+> réduction de Campaign S1-005 et uniquement celle-ci. »*
+
+## What the world learned
+
+- **R1 — the first minimal resting surface is acquired.** Both worlds first
+  constructed the same `[7,9]` surface from conserved matter. N0 then entered
+  a complete-state period-2 orbit; N1 reached a non-uniform complete-state
+  fixed point. The result is stronger than visual persistence: every Base,
+  Rock, Sediment, and Water cell repeated, and no fixture contributed after
+  boundary 3.
+- **R2 — C-S1-1 receives first support in S1-005's exact domain.** A transport
+  competence can distinguish matter that remains mobilised from matter that
+  comes to rest. The guard admitted the earlier prospective transfer of four
+  that constructed the surface, then refused the later prospective transfer
+  of one that would have undone it. This supports a causal distinction, not
+  the universal value `1`.
+- **R3 — S-S1-1 and T-S1-1 survive.** The surface remained a derived reading,
+  never a writable quantity. Conversion made mobile matter; transport changed
+  its spatial distribution; competence changed whether that distribution was
+  remobilised. Their domains extend only to this second minimal strict pair.
+
+## What the laboratory learned
+
+- **R4 — a durable-reading claim must be witnessed below the reading.** N0
+  repeatedly displayed a flat surface while its complete material state kept
+  moving. Surface equality could not prove rest. The successful witness paired
+  complete-state identity with zero future contributions under the silent
+  membrane.
+- **R5 — the classifier was made vulnerable before the world ran.** Every
+  outcome A–G and the sealed precedence were planted during calibration.
+  Unlike S1-004, no post-result reader correction was required. This remains a
+  campaign precedent, not yet a new canonical Method; it may travel only if a
+  later campaign needs it.
+- **R6 — the branching calibration preserved an unobservable choice.** On the
+  two-place specimens, Constant2 and degree+1 both evaluate to two. A foreign
+  branching toy, not the campaign result, proved which divisor object the
+  implementation supplied. Conformance may require a witness outside the
+  specimen when two laws are extensionally equal inside it.
+
+## What Genesis learned
+
+- **R7 — no kernel primitive and no RFC are demanded.** The phenomenon reduced
+  to existing cells, relations, snapshots, contributions, additive
+  resolution, and a scalar in experimental law content. The competence
+  fixture remains in `Lab/S1-005`; one two-place result does not make it a
+  production Genesis law.
+- **R8 — RD-11 is paid at the minimal relation scale.** Obs-016 answers why
+  this conserved surface change did not shuttle: a competence boundary allowed
+  construction and later blocked unit remobilisation. The result does not pay
+  spatial extension, renewed forcing, robustness across scales, or formation
+  vocabulary.
+- **R9 — the successor debt is scale under continued history.** The next
+  question is not whether another two-cell state can rest. It is whether the
+  same local distinction remains form-building across an extended parcel and
+  repeated forcing, rather than merely pinning one minimal configuration.
+  This becomes RD-12. Naming the debt opens no campaign.
+
+# Decision
+
+Outcome A stands. Observation-016 is adopted. C-S1-1 becomes a supported
+hypothesis limited to S1-005's exact domain; S-S1-1 and T-S1-1 survive with
+that same limit. RD-11 is paid at the minimal relation scale and RD-12 opens.
+The competence fixture remains laboratory content. No RFC, production law,
+canonical method, landscape formation, demonstration, or successor campaign
+is authorised by this reduction.
