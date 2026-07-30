@@ -13,16 +13,23 @@ namespace Genesis.Lab.S1_005
 
             if (args.Length >= 1 && args[0] == "--execute")
             {
-                Console.Error.WriteLine("REFUSED: S1-005 execution is not authorised.");
-                Console.Error.WriteLine("The sealed N0 and N1 parcels have not been ticked.");
-                return 2;
+                Console.WriteLine("Executing Campaign S1-005 under the founder's gate-7 authorisation.");
+                Console.WriteLine("Reduction remains withheld.");
+                Console.WriteLine();
+                if (!Calibration.RunAll())
+                {
+                    Console.Error.WriteLine("REFUSED: calibration failed; N0 and N1 were not ticked.");
+                    return 2;
+                }
+
+                Console.WriteLine();
+                return Execution.RunAll("Runs");
             }
 
             Console.WriteLine("S1-005 laboratory — The Competence Boundary");
             Console.WriteLine("  --calibrate  test the instrument on foreign toys only");
-            Console.WriteLine("  --execute    refused until a separate founder authorisation");
+            Console.WriteLine("  --execute    run N0 and N1 as sealed (authorised 2026-07-30)");
             return 0;
         }
     }
 }
-

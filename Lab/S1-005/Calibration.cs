@@ -35,6 +35,8 @@ namespace Genesis.Lab.S1_005
                 SnapshotHoldingIsLoadBearing);
             Check("9. threshold zero conforms, and the comparator catches a mismatch",
                 ThresholdZeroConforms);
+            Check("10. the A-G classifier obeys every outcome and sealed precedence",
+                ClassifierObeysTheSeal);
             Check("sealed N0/N1 build exactly as approved (no tick run)",
                 SealedPairBuilds);
 
@@ -326,6 +328,24 @@ namespace Genesis.Lab.S1_005
 
             lines.Sort(StringComparer.Ordinal);
             return string.Join("|", lines);
+        }
+
+        private static void ClassifierObeysTheSeal()
+        {
+            Assert(Execution.Classify(c0: false, c1: false, c2: false, c3: false,
+                durable: false, c4: false) == "G", "G did not take first precedence");
+            Assert(Execution.Classify(c0: true, c1: true, c2: false, c3: true,
+                durable: true, c4: true) == "F", "F was not selected");
+            Assert(Execution.Classify(c0: true, c1: true, c2: true, c3: false,
+                durable: true, c4: true) == "C", "C was not selected");
+            Assert(Execution.Classify(c0: true, c1: false, c2: true, c3: true,
+                durable: true, c4: true) == "B", "B was not selected");
+            Assert(Execution.Classify(c0: true, c1: true, c2: true, c3: true,
+                durable: false, c4: false) == "D", "D was not selected");
+            Assert(Execution.Classify(c0: true, c1: true, c2: true, c3: true,
+                durable: true, c4: false) == "E", "E was not selected");
+            Assert(Execution.Classify(c0: true, c1: true, c2: true, c3: true,
+                durable: true, c4: true) == "A", "A was not selected");
         }
 
         private static void SealedPairBuilds()

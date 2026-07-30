@@ -8,6 +8,15 @@ Gate 3 — founder approval, verbatim (2026-07-30):
 > et les confiances de S1-005. J’autorise le sceau et l’implémentation, mais pas
 > l’exécution. »*
 
+Gate 7 — founder execution authorisation, verbatim (2026-07-30):
+
+> *« J’autorise le push vers origin/main des commits S1-005 nécessaires à
+> l’exécution et du record produit.*
+>
+> *J’autorise l’exécution de Campaign S1-005 : N0 et N1, huit ticks exactement
+> comme scellés, avec enregistrement complet et classification selon les issues
+> A–G. Je n’autorise pas encore la réduction. »*
+
 The approved draft is commit `3eb992f`. This seal commit changes only the
 status and deposits the approval above. Everything from “The resistance that
 opens this draft” through the gates below is fixed before implementation.

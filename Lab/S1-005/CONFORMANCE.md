@@ -42,6 +42,8 @@ All obligations were executed on foreign toys:
 8. same-tick Conversion/Transport collision proved snapshot holding;
 9. competence 0 matched S1-004 transport contribution for contribution, while
    a planted competence-1 mismatch was rejected.
+10. every outcome A–G and their sealed adjudication precedence were planted
+    against the mechanical classifier before execution.
 
 The sealed pair was constructed and inspected parameter by parameter. No
 `TickRunner` received N0 or N1.
@@ -54,4 +56,3 @@ There is no execution driver or result writer in the S1-005 laboratory.
 The compilation correction before calibration changed only the source name
 `DivisorPolicies` to its actual historical name `Divisors`. No toy had run,
 no sealed term changed, and no World Correction arose.
-
