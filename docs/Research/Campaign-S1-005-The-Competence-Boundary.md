@@ -1,6 +1,10 @@
 # Campaign S1-005 — The Competence Boundary
 
-Status: **SEALED — implementation authorised; execution NOT authorised.**
+Status: **EXECUTED (2026-07-30) — Outcome A, discriminating support.**
+Report: `Lab/S1-005/Runs/REPORT.md`; Observation-016. C0–C6 held. Matter
+invariant, no negative value, zero reconstruction fault. **Reduction withheld.**
+Seal `7b739b4`; instrument `acf17b8`; execution gate `cf1f2fd`; immutable
+record `3fc47a2`.
 
 Gate 3 — founder approval, verbatim (2026-07-30):
 
