@@ -42,23 +42,57 @@ future membrane. A repeated surface reading is insufficient.
 
 No kernel primitive is missing.
 
-The candidate distinction is one inequality inside experimental world content:
+The campaign reuses the S1-004 law family **unchanged** (sealed `b114a34`,
+`Lab/S1-004/Fixtures.cs`); only the Sediment-transport fixture gains one scalar.
+The three laws are reproduced here so gate 6 can read the sealed prose line by
+line. Where this text and the cited fixture disagree, the fixture governs and
+the discrepancy is a World Correction.
+
+All three fixtures read **one snapshot** and contribute simultaneously. For
+every place `Potential(P) = Base + Rock + Sediment + Water`, and each fixture
+iterates the place's outgoing relations with a **constant divisor `2`**.
+The selected policy is not degree-aware. However, because each place here has
+exactly one outgoing relation, the corpus's degree-aware policy (`degree + 1`)
+would also evaluate to `2`. The campaign parcel therefore cannot distinguish
+the two policies by result; a foreign branching calibration toy must.
+
+- **Water flow (unchanged).** For each outgoing edge `P→Q` with
+  `diff = Potential(P) - Potential(Q) > 0`, move `floor(diff / 2)` Water `P→Q`
+  when that amount is positive. The transfer is **uncapped** — not bounded by
+  `Water(P)` — so Water may go negative: a measured phenomenon, not a fault.
+- **Conversion (unchanged).** For each outgoing edge `P→Q`, recompute the same
+  `floor(diff / 2)` from the same snapshot; when it is **strictly greater** than
+  the conversion threshold `3`, `P` emits one whole pair `(-1 Rock, +1 Sediment)`.
+  Each place here has exactly one outgoing edge, so a place emits **at most one
+  pair per tick**. Conversion consumes no Water.
+- **Sediment transport (the one changed fixture).** Let `carried = Sediment(P)`
+  in the snapshot and `prospective = floor(diff / 2)`. The existing rule moves
+  `min(carried, prospective)` whenever `prospective > 0`. The candidate
+  distinction inserts one guard:
 
 ```text
-prospective = floor((Potential(P) - Potential(Q)) / divisor)
-
 move Sediment only when prospective > competence
-amount = min(Sediment(P), prospective)
+amount = min(carried, prospective)
 ```
 
-At `competence = 0`, this is extensionally the existing S1-004 rule: every
-positive prospective transfer may move. At `competence = 1`, a prospective
-unit transfer no longer moves Sediment, although Water remains governed by its
-unchanged law.
+At `competence = 0` the guard `prospective > 0` **is** the existing rule (which
+already required a positive transfer), so N0 is extensionally the sealed S1-004
+transport. At `competence = 1` a prospective transfer of exactly one no longer
+moves Sediment, although Water remains governed by its unchanged law. The guard
+reads `prospective` — the amount before the `min` with `carried`.
 
 The distinction adds no Kind, no mutable Elevation, no kernel state, no memory,
 and no privileged observer object. It is a candidate fixture parameter, not a
 Genesis law.
+
+**Snapshot isolation is load-bearing.** At boundary 2 the same cell
+`(A, Sediment)` is written by Conversion (`+1`) and read-then-decremented by
+Sediment transport (`-1`), both from the one snapshot. Transport hands over
+`min(Sediment(A) in the snapshot = 1, prospective)` — the unit that existed
+**before** Conversion's emission, never the freshly-converted unit (which would
+make the amount two). The sealed result depends on this; an implementation that
+let one fixture read another's within-tick output computes a different amount
+and fails gate 6.
 
 ## Blind Spot Audit — candidate
 
@@ -89,6 +123,19 @@ Genesis law.
 8. **The candidate may duplicate an existing concept.** Conversion already has
    a threshold, but its causal role differs. No shared abstraction is promoted
    before a result forces one.
+9. **Snapshot isolation is a conformance-critical invariant, not a background
+   assumption.** The divergence turns on integer amounts of exactly one, and
+   Conversion and Sediment transport touch `(A, Sediment)` in the same tick. The
+   derivation is correct only if transport reads the snapshot's Sediment (one),
+   not Conversion's within-tick emission (two). A calibration toy is added for
+   exactly this; the S1-004 Rock+Sediment audit and the per-fixture provenance
+   remain the two independent witnesses.
+10. **The campaign topology cannot identify its divisor policy.** With one
+    outgoing relation, both `Constant2` and the existing `degree + 1` policy
+    return two. The sealed construction still requires the `Constant2` object,
+    but result agreement cannot prove that choice. A foreign place with two
+    outgoing relations must make the two policies disagree (`2` versus `3`)
+    before execution.
 
 ## Objects on trial
 
@@ -186,11 +233,11 @@ They diverge only when the prospective Sediment transfer becomes exactly one.
 | Claim | N0 prediction | N1 prediction | Bound failure |
 |---|---|---|---|
 | C0 — conservation and positivity | `Rock + Sediment = 16`; no negative value | same | Outcome G |
-| C1 — construction precedes discrimination | first changed surface after tick 3, `[7,9]` | exactly the same | Outcome B if N1 is prevented from constructing |
-| C2 — the decisive boundary is one | boundary 3 moves one Sediment B→A | boundary 3 moves none | Outcome F if the worlds diverge elsewhere first |
+| C1 — construction precedes discrimination | first changed surface after tick 3, `[7,9]` | exactly the same | Outcome B if a correctly applied competence guard prevents N1 from constructing |
+| C2 — the decisive boundary is one | boundary 3 moves one Sediment B→A | boundary 3 moves none | Outcome B or E if the guard alone discriminates at another boundary; Outcome F if another difference appears |
 | C3 — shuttle control | full state tick 3 = 5 = 7; tick 4 = 6 = 8; the two phases differ | — | Outcome C |
-| C4 — durable candidate | — | full state tick 4 = 5 = 6 = 7 = 8; zero contributions after boundary 3; surface `[7,9]` | Outcome D |
-| C5 — rest is not a surface-only reading | both Kinds and surface alternate | every Base, Rock, Sediment, and Water cell is identical across the fixed suffix | Outcome D or G |
+| C4 — durable candidate | — | full state tick 4 = 5 = 6 = 7 = 8; zero contributions after boundary 3; surface `[7,9]` | Outcome D or E |
+| C5 — rest is not a surface-only reading | complete state and surface both alternate | every Base, Rock, Sediment, and Water cell is identical across the fixed suffix | Outcome D, E, or G |
 | C6 — threshold-0 conformance | contribution-for-contribution identical to the S1-004 transport rule on foreign calibration toys | not applicable | implementation cannot pass gate 6 |
 
 ### Rival imagination
@@ -237,18 +284,39 @@ Instrument calibration must plant:
 - a period-2 complete-state orbit;
 - a half-pair conservation fault;
 - a negative value;
+- a branching origin with two outgoing relations, proving the selected
+  constant divisor returns `2` where the existing degree-aware policy returns
+  `3`;
+- a single tick in which a conversion emission and a sediment transport touch
+  the same `(place, Sediment)` cell, proving the transport amount is computed
+  from the pre-conversion snapshot holding and never from the converted value;
 - and a threshold-0 mismatch against the existing S1-004 transport fixture.
 
 No calibration world may use N0 or N1.
+
+## Cold review note — pre-seal
+
+The first review strengthened the fixture prose and made snapshot isolation an
+explicit calibration obligation. It also introduced one false statement: that
+the corpus's degree-aware divisor would return `1` for a place with one
+outgoing relation. The code defines it as `degree + 1`, so it returns `2`.
+
+The hand derivation is unchanged because the campaign requires a constant
+divisor of `2`. What changed is the epistemic claim: this two-place result
+cannot itself prove which of the two policies was supplied. Blind spot 10 and
+the foreign branching calibration above preserve that limitation before the
+seal. This is a draft correction, not a World Correction; no world has run.
 
 ## Outcomes — candidate
 
 - **A — discriminating support:** C0–C6 hold. Both worlds first construct
   `[7,9]`; N0 enters the derived period-2 material shuttle; N1 enters the
   derived non-uniform complete-state fixed point.
-- **B — suppression, not durable construction:** N1 never reaches the shared
-  first changed surface because competence prevents the constructive transfer.
-  C-S1-1 is not supported by this specimen.
+- **B — suppression, not durable construction:** N0 constructs while N1 does
+  not, and the first difference is correctly attributable solely to the
+  competence guard acting earlier than derived. Re-derive first. If the
+  arithmetic was wrong, record a World Correction; if it was right, the
+  mechanism is incomplete. C-S1-1 is not supported by this specimen.
 - **C — the control does not shuttle as derived:** N0 fixes, follows another
   period, or otherwise fails its hand-derived orbit. Re-derive first; arithmetic
   error is a World Correction, correct derivation plus divergence means the
@@ -257,15 +325,22 @@ No calibration world may use N0 or N1.
   complete-state fixed-point criterion, fixes flat, or only repeats its surface
   while hidden material continues. C-S1-1 is refuted or narrowed.
 - **E — durable, but the mechanism is incomplete:** N1 reaches a non-uniform
-  complete-state fixed point, but not at the derived tick and state. Re-derive
-  first; arithmetic error is a World Correction, while a correct derivation
-  that diverges means the causal reading is incomplete.
-- **F — wrong discrimination boundary:** the worlds first differ anywhere
-  other than boundary 3's unit Sediment transfer. The implementation or causal
-  reading is wrong.
+  complete-state fixed point, but not at the derived tick and state; the first
+  difference remains attributable solely to a correctly applied competence
+  guard. Re-derive first; arithmetic error is a World Correction, while a
+  correct derivation that diverges means the causal reading is incomplete.
+- **F — causal comparison broken:** the worlds first differ through anything
+  other than the competence guard, or that guard is applied to the wrong
+  quantity or inequality. The strict pair was not realised; no scientific
+  adjudication of C-S1-1.
 - **G — invalid evidence:** conservation, positivity, witness completeness,
   threshold-0 conformance, determinism, or the instrument fails. No scientific
   adjudication.
+
+Adjudication precedence is fixed: `G` (record invalid) → `F` (strict pair
+broken) → `C` (control trajectory wrong) → `B` (construction suppressed) →
+`D` (no durable non-uniform rest) → `E` (durable rest, wrong derivation) → `A`.
+The first applicable outcome stands.
 
 ## Expectations — informal, sealed if this draft is approved
 
