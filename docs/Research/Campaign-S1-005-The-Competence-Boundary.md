@@ -1,6 +1,16 @@
 # Campaign S1-005 — The Competence Boundary
 
-Status: **DRAFT — no approval, no seal, no implementation, no execution.**
+Status: **SEALED — implementation authorised; execution NOT authorised.**
+
+Gate 3 — founder approval, verbatim (2026-07-30):
+
+> *« J’approuve la question, la paire N0/N1, les claims C0–C6, les issues A–G
+> et les confiances de S1-005. J’autorise le sceau et l’implémentation, mais pas
+> l’exécution. »*
+
+The approved draft is commit `3eb992f`. This seal commit changes only the
+status and deposits the approval above. Everything from “The resistance that
+opens this draft” through the gates below is fixed before implementation.
 
 This draft is downstream of the explicitly contaminated reconnaissance in
 `Lab/RD11-Probe/`. Its question is earned by that probe; its specimens are new
