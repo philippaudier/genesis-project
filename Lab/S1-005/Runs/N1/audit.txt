@@ -1,0 +1,4 @@
+reconstruction faults: 0
+matter faults: 0
+minimum: 0
+first complete-state repeat: tick 4 again at tick 5, period 1

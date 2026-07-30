@@ -1,0 +1,72 @@
+=== boundary 0 ===
+  prospectives : 0->1:0 1->0:0
+  conversions  : (none)
+  crossings    : 0:2:8
+  contributions:
+      (none)
+=== boundary 1 ===
+  prospectives : 0->1:4 1->0:0
+  conversions  : 0:1
+  crossings    : 0:2:8
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -4
+      SurfaceFlowFixture: place(1) kind(2) +4
+      SurfaceConversionFixture: place(0) kind(3) -1
+      SurfaceConversionFixture: place(0) kind(4) +1
+=== boundary 2 ===
+  prospectives : 0->1:4 1->0:0
+  conversions  : 0:1
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -4
+      SurfaceFlowFixture: place(1) kind(2) +4
+      SurfaceConversionFixture: place(0) kind(3) -1
+      SurfaceConversionFixture: place(0) kind(4) +1
+      CompetenceTransportFixture: place(0) kind(4) -1
+      CompetenceTransportFixture: place(1) kind(4) +1
+      COLLISION Cell(Place(0), Kind(4)): SurfaceConversionFixture +1 CompetenceTransportFixture -1
+=== boundary 3 ===
+  prospectives : 0->1:0 1->0:1
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(1) kind(2) -1
+      SurfaceFlowFixture: place(0) kind(2) +1
+      CompetenceTransportFixture: place(1) kind(4) -1
+      CompetenceTransportFixture: place(0) kind(4) +1
+=== boundary 4 ===
+  prospectives : 0->1:1 1->0:0
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -1
+      SurfaceFlowFixture: place(1) kind(2) +1
+      CompetenceTransportFixture: place(0) kind(4) -1
+      CompetenceTransportFixture: place(1) kind(4) +1
+=== boundary 5 ===
+  prospectives : 0->1:0 1->0:1
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(1) kind(2) -1
+      SurfaceFlowFixture: place(0) kind(2) +1
+      CompetenceTransportFixture: place(1) kind(4) -1
+      CompetenceTransportFixture: place(0) kind(4) +1
+=== boundary 6 ===
+  prospectives : 0->1:1 1->0:0
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -1
+      SurfaceFlowFixture: place(1) kind(2) +1
+      CompetenceTransportFixture: place(0) kind(4) -1
+      CompetenceTransportFixture: place(1) kind(4) +1
+=== boundary 7 ===
+  prospectives : 0->1:0 1->0:1
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(1) kind(2) -1
+      SurfaceFlowFixture: place(0) kind(2) +1
+      CompetenceTransportFixture: place(1) kind(4) -1
+      CompetenceTransportFixture: place(0) kind(4) +1
