@@ -1,0 +1,827 @@
+=== boundary 0 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : 0:2:12
+  contributions:
+      (none)
+=== boundary 1 ===
+  prospectives : 0->1:water=6,sediment=0,guard=pass | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : 0:1
+  crossings    : 0:2:12
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -6
+      SurfaceFlowFixture: place(1) kind(2) +6
+      SurfaceConversionFixture: place(0) kind(3) -1
+      SurfaceConversionFixture: place(0) kind(4) +1
+=== boundary 2 ===
+  prospectives : 0->1:water=6,sediment=1,guard=pass | 1->0:water=0,sediment=0,guard=block | 1->2:water=2,sediment=0,guard=pass | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : 0:1
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -6
+      SurfaceFlowFixture: place(1) kind(2) +6
+      SurfaceFlowFixture: place(1) kind(2) -2
+      SurfaceFlowFixture: place(2) kind(2) +2
+      SurfaceConversionFixture: place(0) kind(3) -1
+      SurfaceConversionFixture: place(0) kind(4) +1
+      CompetenceTransportFixture: place(0) kind(4) -1
+      CompetenceTransportFixture: place(1) kind(4) +1
+=== boundary 3 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=3,sediment=1,guard=pass | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(1) kind(2) -3
+      SurfaceFlowFixture: place(2) kind(2) +3
+      CompetenceTransportFixture: place(1) kind(4) -1
+      CompetenceTransportFixture: place(2) kind(4) +1
+=== boundary 4 ===
+  prospectives : 0->1:water=2,sediment=1,guard=pass | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=2,sediment=1,guard=pass | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -2
+      SurfaceFlowFixture: place(1) kind(2) +2
+      SurfaceFlowFixture: place(2) kind(2) -2
+      SurfaceFlowFixture: place(3) kind(2) +2
+      CompetenceTransportFixture: place(0) kind(4) -1
+      CompetenceTransportFixture: place(1) kind(4) +1
+      CompetenceTransportFixture: place(2) kind(4) -1
+      CompetenceTransportFixture: place(3) kind(4) +1
+=== boundary 5 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=2,sediment=1,guard=pass | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(1) kind(2) -2
+      SurfaceFlowFixture: place(2) kind(2) +2
+      CompetenceTransportFixture: place(1) kind(4) -1
+      CompetenceTransportFixture: place(2) kind(4) +1
+=== boundary 6 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=1,sediment=1,guard=pass | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(2) kind(2) -1
+      SurfaceFlowFixture: place(3) kind(2) +1
+      CompetenceTransportFixture: place(2) kind(4) -1
+      CompetenceTransportFixture: place(3) kind(4) +1
+=== boundary 7 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=1,sediment=0,guard=pass | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(1) kind(2) -1
+      SurfaceFlowFixture: place(2) kind(2) +1
+=== boundary 8 ===
+  prospectives : 0->1:water=1,sediment=0,guard=pass | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -1
+      SurfaceFlowFixture: place(1) kind(2) +1
+=== boundary 9 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 10 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : 0:2:12
+  contributions:
+      (none)
+=== boundary 11 ===
+  prospectives : 0->1:water=6,sediment=0,guard=pass | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : 0:1
+  crossings    : 0:2:12
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -6
+      SurfaceFlowFixture: place(1) kind(2) +6
+      SurfaceConversionFixture: place(0) kind(3) -1
+      SurfaceConversionFixture: place(0) kind(4) +1
+=== boundary 12 ===
+  prospectives : 0->1:water=6,sediment=1,guard=pass | 1->0:water=0,sediment=0,guard=block | 1->2:water=2,sediment=0,guard=pass | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : 0:1
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -6
+      SurfaceFlowFixture: place(1) kind(2) +6
+      SurfaceFlowFixture: place(1) kind(2) -2
+      SurfaceFlowFixture: place(2) kind(2) +2
+      SurfaceConversionFixture: place(0) kind(3) -1
+      SurfaceConversionFixture: place(0) kind(4) +1
+      CompetenceTransportFixture: place(0) kind(4) -1
+      CompetenceTransportFixture: place(1) kind(4) +1
+=== boundary 13 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=3,sediment=1,guard=pass | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(1) kind(2) -3
+      SurfaceFlowFixture: place(2) kind(2) +3
+      CompetenceTransportFixture: place(1) kind(4) -1
+      CompetenceTransportFixture: place(2) kind(4) +1
+=== boundary 14 ===
+  prospectives : 0->1:water=2,sediment=1,guard=pass | 1->0:water=0,sediment=0,guard=block | 1->2:water=1,sediment=0,guard=pass | 2->1:water=0,sediment=0,guard=block | 2->3:water=2,sediment=1,guard=pass | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -2
+      SurfaceFlowFixture: place(1) kind(2) +2
+      SurfaceFlowFixture: place(1) kind(2) -1
+      SurfaceFlowFixture: place(2) kind(2) +1
+      SurfaceFlowFixture: place(2) kind(2) -2
+      SurfaceFlowFixture: place(3) kind(2) +2
+      CompetenceTransportFixture: place(0) kind(4) -1
+      CompetenceTransportFixture: place(1) kind(4) +1
+      CompetenceTransportFixture: place(2) kind(4) -1
+      CompetenceTransportFixture: place(3) kind(4) +1
+=== boundary 15 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=2,sediment=1,guard=pass | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(1) kind(2) -2
+      SurfaceFlowFixture: place(2) kind(2) +2
+      CompetenceTransportFixture: place(1) kind(4) -1
+      CompetenceTransportFixture: place(2) kind(4) +1
+=== boundary 16 ===
+  prospectives : 0->1:water=1,sediment=0,guard=pass | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=1,sediment=1,guard=pass | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(0) kind(2) -1
+      SurfaceFlowFixture: place(1) kind(2) +1
+      SurfaceFlowFixture: place(2) kind(2) -1
+      SurfaceFlowFixture: place(3) kind(2) +1
+      CompetenceTransportFixture: place(2) kind(4) -1
+      CompetenceTransportFixture: place(3) kind(4) +1
+=== boundary 17 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=1,sediment=0,guard=pass | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      SurfaceFlowFixture: place(1) kind(2) -1
+      SurfaceFlowFixture: place(2) kind(2) +1
+=== boundary 18 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 19 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 20 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 21 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 22 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 23 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 24 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 25 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 26 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 27 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 28 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 29 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 30 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 31 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 32 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 33 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 34 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 35 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 36 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 37 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 38 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 39 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 40 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 41 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 42 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 43 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 44 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 45 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 46 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 47 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 48 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 49 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 50 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 51 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 52 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 53 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 54 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 55 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 56 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 57 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 58 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 59 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 60 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 61 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 62 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 63 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 64 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 65 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 66 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 67 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 68 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 69 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 70 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 71 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 72 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 73 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 74 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 75 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 76 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 77 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 78 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 79 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 80 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 81 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 82 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 83 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 84 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 85 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 86 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 87 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 88 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 89 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 90 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 91 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 92 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 93 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 94 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 95 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 96 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 97 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 98 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 99 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 100 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 101 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 102 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 103 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 104 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 105 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 106 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 107 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 108 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 109 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 110 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 111 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 112 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 113 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 114 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 115 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 116 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 117 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 118 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 119 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 120 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 121 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 122 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 123 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 124 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 125 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 126 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)
+=== boundary 127 ===
+  prospectives : 0->1:water=0,sediment=0,guard=block | 1->0:water=0,sediment=0,guard=block | 1->2:water=0,sediment=0,guard=block | 2->1:water=0,sediment=0,guard=block | 2->3:water=0,sediment=0,guard=block | 3->2:water=0,sediment=0,guard=block
+  conversions  : (none)
+  crossings    : (none)
+  contributions:
+      (none)

@@ -1,0 +1,5 @@
+reconstruction faults: 0
+matter faults: 0
+minimum: 0
+allocation-sensitive boundaries: 0
+first fixed transition: boundary 21, quiet suffix 107
