@@ -58,8 +58,10 @@ cross-fixture conflict; it is not promoted to a universal theorem.
 
 State: **first support from Obs-015.** A solid surface can be read as
 `Base + Rock + Sediment`; no writable Elevation kind was required in S1-004. One minimal
-three-place pair does not establish that this is the unique or sufficient representation for
-extended relief.
+three-place pair did not establish that this was sufficient for extended relief. **Obs-017
+extends the representation** to a four-place chain, two forcing episodes, two distinct
+complete-state fixed forms, and 128 ticks. It remains one exact linear domain, not a claim of
+uniqueness or landscape scale.
 
 ## T-S1-1 — supported mechanism hypothesis (minimal domain)
 
@@ -67,17 +69,29 @@ State: **discriminated by S1-004's strict pair.** Conversion alone left M0 local
 surface-invariant. Adding only Sediment transport changed M1 at two places. Persistence,
 accumulation, and spatial scaling remained outside that result. **S1-005 extends the mechanism
 one step:** transport competence separated continued remobilisation from complete-state rest
-after both worlds had constructed the same changed surface. Domain remains two minimal strict
-pairs; spatial scaling is still outside it.
+after both worlds had constructed the same changed surface. **Obs-017 extends it again:** the
+same three roles remained separately attributable through a repeated history and an
+uncalculated suffix on four places. Branching and landscape scale remain outside it.
 
-## C-S1-1 — supported competence hypothesis (minimal domain)
+## C-S1-1 — supported competence hypothesis (two exact domains)
 
 State: **first support from Obs-016.** In S1-005's exact two-place pair, a prospective-transfer
 guard admitted the amount 4 that constructed `[7,9]` and refused the later amount 1 that would
 remobilise it. The control entered a complete-state period-2 orbit; the candidate entered a
 non-uniform complete-state fixed point. The supported object is the causal distinction between
 mobilisation and rest — **not competence value 1 as a universal constant**, and not a production
-law.
+law. **Obs-017 corrects the role without refuting it:** under a shared degree-aware law both
+competence values reached rest, but the guard selected different resting distributions.
+Competence is therefore not credited as a general condition of stability.
+
+## F-S1-1 — supported form-selection hypothesis (S1-006 domain)
+
+State: **first support from Obs-017.** With complete-state stability common, the sole initial
+difference — admission versus refusal of one prospective Sediment unit from C to D — survived
+a second forcing episode and ended in different fixed surfaces: `[8,12,12,16]` and
+`[8,12,15,13]`. Domain: one four-place chain, competence 0/1, degree-aware divisor, one integer
+scale, and two identical forcing episodes. This is form selection in an exact parcel, not a
+general formation law.
 
 ## RD-11 — paid at the minimal relation scale
 
@@ -89,14 +103,25 @@ same conserved surface. Without competence the complete state shuttled with peri
 competence one it reached a non-uniform complete-state fixed point with zero later
 contributions. The result identifies a minimal answer, not extended accumulation.
 
-## RD-12 — active
+## RD-12 — paid in the first extended, repeatedly forced domain
 
 > **Can a local transport competence remain form-building across an extended parcel and
 > repeated forcing, rather than merely pin one minimal configuration?**
 
-Origin: Obs-016. The two-place result paid minimal durability but did not test spatial
-extension, renewed crossings, scale robustness, or formation vocabulary. No campaign is
-opened; the debt waits for a discriminating design.
+Origin: Obs-016. **Paid in S1-006's exact domain by Obs-017.** On four places under two
+forcing episodes, both worlds became completely fixed and retained competence-dependent
+surfaces. The result pays extension and renewed history once; it does not pay robustness
+across scale, topology, or forcing families.
+
+## RD-13 — active
+
+> **Which properties of topology, forcing history, and integer scale determine the form that
+> remains — and does local selection survive branching when allocation order can become
+> load-bearing?**
+
+Origin: Obs-017. S1-006 contained one linear topology, one integer domain, two identical
+forcing episodes, and zero allocation-sensitive boundaries. No campaign is opened; the debt
+waits for a discriminating resistance.
 
 ---
 
@@ -134,6 +159,19 @@ Result: N0 and N1 both first reached `[7,9]`. N0 then entered a complete-state p
 N1, differing only by competence `0 → 1`, entered a non-uniform complete-state fixed point
 from tick 4 with no later contributions. C-S1-1 receives first support in this exact domain.
 RD-11 is paid minimally; RD-12 opens. Candidate fixtures remain laboratory content.
+
+## S1-006 — closed, Outcome A
+
+Founding question:
+
+> **When complete-state stability is common ground, can local Sediment-transport competence
+> select a different final spatial form under repeated forcing?**
+
+Result: yes in the exact four-place strict pair. P0 and P1 first differed when competence
+admitted/refused one C→D Sediment unit, then both received the same second forcing episode.
+P0 fixed from boundary 18 at `[8,12,12,16]`; P1 fixed from boundary 21 at
+`[8,12,15,13]`. F-S1-1 receives first support. RD-12 is paid once; RD-13 opens.
+Candidate fixtures remain laboratory content.
 
 ## The standing adversary
 

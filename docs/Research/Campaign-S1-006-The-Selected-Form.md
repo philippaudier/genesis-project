@@ -1,7 +1,10 @@
 # Campaign S1-006 — The Selected Form
 
-Status: **EXECUTED — Outcome A; immutable record `532a5eb`; reduction NOT
-authorised.**
+Status: **CLOSED (2026-07-31) — Outcome A, form selected.**
+Report: `Lab/S1-006/Runs/REPORT.md`; Observation-017. C0–C6 held. Matter
+invariant, no negative value, zero reconstruction fault. **Reduction
+performed.** Seal `0cc83b0`; instrument `c98f6a5`; conformance `3b5dea4`;
+execution gate `8395ede`; immutable record `532a5eb`.
 
 Founder approval (2026-07-31), preserved verbatim:
 
@@ -423,7 +426,7 @@ Rewrite or kill this draft if:
   explicit methodological frontier, the logical fixed-point witness, and the
   deterministic-order protection into this draft before any seal.
 
-## Gates — 1 through 8 passed
+## Gates — 1 through 9 passed
 
 1. **passed** — cold independent re-derivation of boundaries 0–6;
 2. **passed** — blind-spot, allocation, and falsifier review;
@@ -437,7 +440,73 @@ Rewrite or kill this draft if:
 7. **passed** — separate founder execution authorisation, verbatim above;
 8. **passed** — immutable record `532a5eb`; mechanical classification:
    **Outcome A — form selected**;
-9. separate founder reduction authorisation.
+9. **passed** — founder authorised reduction on 2026-07-31.
 
-This seal and the separate gate-7 decision authorise execution and immutable
-recording only. They do not authorise reduction.
+Before the separate gate-9 decision, the seal and gate 7 authorised execution
+and immutable recording only; they did not authorise reduction.
+
+---
+
+# Reduction (authorised and performed 2026-07-31)
+
+Founder, verbatim:
+
+> j'autorise la réduction de s1-006
+
+## What the world learned
+
+- **R1 — stability and selected form are separate properties.** P0 and P1 both
+  reached complete-state fixed points under the same degree-aware law,
+  topology, initial state, and repeated crossings. They did not retain the same
+  surface: P0 ended `[8,12,12,16]`; P1 ended `[8,12,15,13]`.
+- **R2 — F-S1-1 receives first support in S1-006's exact domain.** The sole
+  first difference was the competence guard's treatment of a prospective unit
+  from C to D at boundary 6. That local difference survived a second forcing
+  episode and selected a different conserved distribution at rest.
+- **R3 — C-S1-1 survives, but its role is corrected rather than merely
+  enlarged.** In S1-005's constant-divisor pair, competence separated a
+  period-2 orbit from rest. Here degree-aware made rest common ground:
+  competence selected the resting form, not whether rest existed.
+- **R4 — S-S1-1 and T-S1-1 extend cautiously.** A four-place surface changed
+  twice under declared history and remained only a reading over conserved
+  matter. Conversion, transport, and competence retained distinct causal
+  roles through a suffix that was not hand-derived.
+
+## What the laboratory learned
+
+- **R5 — a derived prefix can anchor an uncalculated future.** The hand fixed
+  the shared states through tick 6 and the exact first difference at tick 7.
+  It did not prescribe the final forms. Independently calibrated complete-state
+  and provenance witnesses then adjudicated the 121-tick suffix without a
+  hidden target.
+- **R6 — the risky predictions paid their risk.** Common stability carried
+  confidence 72/100 and different final surfaces 65/100; both held. This does
+  not extend Method-001 beyond full hand-computability. It records a viable
+  campaign posture at the method's frontier, not a new canonical Method.
+- **R7 — allocation order remained outside the result.** The instrument was
+  capable of reporting insufficient holding across multiple eligible edges;
+  neither world produced such a boundary. Deterministic relation order cannot
+  be credited with the selected forms, but branching remains untested.
+
+## What Genesis learned
+
+- **R8 — RD-12 is paid in the first extended, repeatedly forced domain.** A
+  local competence distinction remained form-selecting on four places through
+  two forcing episodes, and both results rested completely. This pays neither
+  landscape scale nor general robustness.
+- **R9 — no kernel primitive, RFC, or production law is demanded.** The result
+  reduces to existing cells, relations, snapshot contributions, additive
+  resolution, crossings, and experimental law content. The competence fixture
+  remains in the laboratory.
+- **R10 — the successor debt is selection across families.** S1-006 used one
+  chain, one integer scale, two identical episodes, and no allocation-sensitive
+  branch. Which topology and history determine the remaining form becomes
+  RD-13. Naming the debt opens no campaign.
+
+# Decision
+
+Outcome A stands. Observation-017 is adopted. F-S1-1 receives first support in
+S1-006's exact domain; C-S1-1, S-S1-1, and T-S1-1 survive with the limits above.
+RD-12 is paid in the first four-place, repeatedly forced domain and RD-13 opens.
+No fixture is promoted. No RFC, production law, canonical method, formation
+name, demonstration, or successor campaign is authorised by this reduction.
