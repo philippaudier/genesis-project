@@ -1,7 +1,17 @@
 # Campaign S1-006 — The Selected Form
 
-Status: **DRAFT — gates 1 and 2 passed; no founder approval, no seal, no
-implementation, no execution.**
+Status: **SEALED — implementation authorised; execution NOT authorised.**
+
+Founder approval (2026-07-31), preserved verbatim:
+
+> J’approuve la question, la paire P0/P1, les claims C0–C6, les issues A–G et
+> les confiances de S1-006. J’autorise le sceau et l’implémentation, mais pas
+> l’exécution.
+
+The reviewed draft at `6beac64` is the sealed experimental contract. Everything
+from the founding question through the confidence declaration is fixed. The
+implementation may build P0 and P1 and inspect their construction, but no tick
+of either world is authorised.
 
 Cold review (2026-07-31): the independent re-derivation reproduced every cell
 through boundary 6 and the sole first divergence after tick 7. The blind-spot
@@ -406,16 +416,18 @@ Rewrite or kill this draft if:
   explicit methodological frontier, the logical fixed-point witness, and the
   deterministic-order protection into this draft before any seal.
 
-## Gates — 1 and 2 passed
+## Gates — 1 through 4 passed
 
 1. **passed** — cold independent re-derivation of boundaries 0–6;
 2. **passed** — blind-spot, allocation, and falsifier review;
-3. founder approval of question, pair, claims, outcomes, and confidence;
-4. seal;
+3. **passed** — founder approval of question, pair, claims, outcomes, and
+   confidence, verbatim above;
+4. **passed** — sealed against reviewed draft `6beac64`;
 5. implementation and foreign-toy calibration;
 6. line-by-line conformance against sealed prose;
 7. separate founder execution authorisation;
 8. immutable record and mechanical classification;
 9. separate founder reduction authorisation.
 
-This draft authorises nothing.
+This seal authorises implementation and foreign-toy calibration only. It does
+not authorise execution.
