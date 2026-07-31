@@ -13,6 +13,7 @@
     <Compile Include="Worlds.cs" />
     <Compile Include="Instruments.cs" />
     <Compile Include="Calibration.cs" />
+    <Compile Include="Execution.cs" />
     <Compile Include="..\..\Assets\Genesis\Simulation\*.cs" LinkBase="Kernel" />
     <Compile Include="..\S1-001\FixtureSet.cs" LinkBase="Shared" />
     <Compile Include="..\S1-001\Fixtures.cs" LinkBase="Shared" />

@@ -1,6 +1,7 @@
 # Campaign S1-006 — The Selected Form
 
-Status: **SEALED — gates 1–6 passed; execution NOT authorised.**
+Status: **SEALED — gate 7 passed; execution authorised, reduction NOT
+authorised.**
 
 Founder approval (2026-07-31), preserved verbatim:
 
@@ -11,7 +12,13 @@ Founder approval (2026-07-31), preserved verbatim:
 The reviewed draft at `6beac64` is the sealed experimental contract. Everything
 from the founding question through the confidence declaration is fixed. The
 implementation may build P0 and P1 and inspect their construction, but no tick
-of either world is authorised.
+of either world was authorised by the seal alone.
+
+Execution authorisation (2026-07-31), preserved verbatim:
+
+> J’autorise l’exécution de Campaign S1-006 : P0 et P1, 128 ticks exactement
+> comme scellés, avec enregistrement complet et classification selon les issues
+> A–G. Je n’autorise pas encore la réduction.
 
 Cold review (2026-07-31): the independent re-derivation reproduced every cell
 through boundary 6 and the sole first divergence after tick 7. The blind-spot
@@ -416,7 +423,7 @@ Rewrite or kill this draft if:
   explicit methodological frontier, the logical fixed-point witness, and the
   deterministic-order protection into this draft before any seal.
 
-## Gates — 1 through 6 passed
+## Gates — 1 through 7 passed
 
 1. **passed** — cold independent re-derivation of boundaries 0–6;
 2. **passed** — blind-spot, allocation, and falsifier review;
@@ -427,9 +434,9 @@ Rewrite or kill this draft if:
    obligations pass, with P0/P1 constructed but never ticked;
 6. **passed** — `Lab/S1-006/CONFORMANCE.md`, line by line against seal
    `0cc83b0` and independently committed implementation `c98f6a5`;
-7. separate founder execution authorisation;
+7. **passed** — separate founder execution authorisation, verbatim above;
 8. immutable record and mechanical classification;
 9. separate founder reduction authorisation.
 
-This seal authorises implementation and foreign-toy calibration only. It does
-not authorise execution.
+This seal and the separate gate-7 decision authorise execution and immutable
+recording only. They do not authorise reduction.
