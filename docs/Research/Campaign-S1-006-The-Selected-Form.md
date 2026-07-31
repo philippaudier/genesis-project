@@ -1,6 +1,11 @@
 # Campaign S1-006 — The Selected Form
 
-Status: **DRAFT — no approval, no seal, no implementation, no execution.**
+Status: **DRAFT — gates 1 and 2 passed; no founder approval, no seal, no
+implementation, no execution.**
+
+Cold review (2026-07-31): the independent re-derivation reproduced every cell
+through boundary 6 and the sole first divergence after tick 7. The blind-spot
+and falsifier review passed after the pre-seal revisions recorded below.
 
 This draft is downstream of the explicitly contaminated reconnaissance in
 `Lab/RD12-Probe/`. Its four-place specimen, values, forcing boundaries, and
@@ -47,6 +52,26 @@ The strict pair reuses:
 - S1-005's competence guard;
 - the corpus's existing degree-aware divisor `outgoing degree + 1`.
 
+S1-005 is not a draft dependency: its competence guard was sealed at
+`7b739b4` and the campaign closed at `537fc00`. S1-006 nevertheless states the
+reused terms in line so its own future conformance gate does not depend on a
+reader reconstructing another campaign:
+
+```text
+divisor(P) = outgoing_degree(P) + 1
+
+if Potential(P) > Potential(Q):
+    prospective = floor((Potential(P) - Potential(Q)) / divisor(P))
+
+move Sediment P→Q only when prospective > competence
+amount = min(snapshot Sediment(P) still available, prospective)
+```
+
+The competence comparison is applied to `prospective` **before** the cap by
+snapshot holding. Water remains uncapped. Conversion uses the same prospective
+amount and emits one `(-1 Rock,+1 Sediment)` pair when it is strictly greater
+than the conversion threshold.
+
 The campaign introduces no new law family. It composes laboratory content
 already forced into existence and asks whether one local scalar changes the
 global fixed reading.
@@ -73,13 +98,21 @@ global fixed reading.
    downhill neighbours and insufficient Sediment for both, iteration order
    can select a receiver. Every such allocation-sensitive boundary must be
    reported. It limits generalisation even though relation order is identical
-   in the strict pair.
+   in the strict pair. `OutgoingRelations` order is deterministic and the same
+   in P0 and P1, so allocation order cannot be the source of their first
+   difference; it can only amplify a difference already caused by the
+   competence guard.
 8. **The second forcing episode may erase the first difference.** That is an
    outcome, not a reason to preserve a preferred form.
-9. **The observation window may be too short.** A fixed point must begin no
-   later than tick 120 and remain cell-for-cell identical with zero
-   contributions through tick 128. An orbit or unresolved transient cannot be
-   called rest.
+9. **The observation window may be too short.** After the second episode, a
+   fixed point is witnessed when two consecutive complete states are
+   cell-for-cell identical, the intervening boundary has zero law
+   contributions and zero crossings, and the future membrane is silent. Under
+   determinism, that is a proof of the later trajectory. The
+   instrument also reports the full quiet-suffix length, but does not require
+   eight arbitrary ticks. If no such transition occurs by boundary 127, the
+   run is unresolved within the window and Outcome D stands; a later fixation
+   is not silently inferred.
 10. **Competence may select hidden material but not surface.** Equal final
     surfaces with unequal complete states receive their own outcome.
 
@@ -212,6 +245,20 @@ acts on worlds already allowed to differ. This is deliberately beyond the
 hand-computable prefix; the machine must reconstruct every contribution
 without receiving a target final form.
 
+## Methodological frontier — fixed before the seal
+
+Gate 1 validates the common prefix, the integer arithmetic, and the first
+competence-caused divergence. **It does not validate C3 or C4.** Common
+stability and different final forms are genuine predictions carried at
+72/100 and 65/100, not hand-derived confirmations.
+
+This is a deliberate move beyond S1-004/005's fully derived trajectories and
+against the agenda's standing adversary, comfort. Its cost is explicit:
+conformance gate 6 can prove that the implemented laws, crossings, readers,
+and reconstruction match the sealed prose throughout the suffix; it cannot
+compare that suffix with an expected final trajectory that was never derived.
+The outcomes, not a hidden calculation, adjudicate what happens after tick 7.
+
 ## Claims and predictions — candidate
 
 | Claim | Prediction | Bound failure |
@@ -219,7 +266,7 @@ without receiving a target final form.
 | C0 — common prefix | P0 and P1 match the hand derivation cell for cell through tick 6 | Outcome E or G |
 | C1 — first discrimination | first complete-state difference after tick 7; only P0's unit Sediment contribution C→D differs at boundary 6 | Outcome E or F |
 | C2 — accounting domain | `Rock + Sediment = 48`, zero reconstruction faults, no negative value | Outcome D or G |
-| C3 — common stability | both worlds begin a complete-state, zero-contribution fixed suffix no later than tick 120 and keep it through tick 128 | Outcome D |
+| C3 — common stability | after boundary 11 and by boundary 127, both worlds exhibit two consecutive identical complete states with zero intervening law contributions and zero crossing | Outcome D |
 | C4 — selected form | the two final `SolidSurface` arrays differ | Outcome B or C |
 | C5 — attribution | worlds differ only in competence; all later differences reconstruct from the first guarded contribution and lawful subsequent state | Outcome F or G |
 | C6 — repeated history | both second-episode crossings enter at boundaries 10 and 11 and receive no later privilege | Outcome G |
@@ -259,7 +306,7 @@ Every boundary and state, both worlds:
 7. minimum value of every Kind;
 8. complete-state and surface signatures;
 9. first cross-world difference and its exact contributing cause;
-10. first fixed-state tick and zero-contribution suffix length;
+10. first fixed-state transition and full zero-contribution suffix length;
 11. final per-place surface and complete-state differences;
 12. farthest place reached by any difference;
 13. every allocation-sensitive transport boundary: more than one eligible
@@ -271,8 +318,9 @@ Foreign-toy calibration must:
 
 - distinguish surface equality from complete-state equality;
 - reject a periodic state as fixed;
-- accept a planted eight-boundary fixed suffix only when contributions are
-  zero;
+- accept a planted late fixed transition when its two complete states match
+  and contributions are zero, while rejecting an equal surface with hidden
+  state change;
 - distinguish equal final surfaces / unequal hidden states from identical
   complete states;
 - detect a wrong first-divergence boundary or fixture;
@@ -291,9 +339,11 @@ No calibration world may use P0 or P1.
   complete material states differ.
 - **C — selection erased:** both worlds fix to the same complete material
   state.
-- **D — stability is not common:** either world remains periodic or unresolved
-  at tick 128, or leaves the non-negative domain. F-S1-1 receives no
-  adjudication.
+- **D — stability is not common within the window:** either world has no
+  witnessed fixed transition by boundary 127, remains periodic, or leaves the
+  non-negative domain. A clean fixed transition anywhere in the window,
+  including after tick 120, satisfies stability; no arbitrary eight-tick
+  tariff is applied. F-S1-1 receives no adjudication.
 - **E — mechanism incomplete:** the first difference is still caused solely by
   a correctly applied competence guard, but not at the hand-derived boundary,
   place, amount, or tick. Re-derive first; arithmetic error is a World
@@ -345,10 +395,21 @@ Rewrite or kill this draft if:
 - final-form equality has no bound outcome;
 - or execution can occur before an independently versioned conformance gate.
 
-## Gates — none yet opened
+## Cold review record
 
-1. cold independent re-derivation of boundaries 0–6;
-2. blind-spot, allocation, and falsifier review;
+- **Gate 1 — PASS, within its declared reach.** Independent arithmetic found
+  exactly two conversions (boundaries 1 and 2), `Rock + Sediment = 48`,
+  Water total 24 after the first episode, no negative value through tick 7,
+  and the sole first difference at boundary 6 / C→D / amount 1.
+- **Gate 2 — PASS after revision.** No allocation-sensitive transition exists
+  in boundaries 0–6. The review forced the self-contained law formulas, the
+  explicit methodological frontier, the logical fixed-point witness, and the
+  deterministic-order protection into this draft before any seal.
+
+## Gates — 1 and 2 passed
+
+1. **passed** — cold independent re-derivation of boundaries 0–6;
+2. **passed** — blind-spot, allocation, and falsifier review;
 3. founder approval of question, pair, claims, outcomes, and confidence;
 4. seal;
 5. implementation and foreign-toy calibration;
