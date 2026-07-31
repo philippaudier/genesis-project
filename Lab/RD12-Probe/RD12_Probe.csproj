@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>Genesis.Lab.RD12_Probe</RootNamespace>
+    <AssemblyName>RD12_Probe</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="..\..\Assets\Genesis\Simulation\*.cs" LinkBase="Kernel" />
+    <Compile Include="..\S1-001\FixtureSet.cs" LinkBase="Shared" />
+    <Compile Include="..\S1-001\Fixtures.cs" LinkBase="Shared" />
+    <Compile Include="..\S1-004\Fixtures.cs" LinkBase="S1-004" />
+    <Compile Include="..\S1-004\Instruments.cs" LinkBase="S1-004" />
+    <Compile Include="..\S1-005\CompetenceTransportFixture.cs" LinkBase="S1-005" />
+    <Compile Include="..\S1-005\Instruments.cs" LinkBase="S1-005" />
+    <Compile Include="..\S1-005\Worlds.cs" LinkBase="S1-005" />
+  </ItemGroup>
+
+</Project>
