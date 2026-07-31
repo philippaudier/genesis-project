@@ -1,6 +1,6 @@
 # Campaign S1-006 — The Selected Form
 
-Status: **SEALED — implementation authorised; execution NOT authorised.**
+Status: **SEALED — gates 1–6 passed; execution NOT authorised.**
 
 Founder approval (2026-07-31), preserved verbatim:
 
@@ -416,15 +416,17 @@ Rewrite or kill this draft if:
   explicit methodological frontier, the logical fixed-point witness, and the
   deterministic-order protection into this draft before any seal.
 
-## Gates — 1 through 4 passed
+## Gates — 1 through 6 passed
 
 1. **passed** — cold independent re-derivation of boundaries 0–6;
 2. **passed** — blind-spot, allocation, and falsifier review;
 3. **passed** — founder approval of question, pair, claims, outcomes, and
    confidence, verbatim above;
 4. **passed** — sealed against reviewed draft `6beac64`;
-5. implementation and foreign-toy calibration;
-6. line-by-line conformance against sealed prose;
+5. **passed** — implementation `c98f6a5`; ten foreign-toy and static-pair
+   obligations pass, with P0/P1 constructed but never ticked;
+6. **passed** — `Lab/S1-006/CONFORMANCE.md`, line by line against seal
+   `0cc83b0` and independently committed implementation `c98f6a5`;
 7. separate founder execution authorisation;
 8. immutable record and mechanical classification;
 9. separate founder reduction authorisation.

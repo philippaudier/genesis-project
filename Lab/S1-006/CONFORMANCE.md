@@ -3,7 +3,8 @@
 Status: **PASS — implementation and calibration only; execution remains
 unauthorised.**
 
-Compared line by line with the sealed campaign at `0cc83b0`:
+Compared line by line with the sealed campaign at `0cc83b0` and the independently
+committed implementation at `c98f6a5`:
 
 | Sealed term | Implementation witness |
 |---|---|
