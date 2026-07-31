@@ -1,6 +1,6 @@
 # Campaign S1-006 — The Selected Form
 
-Status: **SEALED — gate 7 passed; execution authorised, reduction NOT
+Status: **EXECUTED — Outcome A; immutable record `532a5eb`; reduction NOT
 authorised.**
 
 Founder approval (2026-07-31), preserved verbatim:
@@ -423,7 +423,7 @@ Rewrite or kill this draft if:
   explicit methodological frontier, the logical fixed-point witness, and the
   deterministic-order protection into this draft before any seal.
 
-## Gates — 1 through 7 passed
+## Gates — 1 through 8 passed
 
 1. **passed** — cold independent re-derivation of boundaries 0–6;
 2. **passed** — blind-spot, allocation, and falsifier review;
@@ -435,7 +435,8 @@ Rewrite or kill this draft if:
 6. **passed** — `Lab/S1-006/CONFORMANCE.md`, line by line against seal
    `0cc83b0` and independently committed implementation `c98f6a5`;
 7. **passed** — separate founder execution authorisation, verbatim above;
-8. immutable record and mechanical classification;
+8. **passed** — immutable record `532a5eb`; mechanical classification:
+   **Outcome A — form selected**;
 9. separate founder reduction authorisation.
 
 This seal and the separate gate-7 decision authorise execution and immutable
